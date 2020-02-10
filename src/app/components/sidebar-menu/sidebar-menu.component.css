@@ -1,0 +1,263 @@
+.sidebar {
+    display: table-cell;
+    width: 100%;
+    vertical-align: middle;
+    padding-top: 60px;
+}
+
+.brand_logo {
+    position: absolute;
+    top: 6%;
+}
+
+.brand_logo>.logo_img {
+    width: 165px;
+    content: url(../../../assets/img/logo.png);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#sidebarMenu {
+    transition: all 0.3s;
+    padding-left: 16px;
+}
+
+#sidebarMenu .sidebar-header {
+    padding: 20px;
+}
+
+#sidebarMenu ul.components {
+    padding: 20px 0;
+}
+
+#sidebarMenu ul p {
+    padding: 10px;
+}
+
+#sidebarMenu ul li a {
+    padding: 10px;
+    display: inline-flex;
+    color: #808182;
+    text-decoration: none;
+    
+}
+
+#sidebarMenu ul li a>.home_icon
+{
+    content: url(../../../assets/img/home.png);
+    width: 21px;
+    height: 20px;
+    margin-right: 11px;
+}
+
+#sidebarMenu ul li a:hover>.home_icon {
+    content: url(../../../assets/img/home_active.png);
+    width: 21px;
+    height: 20px;
+    margin-right: 11px;
+}
+
+#sidebarMenu ul li.active a>.home_icon
+{
+    content: url(../../../assets/img/home_active.png);
+    width: 21px;
+    height: 20px;
+    margin-right: 11px;
+}
+
+#sidebarMenu ul li a>.livetv_icon
+{
+    content: url(../../../assets/img/monitor.png);
+    width: 20px;
+    height: 18px;
+    margin-right: 13px;
+    margin-top: 4px;
+}
+
+#sidebarMenu ul li a:hover>.livetv_icon {
+    content: url(../../../assets/img/monitor_active.png);
+    width: 20px;
+    height: 18px;
+    margin-right: 13px;
+    margin-top: 4px;
+}
+
+#sidebarMenu ul li.active a>.livetv_icon
+{
+    content: url(../../../assets/img/monitor_active.png);
+    width: 20px;
+    height: 18px;
+    margin-right: 13px;
+    margin-top: 4px;
+}
+
+#sidebarMenu ul li a>.movies_icon
+{
+    content: url(../../../assets/img/movie.png);
+    width: 19px;
+    height: 19px;
+    margin-right: 14px;
+    margin-top: 3px;
+}
+
+#sidebarMenu ul li a:hover>.movies_icon {
+    content: url(../../../assets/img/movie_active.png);
+    width: 19px;
+    height: 19px;
+    margin-right: 14px;
+    margin-top: 3px;
+}
+
+#sidebarMenu ul li.active a>.movies_icon
+{
+    content: url(../../../assets/img/movie_active.png);
+    width: 19px;
+    height: 19px;
+    margin-right: 14px;
+    margin-top: 3px;
+}
+
+#sidebarMenu ul li a>.tvseries_icon
+{
+    content: url(../../../assets/img/tv_series.png);
+    width: 19px;
+    height: 19px;
+    margin-right: 13px;
+    margin-left: 1px;
+    margin-top: 1px;
+}
+
+#sidebarMenu ul li a:hover>.tvseries_icon {
+    content: url(../../../assets/img/tv_series_active.png);
+    width: 19px;
+    height: 19px;
+    margin-right: 13px;
+    margin-left: 1px;
+    margin-top: 1px;
+}
+
+#sidebarMenu ul li.active a>.tvseries_icon
+{
+    content: url(../../../assets/img/tv_series_active.png);
+    width: 19px;
+    height: 19px;
+    margin-right: 13px;
+    margin-left: 1px;
+    margin-top: 1px;
+}
+
+#sidebarMenu ul li a>.radio_icon
+{
+    content: url(../../../assets/img/radio.png);
+    width: 19px;
+    height: 17px;
+    margin-right: 13px;
+    margin-left: 1px;
+    margin-top: 2px;
+}
+
+#sidebarMenu ul li a:hover>.radio_icon {
+    content: url(../../../assets/img/radio_active.png);
+    width: 19px;
+    height: 17px;
+    margin-right: 13px;
+    margin-left: 1px;
+    margin-top: 2px;
+}
+
+#sidebarMenu ul li.active a>.radio_icon
+{
+    content: url(../../../assets/img/radio_active.png);
+    width: 19px;
+    height: 17px;
+    margin-right: 13px;
+    margin-left: 1px;
+    margin-top: 2px;
+}
+
+#sidebarMenu ul li a>.recording_icon
+{
+    content: url(../../../assets/img/Record.png);
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    margin-top: 3px;
+    margin-left: 1px;
+}
+
+#sidebarMenu ul li a:hover>.recording_icon {
+    content: url(../../../assets/img/Record_active.png);
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    margin-top: 3px;
+    margin-left: 1px;
+}
+
+#sidebarMenu ul li.active a>.recording_icon
+{
+    content: url(../../../assets/img/Record_active.png);
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    margin-top: 3px;
+    margin-left: 1px;
+}
+
+#sidebarMenu ul li a>.favorite_icon
+{
+    content: url(../../../assets/img/favorite.png);
+    width: 19px;
+    height: 19px;
+    margin-right: 12px;
+    margin-top: 3px;
+    margin-left: 3px;
+}
+
+#sidebarMenu ul li a:hover>.favorite_icon {
+    content: url(../../../assets/img/favorite_active.png);
+    width: 19px;
+    height: 19px;
+    margin-right: 12px;
+    margin-top: 3px;
+    margin-left: 3px;
+}
+
+#sidebarMenu ul li.active a>.favorite_icon
+{
+    content: url(../../../assets/img/favorite_active.png);
+    width: 19px;
+    height: 19px;
+    margin-right: 12px;
+    margin-top: 3px;
+    margin-left: 3px;
+}
+
+#sidebarMenu ul li a:hover {
+    color: #F5F5F5;
+}
+
+#sidebarMenu ul li.active>a,
+a[aria-expanded="true"] {
+    color: #F5F5F5;
+}
+
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 43px !important;
+}
+
+.collapse.list-unstyled>li>a{
+    padding-left: 43px !important;
+}
+
+.collapse.list-unstyled>li>a:hover{
+    padding-left: 37px !important;
+}
+
+.collapse.list-unstyled>li>a:hover>.active_bar{
+    border: 1px solid #f5f5f5;
+    margin-right: 5px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}

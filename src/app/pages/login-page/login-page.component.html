@@ -1,0 +1,34 @@
+<section id="brand">
+    <div class="container">
+        <div class="brand_logo text-center">
+            <img src="assets/img/logo.png" alt="">
+        </div>
+    </div>
+</section>
+
+<section id="auth_form">
+    <div class="container">
+        <div class="auth_form">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="form-grup mb-32">
+                    <input type="text" class="form-control" formControlName="username"
+                        [ngClass]="{ 'is-invalid': submitted && f.username.errors }" placeholder="username">
+                    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                        <div *ngIf="f.username.errors.required">Username is required</div>
+                    </div>
+                </div>
+
+                <div class="form-group mb-240">
+                    <input type="password" class="form-control" formControlName="password"
+                        [ngClass]="{ 'is-invalid': submitted && f.password.errors }" placeholder="password">
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                        <div *ngIf="f.password.errors.required">Password is required</div>
+                    </div>
+                </div>
+
+                <button [disabled]="loading" class="btn btn-black">LOG IN</button>
+                <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+            </form>
+        </div>
+    </div>
+</section>
