@@ -12,3 +12,17 @@ body {
 .mb-240 {
     margin-bottom: 240px;
 }
+
+#tv_channel .flickity-button.flickity-prev-next-button.previous{
+    top: 41% !important;
+}
+#tv_channel .flickity-button.flickity-prev-next-button.next{
+    top: 41% !important;
+}
+
+#radio .flickity-button.flickity-prev-next-button.previous{
+    top: 41% !important;
+}
+#radio .flickity-button.flickity-prev-next-button.next{
+    top: 41% !important;
+}

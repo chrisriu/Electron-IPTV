@@ -3,7 +3,7 @@
         <app-sidebar-menu></app-sidebar-menu>
     </div>
     <div class="main">
-        <div class="container">
+        <div class="main_content">
             <div class="search_field">
                 <form [formGroup]="searchForm">
                     <div class="form-grup">
@@ -15,33 +15,11 @@
                     </div>
                 </form>
             </div>
-            <div class="row">
-                <div class="movies_title">LATEST MOVIES ADDED</div>
-                <div class="movies_content">
-                    
-                </div>
-            </div>
-            <div class="row">
-                <div class="livetv_title">FAVORITE TV CHANNELS</div>
-                <div class="livetv_content">
-
-                </div>
-            </div>
-            <div class="row">
-                <div class="tvseries_title">LATEST SERIES ADDED</div>
-                <div class="tvseries_content">
-
-                </div>
-            </div>
-            <div class="row">
-                <div class="radio_title">FAVORITE RADIO STATIONS</div>
-                <div class="radio_content">
-
-                </div>
-            </div>
-            <div class="row">
-                profile section
-            </div>
+            <app-multi-movie-slider></app-multi-movie-slider>
+            <app-multi-tv-channel-slider></app-multi-tv-channel-slider>
+            <app-multi-series-slider></app-multi-series-slider>
+            <app-multi-radio-slider></app-multi-radio-slider>
+            <app-account-part></app-account-part>
         </div>
     </div>
 </div>

@@ -27,8 +27,9 @@ export class HomePageComponent implements OnInit {
 
     ngOnInit(): void {
         this.searchForm = this.formBuilder.group({});
+        
     }
-    
+
     logout() {
         this.authenticationService.logout();
         this.router.navigate(['/login']);

@@ -4,11 +4,11 @@
     flex-direction: row;
 }
 
-.nav.sidebar{
+.nav.sidebar {
     border-right: 0px solid !important;
-    -webkit-box-shadow: rgba(0, 0, 0, 0.3) 2px 1px 3px 2px;
-    -moz-box-shadow: rgba(0, 0, 0, 0.3) 2px 1px 3px 2px;
-    box-shadow: rgba(0, 0, 0, 0.3) 2px 1px 3px 2px;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.6) 2px 1px 8px 3px;
+    -moz-box-shadow: rgba(0, 0, 0, 0.6) 2px 1px 8px 3px;
+    box-shadow: rgba(0, 0, 0, 0.6) 2px 1px 8px 3px;
 }
 
 .sidebar {
@@ -25,15 +25,54 @@ app-sidebar-menu {
     background-color: #2F3136;
 }
 
-.main{
+.main {
+    width: 100%;
+    overflow-x: hidden;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    margin-right: 3px;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 20px;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 20px;
+    margin-right: 2px;
+}
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    border-radius: 20px;
+    margin-right: 2px;
+}
+
+.scroll-element {
+    scroll-margin-right: 5px;
+}
+
+.main_content {
     width: 100%;
 }
 
-.main form input{
+.main form input {
     background: #2F3136 !important;
     border: 1px solid #F5F5F5 !important;
     right: 1% !important;
-    top: 1% !important;
+    top: 5% !important;
     position: absolute !important;
     height: 26px !important;
     width: auto !important;
