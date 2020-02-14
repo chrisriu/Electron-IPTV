@@ -23,9 +23,9 @@ export class MultiMovieSliderComponent implements OnInit {
 
                     var $imagesCarousel = $('#last_movie .carouselOfImages').flickity({
                         contain: true,
-                        autoPlay: false,
+                        autoPlay: 1500,
                         wrapAround: true,
-                        friction: 0.3,
+                        friction: 0.2,
                         pageDots: false
                     });
                     function resizeCells() {

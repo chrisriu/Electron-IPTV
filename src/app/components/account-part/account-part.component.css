@@ -48,6 +48,7 @@
 }
 
 .payment_pane{
+    width: 50%;
     padding-top:30px;
     padding-bottom: 30px;
     padding-left: 45px;
@@ -58,3 +59,61 @@
     color: white;
     margin-bottom: 40px;
 }
+
+.payment_check{
+    display: flex;
+}
+
+.payment_check>.check_icon{
+    height: fit-content;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 15px;
+}
+.payment_check.active>.check_icon{
+    content: url(../../../assets/img/tick.png);
+}
+
+.payment_check.active>.icon.paypal{
+    content:url(../../../assets/img/paypal.png);
+}
+
+.payment_check>.icon.paypal{
+    content:url(../../../assets/img/paypal_uncheck.png);
+}
+
+
+.payment_check>.check_icon{
+    content: url(../../../assets/img/unchecked.png);
+}
+
+.payment_check>.icon.credit{
+    content:url(../../../assets/img/credit-card_checked.png);
+}
+
+.payment_check.active>.icon.credit{
+    content:url(../../../assets/img/credit-card.png);
+}
+
+.pay_btn{
+    margin-top: 20px;
+    width: 100%;
+}
+
+.pay_btn button{
+    width: 100%;
+    background: #1B1C1D;
+    border: 1px solid #EB761C;
+    border-radius: 8px;
+    margin-top: 80px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: white;
+}
+.pay_btn p{
+    font-size: 10px;
+    text-align: center;
+    margin-top: 5px;
+}
+
+
