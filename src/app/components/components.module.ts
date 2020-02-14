@@ -10,6 +10,8 @@ import { MultiSeriesSliderComponent } from './multi-series-slider/multi-series-s
 import { MultiRadioSliderComponent } from './multi-radio-slider/multi-radio-slider.component';
 import { AccountPartComponent } from './account-part/account-part.component';
 
+import { AngularResizedEventModule } from 'angular-resize-event';
+
 @NgModule({
     declarations: [
         ResizeDiv,
@@ -24,6 +26,7 @@ import { AccountPartComponent } from './account-part/account-part.component';
     imports: [
         BrowserModule, 
         FormsModule,
+        AngularResizedEventModule
     ],
     exports: [
         ResizeDiv,

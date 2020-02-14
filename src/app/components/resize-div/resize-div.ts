@@ -80,7 +80,6 @@ export class ResizeDiv implements OnInit {
                 preventGlobalMouseEvents();
                 event.stopPropagation();
             }
-            console.log("Mouse Down",element.nativeElement.width)
         };
 
 
@@ -90,7 +89,6 @@ export class ResizeDiv implements OnInit {
             } else {
                 element.nativeElement.style.cursor = "default";
             }
-            console.log("Mouse Move",element.nativeElement.width)
         }
 
 
@@ -98,7 +96,6 @@ export class ResizeDiv implements OnInit {
         document.addEventListener('mouseup', mouseUpG, true);
         element.nativeElement.addEventListener('mousedown', mouseDown, true);
         element.nativeElement.addEventListener('mousemove', mouseMove, true);
-        console.log(element.nativeElement.width)
     }
 
     ngOnInit(): void {

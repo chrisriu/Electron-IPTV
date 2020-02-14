@@ -16,6 +16,12 @@
     margin-left: auto;
     margin-right: auto;
 }
+.brand_logo>.logo_img.notext-logo {
+    width: 50px !important;
+    content: url(../../../assets/img/Logo_collapse.png) !important;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 #sidebarMenu {
     transition: all 0.3s;
@@ -265,4 +271,8 @@ ul ul a {
 .category_title{
     padding: 0px !important;
     margin: 0px;
+}
+
+.d-none{
+    display: none !important;
 }
