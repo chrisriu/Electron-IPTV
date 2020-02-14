@@ -261,3 +261,8 @@ ul ul a {
     margin-top: 3px;
     margin-bottom: 3px;
 }
+
+.category_title{
+    padding: 0px !important;
+    margin: 0px;
+}
