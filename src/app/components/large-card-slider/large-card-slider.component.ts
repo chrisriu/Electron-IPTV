@@ -13,7 +13,7 @@ declare var $: any;
 export class LargeCardSliderComponent implements OnInit {
 
     @Input() cards: Card[];
-
+    @Input() slider_title: string;
     constructor() { }
 
     ngOnInit(): void {

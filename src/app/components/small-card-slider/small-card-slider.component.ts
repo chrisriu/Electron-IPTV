@@ -12,6 +12,7 @@ declare var $: any;
 export class SmallCardSliderComponent implements OnInit {
 
     @Input() cards: Card[];
+    @Input() slider_title: string;
     constructor() { }
 
     ngOnInit(): void {

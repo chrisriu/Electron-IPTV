@@ -23,6 +23,11 @@ export class HomePageComponent implements OnInit {
     serieCards: Card[];
     radioCards: Card[];
 
+    movie_title = "Latest Added Movies";
+    tvchannel_title = "Favorite TV Channels";
+    series_title: "Latest Added TV Series";
+    radio_title: "Latest Added Radio";
+
     constructor(
         private router: Router,
         private authenticationService: AuthenticationService,

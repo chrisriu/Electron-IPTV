@@ -15,10 +15,10 @@
                     </div>
                 </form>
             </div>
-            <app-large-card-slider [cards]="movieCards"></app-large-card-slider>
-            <app-small-card-slider [cards]="tvchannelCards"></app-small-card-slider>
-            <app-large-card-slider [cards]="serieCards"></app-large-card-slider>
-            <app-small-card-slider [cards]="radioCards"></app-small-card-slider>
+            <app-large-card-slider [cards]="movieCards" [slider_title] = "movie_title"></app-large-card-slider>
+            <app-small-card-slider [cards]="tvchannelCards" [slider_title] = "tvchannel_title"></app-small-card-slider>
+            <app-large-card-slider [cards]="serieCards" [slider_title] = "series_title"></app-large-card-slider>
+            <app-small-card-slider [cards]="radioCards" [slider_title] = "radio_title"></app-small-card-slider>
             <app-account-part></app-account-part>
         </div>
     </div>
