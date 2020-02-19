@@ -23,7 +23,7 @@ export class LargeCardSliderComponent implements OnInit {
                     Flickity.setJQuery($);
                     jQueryBridget('flickity', Flickity, $);
 
-                    var $imagesCarousel = $('#last_movie .carouselOfImages').flickity({
+                    var $imagesCarousel = $('#large .carouselOfImages').flickity({
                         contain: true,
                         autoPlay: 1500,
                         wrapAround: true,
@@ -37,21 +37,21 @@ export class LargeCardSliderComponent implements OnInit {
                         if ($length <= '3') {
                             $imagesCarousel.flickity('destroy');
                         }
-                        $('#last_movie .carouselOfImages .carouselImage').removeClass("nextToSelected");
-                        $('#last_movie .carouselOfImages .carouselImage').eq($current - 1).addClass("nextToSelected");
+                        $('#large .carouselOfImages .carouselImage').removeClass("nextToSelected");
+                        $('#large .carouselOfImages .carouselImage').eq($current - 1).addClass("nextToSelected");
                         if ($current + 1 == $length) {
                             var $endCell = "0"
                         } else {
                             var $endCell_num = $current + 1;
                             var $endCell: string = $endCell_num.toString();
                         }
-                        $('#last_movie .carouselOfImages .carouselImage').eq($endCell).addClass("nextToSelected");
+                        $('#large .carouselOfImages .carouselImage').eq($endCell).addClass("nextToSelected");
                     };
                     resizeCells();
                     $imagesCarousel.on('scroll.flickity', function () {
                         resizeCells();
                     });
-                    $("#last_movie .carouselImage img").click(function () {
+                    $("#large .carouselImage img").click(function () {
                         var $this = $(this);
                         var imageID = $this.attr('data-tab');
                         var imageSrc = $this.attr('src');
