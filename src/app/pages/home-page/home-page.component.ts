@@ -19,6 +19,7 @@ export class HomePageComponent implements OnInit {
     error = '';
 
     movieCards: Card[];
+    radioCards: Card[];
 
     constructor(
         private router: Router,
@@ -38,6 +39,16 @@ export class HomePageComponent implements OnInit {
             {title: "Little Woman", imgPath:"assets/img/tmg-article_tall(6).jpg"},
             {title: "The Nightingale", imgPath:"assets/img/tmg-article_tall(7).jpg"},
             {title: "Parabellum", imgPath:"assets/img/tmg-article_tall(8).jpg"}
+        ];
+
+        this.radioCards = [
+            {title:"", imgPath:"assets/img/clubmix_Radio.png"},
+            {title:"", imgPath:"assets/img/kissfm.png"},
+            {title:"", imgPath:"assets/img/one_fm_.png"},
+            {title:"", imgPath:"assets/img/radio_deea.png"},
+            {title:"", imgPath:"assets/img/radio21.png"},
+            {title:"", imgPath:"assets/img/virgin_Radio.png"},
+            {title:"", imgPath:"assets/img/clubmix_Radio.png"}
         ];
     }
 

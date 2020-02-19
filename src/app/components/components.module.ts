@@ -12,6 +12,7 @@ import { AccountPartComponent } from './account-part/account-part.component';
 
 import { AngularResizedEventModule } from 'angular-resize-event';
 import { LargeCardSliderComponent } from './large-card-slider/large-card-slider.component';
+import { SmallCardSliderComponent } from './small-card-slider/small-card-slider.component';
 
 @NgModule({
     declarations: [
@@ -23,6 +24,7 @@ import { LargeCardSliderComponent } from './large-card-slider/large-card-slider.
         MultiRadioSliderComponent,
         AccountPartComponent,
         LargeCardSliderComponent,
+        SmallCardSliderComponent,
         
     ],
     imports: [
@@ -39,6 +41,7 @@ import { LargeCardSliderComponent } from './large-card-slider/large-card-slider.
         MultiRadioSliderComponent,
         AccountPartComponent,
         LargeCardSliderComponent,
+        SmallCardSliderComponent,
     ],
 })
 export class ComponentsModule { }

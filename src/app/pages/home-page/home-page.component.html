@@ -15,12 +15,13 @@
                     </div>
                 </form>
             </div>
-            <app-multi-movie-slider></app-multi-movie-slider>
+            <app-large-card-slider [cards]="movieCards"></app-large-card-slider>
+            <app-small-card-slider [cards]="radioCards"></app-small-card-slider>
             <app-multi-tv-channel-slider></app-multi-tv-channel-slider>
             <app-multi-series-slider></app-multi-series-slider>
             <app-multi-radio-slider></app-multi-radio-slider>
             <app-account-part></app-account-part>
-            <app-large-card-slider [cards]="movieCards"></app-large-card-slider>
+            
         </div>
     </div>
 </div>
