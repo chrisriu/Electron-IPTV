@@ -5,35 +5,9 @@
     <div class="slider_content">
         <section class="items">
             <div class="carouselOfImages">
-                <div class="carouselImage" style="background-size:cover">
-                    <img data-tab="bright" src="assets/img/clubmix_Radio.png" />
-                </div>
-                <div class="carouselImage" style="background-size:cover">
-                    <img data-tab="avatar" src="assets/img/kissfm.png" />
-                </div>
-                <div class="carouselImage" style="background-size:cover;">
-                    <img data-tab="nuh" src="assets/img/one_fm_.png" />
-                </div>
-                <div class="carouselImage" style="background-size:cover;">
-                    <img data-tab="lord" src="assets/img/radio_deea.png" />
-                </div>
-                <div class="carouselImage" style="background-size:cover;">
-                    <img data-tab="thor" src="assets/img/radio21.png" />
-                </div>
-                <div class="carouselImage" style="background-size:cover;">
-                    <img data-tab="john" src="assets/img/virgin_Radio.png" />
-                </div>
-                <div class="carouselImage" style="background-size:cover;">
-                    <img data-tab="deadpool2" src="assets/img/clubmix_Radio.png" />
-                </div>
-                <div class="carouselImage" style="background-size:cover;">
-                    <img data-tab="inception" src="assets/img/kissfm.png" />
-                </div>
-                <div class="carouselImage" style="background-size:cover;">
-                    <img data-tab="fight" src="assets/img/one_fm_.png" />
-                </div>
-                <div class="carouselImage" style="background-size:cover;">
-                    <img data-tab="dunkirk" src="assets/img/radio_deea.png" />
+                <div class="carouselImage" style="background-size:cover" *ngFor = "let card of cards">
+                    <img data-tab="bright" src="{{card.imgPath}}" />
+                    <p>{{card.title}}</p>
                 </div>
             </div>
         </section>
