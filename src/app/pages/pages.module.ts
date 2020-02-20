@@ -10,6 +10,10 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { MovieLandPageComponent } from './movie-land-page/movie-land-page.component';
 import { SidebarMenuComponent } from './sidebar-menu/sidebar-menu.component';
 import { TvchannelLandPageComponent } from './tvchannel-land-page/tvchannel-land-page.component';
+import { TvseriesLandPageComponent } from './tvseries-land-page/tvseries-land-page.component';
+import { RadioLandPageComponent } from './radio-land-page/radio-land-page.component';
+import { RecordingLandPageComponent } from './recording-land-page/recording-land-page.component';
+import { FavoriteLandPageComponent } from './favorite-land-page/favorite-land-page.component';
 @NgModule({
     declarations: [
         LoginPageComponent,
@@ -17,7 +21,11 @@ import { TvchannelLandPageComponent } from './tvchannel-land-page/tvchannel-land
         SidebarMenuComponent,
         HomePageComponent,
         MovieLandPageComponent,
-        TvchannelLandPageComponent
+        TvchannelLandPageComponent,
+        TvseriesLandPageComponent,
+        RadioLandPageComponent,
+        RecordingLandPageComponent,
+        FavoriteLandPageComponent
     ],
 
     imports: [
