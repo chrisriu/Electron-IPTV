@@ -1,0 +1,30 @@
+.main-content {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+}
+
+.nav.sidebar {
+    border-right: 0px solid !important;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.6) 2px 1px 8px 3px;
+    -moz-box-shadow: rgba(0, 0, 0, 0.6) 2px 1px 8px 3px;
+    box-shadow: rgba(0, 0, 0, 0.6) 2px 1px 8px 3px;
+}
+
+.sidebar {
+    position: relative;
+    width: 280px;
+    flex-grow: 0;
+    height: 100vh;
+}
+
+app-sidebar-menu {
+    width: 100%;
+    display: table;
+    height: 100%;
+    background-color: #2F3136;
+}
+
+app-home-page{
+    width: 100%;
+}

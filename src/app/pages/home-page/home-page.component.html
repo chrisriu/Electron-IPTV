@@ -1,25 +1,20 @@
-<div class="home-content">
-    <div class="nav sidebar" [resizableMinWidth]=30 [resizableMaxWidth]=30 appResizable>
-        <app-sidebar-menu></app-sidebar-menu>
-    </div>
-    <div class="main">
-        <div class="main_content">
-            <div class="search_field">
-                <form [formGroup]="searchForm">
-                    <div class="form-grup">
-                        <input type="text" class="form-control search_input" placeholder="Search">
-                        <!-- [ngClass]="{ 'is-invalid': submitted && f.username.errors }" placeholder="username"> -->
-                        <!-- <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+<div class="main">
+    <div class="main_content">
+        <div class="search_field">
+            <form [formGroup]="searchForm">
+                <div class="form-grup">
+                    <input type="text" class="form-control search_input" placeholder="Search">
+                    <!-- [ngClass]="{ 'is-invalid': submitted && f.username.errors }" placeholder="username"> -->
+                    <!-- <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
                             <div *ngIf="f.username.errors.required">Username is required</div>
                         </div> -->
-                    </div>
-                </form>
-            </div>
-            <app-large-card-slider [cards]="movieCards" [slider_title] = "movie_title"></app-large-card-slider>
-            <app-small-card-slider [cards]="tvchannelCards" [slider_title] = "tvchannel_title"></app-small-card-slider>
-            <app-large-card-slider [cards]="serieCards" [slider_title] = "series_title"></app-large-card-slider>
-            <app-small-card-slider [cards]="radioCards" [slider_title] = "radio_title"></app-small-card-slider>
-            <app-account-part></app-account-part>
+                </div>
+            </form>
         </div>
+        <app-large-card-slider [cards]="movieCards" [slider_title]="movie_title"></app-large-card-slider>
+        <app-small-card-slider [cards]="tvchannelCards" [slider_title]="tvchannel_title"></app-small-card-slider>
+        <app-large-card-slider [cards]="serieCards" [slider_title]="series_title"></app-large-card-slider>
+        <app-small-card-slider [cards]="radioCards" [slider_title]="radio_title"></app-small-card-slider>
+        <app-account-part></app-account-part>
     </div>
 </div>

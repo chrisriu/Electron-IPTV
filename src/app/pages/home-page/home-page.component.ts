@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { AuthenticationService } from '../../services';
-import { User } from '../../models';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Card } from '../../models/card';
 @Component({
     selector: 'app-home-page',
@@ -11,12 +7,8 @@ import { Card } from '../../models/card';
     styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
-    currentUser: User;
+    
     searchForm: FormGroup;
-    loading = false;
-    submitted = false;
-    returnUrl: string;
-    error = '';
 
     movieCards: Card[];
     tvchannelCards: Card[];
@@ -29,12 +21,8 @@ export class HomePageComponent implements OnInit {
     radio_title: "Latest Added Radio";
 
     constructor(
-        private router: Router,
-        private authenticationService: AuthenticationService,
         private formBuilder: FormBuilder
     ) {
-        this.authenticationService.currentUser.subscribe(x => this.currentUser = x)
-
         this.movieCards = [
             {title: "The Black Man In San Francisco", imgPath:"assets/img/tmg-article_tall.jpg"},
             {title: "Dark Waters", imgPath:"assets/img/tmg-article_tall(3).jpg"},
@@ -90,8 +78,5 @@ export class HomePageComponent implements OnInit {
         
     }
 
-    logout() {
-        this.authenticationService.logout();
-        this.router.navigate(['/login']);
-    }
+    
 }
