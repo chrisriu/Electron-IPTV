@@ -10,18 +10,24 @@ declare var $: any;
 })
 export class SidebarMenuComponent implements OnInit {
 
-    width : number;
+    width: number;
     height: number;
     constructor() { }
 
     ngOnInit(): void {
-        
+        (function ($) {
+            console.log("This is the a");
+            $(".components a").on('click', function () {
+                console.log("a tage is clicked");
+                $('.components').find('li.active').removeClass('active');
+                $(this).parent('li').addClass('active');
+            });
+        })(jQuery);
     }
 
-    onResized(event: ResizedEvent){
-    
+    onResized(event: ResizedEvent) {
         this.width = event.newWidth;
-        if (this.width < 160){
+        if (this.width < 160) {
             const category_home_title = document.getElementById("home_category_title");
             category_home_title.classList.add("d-none");
             const category_livetv_title = document.getElementById("livetv_category_title");
@@ -57,7 +63,7 @@ export class SidebarMenuComponent implements OnInit {
             brand_logo_img.classList.remove("notext-logo");
         }
 
-
+        
     }
 
 }

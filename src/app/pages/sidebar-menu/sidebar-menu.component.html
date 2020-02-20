@@ -7,7 +7,7 @@
 
     <!-- Sidebar Menu -->
     <nav id="sidebarMenu">
-        <ul class="list-unstyled components">
+        <ul class="components">
             <li class="active">
                 <a routerLink="/main/home">
                     <div class="home_icon"></div>
@@ -15,7 +15,7 @@
                 </a>
             </li>
             <li>
-                <a href="#livetv_menu" routerLink="/main/tvland" data-toggle="collapse" aria-expanded="false">
+                <a routerLink="/main/tvland" data-toggle="collapse" data-target="#livetv_menu"  aria-expanded="false">
                     <div class="livetv_icon"></div>
                     <p class="category_title" id="livetv_category_title">LIVE TV</p>
                 </a>
@@ -48,7 +48,7 @@
                 </ul>
             </li>
             <li>
-                <a href="#movies_menu" routerLink="/main/movieland" data-toggle="collapse" aria-expanded="false">
+                <a  routerLink="/main/movieland" data-toggle="collapse" data-target="#movies_menu" aria-expanded="false">
                     <div class="movies_icon"></div>
                     <p class="category_title" id="movie_category_title">MOVIES</p>
                 </a>
