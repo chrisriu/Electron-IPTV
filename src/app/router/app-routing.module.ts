@@ -6,7 +6,7 @@ import { MainPageComponent } from '../pages/main-page/main-page.component';
 import { AuthGuard } from '../guards/auth.guard';
 import { HomePageComponent } from '../pages/home-page';
 import { MovieLandPageComponent } from '../pages/movie-land-page/movie-land-page.component';
-
+import { MovieGenreDetailPageComponent } from '../pages/movie-genre-detail-page/movie-genre-detail-page.component';
 
 const baseRoutes: Routes = [
     {
@@ -30,6 +30,10 @@ const baseRoutes: Routes = [
             {
                 path:'movieland',
                 component: MovieLandPageComponent
+            },
+            {
+                path:'movie-genre-detail/:genre_id', 
+                component: MovieGenreDetailPageComponent
             }
         ]
     },
@@ -37,7 +41,6 @@ const baseRoutes: Routes = [
         path: 'login',
         component: LoginPageComponent
     },
-
     {
         path: '**',
         redirectTo: ''

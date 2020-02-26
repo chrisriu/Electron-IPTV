@@ -1,3 +1,4 @@
 export const config = {
-    apiUrl: 'http://localhost:4000'
+    url: 'http://hd.qicktech.com',
+    port: 2095
 };

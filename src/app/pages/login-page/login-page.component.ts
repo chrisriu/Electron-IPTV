@@ -41,23 +41,11 @@ export class LoginPageComponent implements OnInit {
     onSubmit() {
         this.submitted = true;
         console.log("This is submit");
-        // stop here if form is invalid
-        if (this.loginForm.invalid) {
-            return;
-        }
+        // this.authenticationService.login(this.f.username.value, this.f.password.value);
+        let array = [];
+        this.authenticationService.login(this.f.username.value, this.f.password.value).subscribe(data => {
 
-        this.loading = true;
-        this.authenticationService.login(this.f.username.value, this.f.password.value)
-            .pipe(first())
-            .subscribe(
-                data => {
-                    console.log(this.returnUrl);
-                    this.router.navigate([this.returnUrl]);
-                },
-                error => {
-                    this.error = error;
-                    this.loading = false;
-                });
+            console.log(data);
+        })
     }
-
 }

@@ -18,7 +18,6 @@ export class SidebarMenuComponent implements OnInit {
         (function ($) {
             console.log("This is the a");
             $(".components a").on('click', function () {
-                console.log("a tage is clicked");
                 $('.components').find('li.active').removeClass('active');
                 $(this).parent('li').addClass('active');
             });

@@ -14,6 +14,7 @@ import { TvseriesLandPageComponent } from './tvseries-land-page/tvseries-land-pa
 import { RadioLandPageComponent } from './radio-land-page/radio-land-page.component';
 import { RecordingLandPageComponent } from './recording-land-page/recording-land-page.component';
 import { FavoriteLandPageComponent } from './favorite-land-page/favorite-land-page.component';
+import { MovieGenreDetailPageComponent } from './movie-genre-detail-page/movie-genre-detail-page.component';
 @NgModule({
     declarations: [
         LoginPageComponent,
@@ -25,7 +26,8 @@ import { FavoriteLandPageComponent } from './favorite-land-page/favorite-land-pa
         TvseriesLandPageComponent,
         RadioLandPageComponent,
         RecordingLandPageComponent,
-        FavoriteLandPageComponent
+        FavoriteLandPageComponent,
+        MovieGenreDetailPageComponent
     ],
 
     imports: [

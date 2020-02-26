@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 // used to create fake backend
-import { fakeBackendProvider } from './helpers';
 import { JwtInterceptor, ErrorInterceptor } from './helpers';
 
 import { PagesModule } from './pages/pages.module';
@@ -24,7 +23,6 @@ import { PagesModule } from './pages/pages.module';
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-        fakeBackendProvider
     ],
     bootstrap: [AppComponent]
 })
