@@ -49,7 +49,7 @@ export class LoginPageComponent implements OnInit {
                 // Convert Current date to milliseoncds...
                 console.log("current milliseconds", new Date().getTime());
                 const current_milis = new Date().getTime();
-                if (current_milis > data['exp_date']) {
+                if (current_milis > data['exp_date'].concat('000')) {
                     this.router.navigate(['/login-failed'], { queryParams: { case: "expired" } });
                 } else if (data['active_cons'] >= data['max_connections']) {
                     this.router.navigate(['/login-failed'], { queryParams: { case: "device_limited" } });
