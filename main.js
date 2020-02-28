@@ -6,9 +6,12 @@ let mainWindow
 
 function createWindow() {
     const primaryDisplay = screen.getPrimaryDisplay();
-    const { width, height } = primaryDisplay.workAreaSize;
+    const real_width = primaryDisplay.size.width;
+    const real_height = primaryDisplay.size.height;
+    console.log(real_width, real_height);
     mainWindow = new BrowserWindow({
-        width, height,
+        width: real_width, 
+        height: real_height,
         webPreferences: {
             nodeIntegration: true
         }
