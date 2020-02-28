@@ -1,17 +1,19 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, screen } = require('electron')
 const url = require("url");
 const path = require("path");
 
 let mainWindow
 
 function createWindow() {
+    const primaryDisplay = screen.getPrimaryDisplay();
+    const { width, height } = primaryDisplay.workAreaSize;
     mainWindow = new BrowserWindow({
-        width: 1500,
-        height: 900,
+        width, height,
         webPreferences: {
             nodeIntegration: true
         }
-    })
+    });
+    mainWindow.resizable = false;
 
     mainWindow.loadURL(
         url.format({
@@ -20,6 +22,8 @@ function createWindow() {
             slashes: true
         })
     );
+
+    mainWindow.setMenu(null);
     // Open the DevTools.
     mainWindow.webContents.openDevTools()
 
