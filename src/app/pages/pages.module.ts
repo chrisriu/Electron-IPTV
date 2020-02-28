@@ -16,6 +16,8 @@ import { RecordingLandPageComponent } from './recording-land-page/recording-land
 import { FavoriteLandPageComponent } from './favorite-land-page/favorite-land-page.component';
 import { MovieGenreDetailPageComponent } from './movie-genre-detail-page/movie-genre-detail-page.component';
 import { LoginFailedPageComponent } from './login-failed-page/login-failed-page.component';
+import { AccountConfirmPageComponent } from './account-confirm-page/account-confirm-page.component';
+import { AccountInfoLoadingPageComponent } from './account-info-loading-page/account-info-loading-page.component';
 @NgModule({
     declarations: [
         LoginPageComponent,
@@ -29,7 +31,9 @@ import { LoginFailedPageComponent } from './login-failed-page/login-failed-page.
         RecordingLandPageComponent,
         FavoriteLandPageComponent,
         MovieGenreDetailPageComponent,
-        LoginFailedPageComponent
+        LoginFailedPageComponent,
+        AccountConfirmPageComponent,
+        AccountInfoLoadingPageComponent
     ],
 
     imports: [

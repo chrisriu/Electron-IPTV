@@ -1,0 +1,24 @@
+#brand {
+    margin-top: 170px;
+}
+
+section#user_info{
+    margin-top: 20px;
+}
+
+section .container{
+    width: 50%;
+    text-align: center;
+}
+
+section .container>img{
+    width: 260px;
+    height: 260px;
+    border-radius: 100%;
+    border:1px solid #EB761C;
+}
+
+section .container>p{
+    color: #808182;
+    font-size: 25px;
+}

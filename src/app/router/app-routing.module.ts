@@ -8,13 +8,23 @@ import { AuthGuard } from '../guards/auth.guard';
 import { HomePageComponent } from '../pages/home-page';
 import { MovieLandPageComponent } from '../pages/movie-land-page/movie-land-page.component';
 import { MovieGenreDetailPageComponent } from '../pages/movie-genre-detail-page/movie-genre-detail-page.component';
-
+import { AccountConfirmPageComponent } from '../pages/account-confirm-page/account-confirm-page.component';
+import { AccountInfoLoadingPageComponent } from '../pages/account-info-loading-page/account-info-loading-page.component';
 const baseRoutes: Routes = [
+    
     {
         path: '',
-        redirectTo:'main/home',
+        redirectTo: 'account-confirm-page',
         canActivate: [AuthGuard],
         pathMatch: 'full'
+    },
+    {
+        path: 'account-info-loading',
+        component: AccountInfoLoadingPageComponent,
+    },
+    {
+        path: 'account-confirm-page',
+        component: AccountConfirmPageComponent
     },
     {
         path: 'main',
