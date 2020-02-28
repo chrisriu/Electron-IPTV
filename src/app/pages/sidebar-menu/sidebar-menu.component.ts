@@ -16,7 +16,6 @@ export class SidebarMenuComponent implements OnInit {
 
     ngOnInit(): void {
         (function ($) {
-            console.log("This is the a");
             $(".components a").on('click', function () {
                 $('.components').find('li.active').removeClass('active');
                 $(this).parent('li').addClass('active');

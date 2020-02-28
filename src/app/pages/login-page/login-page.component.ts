@@ -40,12 +40,34 @@ export class LoginPageComponent implements OnInit {
 
     onSubmit() {
         this.submitted = true;
-        console.log("This is submit");
         // this.authenticationService.login(this.f.username.value, this.f.password.value);
-        let array = [];
-        this.authenticationService.login(this.f.username.value, this.f.password.value).subscribe(data => {
 
-            console.log(data);
-        })
+        this.authenticationService.login(this.f.username.value, this.f.password.value)
+            .pipe(first())
+            .subscribe(data => {
+                console.log(data);
+                // Convert Current date to milliseoncds...
+                console.log("current milliseconds", new Date().getTime());
+                const current_milis = new Date().getTime();
+                if (current_milis > data['exp_date']) {
+                    this.router.navigate(['/login-failed'], { queryParams: { case: "expired" } });
+                } else if (data['active_cons'] >= data['max_connections']) {
+                    this.router.navigate(['/login-failed'], { queryParams: { case: "device_limited" } });
+                } else if (data['is_trial'] != 0) {
+                    this.router.navigate(['/login-failed'], { queryParams: { case: "trial_limited" } });
+                } else if (data['status'] != 'Active') {
+                    this.router.navigate(['/login-failed'], { queryParams: { case: "disabled_account" } });
+                } else {
+                    this.router.navigate([this.returnUrl]);
+                }
+
+            },
+                error => {
+                    this.error = error;
+                    this.loading = false;
+                }
+            )
+
+
     }
 }

@@ -1,0 +1,35 @@
+#brand {
+    margin-top: 170px;
+}
+
+section.alert-dialog{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+}
+
+.dialog{
+    text-align: center;
+    background: #1B1C1D;
+    border-radius: 8px;
+    padding-top: 10px;
+    padding-bottom: 15px;
+    border: 1px solid #A53232;
+}
+
+.dialog p{
+    color: #F5F5F5;
+    margin-bottom: 10px;
+}
+
+.dialog button.btn_submit{
+    width: 30%;
+    background: #2F3136;
+    border: 0px solid;
+    border-radius: 5px;
+    color: #F5F5F5;
+    font-size: 14px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}

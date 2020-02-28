@@ -2,6 +2,7 @@ import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { LoginPageComponent } from '../pages/login-page/login-page.component';
+import { LoginFailedPageComponent } from '../pages/login-failed-page/login-failed-page.component';
 import { MainPageComponent } from '../pages/main-page/main-page.component';
 import { AuthGuard } from '../guards/auth.guard';
 import { HomePageComponent } from '../pages/home-page';
@@ -18,6 +19,7 @@ const baseRoutes: Routes = [
     {
         path: 'main',
         component: MainPageComponent,
+        canActivate:[AuthGuard],
         children: [
             {
                 path:'home',
@@ -40,6 +42,10 @@ const baseRoutes: Routes = [
     {
         path: 'login',
         component: LoginPageComponent
+    },
+    {
+        path: 'login-failed',
+        component: LoginFailedPageComponent
     },
     {
         path: '**',
