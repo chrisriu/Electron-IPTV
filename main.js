@@ -17,6 +17,7 @@ function createWindow() {
         }
     });
     mainWindow.resizable = false;
+    mainWindow.maximize();
 
     mainWindow.loadURL(
         url.format({
