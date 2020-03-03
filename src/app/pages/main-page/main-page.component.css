@@ -9,6 +9,8 @@
     -webkit-box-shadow: rgba(0, 0, 0, 0.6) 2px 1px 8px 3px;
     -moz-box-shadow: rgba(0, 0, 0, 0.6) 2px 1px 8px 3px;
     box-shadow: rgba(0, 0, 0, 0.6) 2px 1px 8px 3px;
+    z-index: 10;
+    position: absolute;
 }
 
 .sidebar {
