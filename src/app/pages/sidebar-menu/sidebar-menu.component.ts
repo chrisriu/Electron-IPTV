@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import jQuery from 'jquery';
 import { ResizedEvent } from 'angular-resize-event';
+
 declare var $: any;
 
 @Component({
@@ -25,7 +26,8 @@ export class SidebarMenuComponent implements OnInit {
 
     onResized(event: ResizedEvent) {
         this.width = event.newWidth;
-        if (this.width < 160) {
+        console.log(this.width);
+        if (this.width < 180) {
             const category_home_title = document.getElementById("home_category_title");
             category_home_title.classList.add("d-none");
             const category_livetv_title = document.getElementById("livetv_category_title");

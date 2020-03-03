@@ -34,6 +34,7 @@
 
 #sidebarMenu ul.components {
     padding: 20px 0;
+    list-style-type: none;
 }
 
 #sidebarMenu ul p {
@@ -53,6 +54,7 @@
     content: url(../../../assets/img/home.png);
     width: 21px;
     height: 20px;
+    margin-top: 2px;
     margin-right: 11px;
 }
 
@@ -77,7 +79,7 @@
     width: 20px;
     height: 18px;
     margin-right: 13px;
-    margin-top: 4px;
+    margin-top: 5px;
 }
 
 #sidebarMenu ul li a:hover>.livetv_icon {
@@ -85,7 +87,7 @@
     width: 20px;
     height: 18px;
     margin-right: 13px;
-    margin-top: 4px;
+    margin-top: 5px;
 }
 
 #sidebarMenu ul li.active a>.livetv_icon
@@ -94,7 +96,7 @@
     width: 20px;
     height: 18px;
     margin-right: 13px;
-    margin-top: 4px;
+    margin-top: 5px;
 }
 
 #sidebarMenu ul li a>.movies_icon
@@ -187,7 +189,7 @@
     width: 20px;
     height: 20px;
     margin-right: 12px;
-    margin-top: 3px;
+    margin-top: 5px;
     margin-left: 1px;
 }
 
@@ -196,7 +198,7 @@
     width: 20px;
     height: 20px;
     margin-right: 12px;
-    margin-top: 3px;
+    margin-top: 5px;
     margin-left: 1px;
 }
 
@@ -206,7 +208,7 @@
     width: 20px;
     height: 20px;
     margin-right: 12px;
-    margin-top: 3px;
+    margin-top: 5px;
     margin-left: 1px;
 }
 
@@ -216,7 +218,7 @@
     width: 19px;
     height: 19px;
     margin-right: 12px;
-    margin-top: 3px;
+    margin-top: 4px;
     margin-left: 3px;
 }
 
@@ -225,7 +227,7 @@
     width: 19px;
     height: 19px;
     margin-right: 12px;
-    margin-top: 3px;
+    margin-top: 4px;
     margin-left: 3px;
 }
 
@@ -235,7 +237,7 @@
     width: 19px;
     height: 19px;
     margin-right: 12px;
-    margin-top: 3px;
+    margin-top: 4px;
     margin-left: 3px;
 }
 
@@ -271,6 +273,7 @@ ul ul a {
 .category_title{
     padding: 0px !important;
     margin: 0px;
+    font-size: 18px;
 }
 
 .d-none{

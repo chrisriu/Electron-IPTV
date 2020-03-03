@@ -18,6 +18,7 @@ import { MovieGenreDetailPageComponent } from './movie-genre-detail-page/movie-g
 import { LoginFailedPageComponent } from './login-failed-page/login-failed-page.component';
 import { AccountConfirmPageComponent } from './account-confirm-page/account-confirm-page.component';
 import { AccountInfoLoadingPageComponent } from './account-info-loading-page/account-info-loading-page.component';
+import { AngularResizedEventModule } from 'angular-resize-event';
 @NgModule({
     declarations: [
         LoginPageComponent,
@@ -33,7 +34,8 @@ import { AccountInfoLoadingPageComponent } from './account-info-loading-page/acc
         MovieGenreDetailPageComponent,
         LoginFailedPageComponent,
         AccountConfirmPageComponent,
-        AccountInfoLoadingPageComponent
+        AccountInfoLoadingPageComponent,
+        
     ],
 
     imports: [
@@ -42,6 +44,7 @@ import { AccountInfoLoadingPageComponent } from './account-info-loading-page/acc
         RouterModule,
         ReactiveFormsModule,
         ComponentsModule,
+        AngularResizedEventModule
     ],
 
     exports: [
