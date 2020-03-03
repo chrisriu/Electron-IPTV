@@ -279,3 +279,26 @@ ul ul a {
 .d-none{
     display: none !important;
 }
+.setting_bar_app{
+    display: inline-flex;
+    padding: 0px 16px;
+}
+
+.setting_app_bar.text-center.w-100 img{
+    width: 20px;
+    height: 20px;
+    padding: 0px;
+}
+
+.setting_app_bar{
+    position: absolute;
+    bottom: 1%;
+    left: 16px;
+
+    display: inline-flex;
+}
+
+.setting_sets{
+    position: absolute;
+    right: 28px;
+}
