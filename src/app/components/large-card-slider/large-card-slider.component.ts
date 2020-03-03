@@ -25,7 +25,7 @@ export class LargeCardSliderComponent implements OnInit {
 
                     var $imagesCarousel = $('#large .carouselOfImages').flickity({
                         contain: true,
-                        autoPlay: 1500,
+                        autoplay: false,
                         wrapAround: true,
                         friction: 0.2,
                         pageDots: false
