@@ -24,12 +24,12 @@ const baseRoutes: Routes = [
     },
     {
         path: 'account-confirm-page',
+        canActivate: [AuthGuard],
         component: AccountConfirmPageComponent
     },
     {
         path: 'main',
         component: MainPageComponent,
-        canActivate:[AuthGuard],
         children: [
             {
                 path:'home',
