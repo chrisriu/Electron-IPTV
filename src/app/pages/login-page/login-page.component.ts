@@ -58,6 +58,7 @@ export class LoginPageComponent implements OnInit {
                 } else if (data['status'] != 'Active') {
                     this.router.navigate(['/login-failed'], { queryParams: { case: "disabled_account" } });
                 } else {
+                    console.log("this is the return url", this.returnUrl);
                     this.router.navigate([this.returnUrl]);
                 }
 
@@ -67,7 +68,5 @@ export class LoginPageComponent implements OnInit {
                     this.loading = false;
                 }
             )
-
-
     }
 }

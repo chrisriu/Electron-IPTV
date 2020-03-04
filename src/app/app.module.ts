@@ -9,6 +9,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor, ErrorInterceptor } from './helpers';
 
 import { PagesModule } from './pages/pages.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
     declarations: [
@@ -19,6 +20,7 @@ import { PagesModule } from './pages/pages.module';
         AppRoutingModule,
         HttpClientModule,
         PagesModule,
+        BrowserAnimationsModule,
     ],
     providers: [
         // { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

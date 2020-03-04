@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import jQuery from 'jquery';
 import { ResizedEvent } from 'angular-resize-event';
-
+import { Router } from '@angular/router'
+import { AuthenticationService } from '../../services';
 declare var $: any;
 
 @Component({
@@ -13,7 +14,10 @@ export class SidebarMenuComponent implements OnInit {
 
     width: number;
     height: number;
-    constructor() { }
+    constructor(
+        private route: Router,
+        private authenticationService: AuthenticationService
+    ) { }
 
     ngOnInit(): void {
         (function ($) {
@@ -63,7 +67,12 @@ export class SidebarMenuComponent implements OnInit {
             brand_logo_img.classList.remove("notext-logo");
         }
 
-        
+
+    }
+
+    logout() {
+        this.authenticationService.logout();
+        this.route.navigate(['/login']);
     }
 
 }
