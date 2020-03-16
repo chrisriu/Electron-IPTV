@@ -30,7 +30,6 @@ export class SidebarMenuComponent implements OnInit {
 
     onResized(event: ResizedEvent) {
         this.width = event.newWidth;
-        console.log(this.width);
         if (this.width < 180) {
             const category_home_title = document.getElementById("home_category_title");
             category_home_title.classList.add("d-none");

@@ -11,7 +11,7 @@ import { User } from '../models';
 export class AuthenticationService {
     private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
-    
+
     constructor(private httpClient: HttpClient, private router: Router) {
         this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('currentUser')));
         this.currentUser = this.currentUserSubject.asObservable();
@@ -31,7 +31,7 @@ export class AuthenticationService {
                     if (!(error.error instanceof ErrorEvent)) {
                         if (error.status === 404) {
                             console.log("this is the 404 error");
-                            this.router.navigate(['/login-failed'],{ queryParams: { case: "invalid_credit" } });
+                            this.router.navigate(['/login-failed'], { queryParams: { case: "invalid_credit" } });
                         }
                         console.error(
                             `Backend returned code ${error.status}, ` +

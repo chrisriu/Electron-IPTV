@@ -5,19 +5,12 @@ const path = require("path");
 let mainWindow
 
 function createWindow() {
-    const primaryDisplay = screen.getPrimaryDisplay();
-    const real_width = primaryDisplay.size.width;
-    const real_height = primaryDisplay.size.height;
-    console.log(real_width, real_height);
-    mainWindow = new BrowserWindow({
-        width: real_width, 
-        height: real_height,
-        webPreferences: {
-            nodeIntegration: true
-        }
-    });
+    const options = {
+		simpleFullscreen: true,
+		fullscreen: true,
+	}
+    mainWindow = new BrowserWindow(options);
     mainWindow.resizable = false;
-    mainWindow.maximize();
 
     mainWindow.loadURL(
         url.format({

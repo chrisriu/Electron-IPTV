@@ -1,28 +1,33 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { HttpClient, HttpParams, HttpHeaders, HttpRequest, HttpEventType } from '@angular/common/http';
 import { config } from '../configs/auth.config';
-import { catchError } from 'rxjs/operators';
-
+import { catchError, map } from 'rxjs/operators';
+import { of, forkJoin } from 'rxjs';
+import { NoopAnimationPlayer } from '@angular/animations';
+@Injectable({ providedIn: 'root' })
 export class XtreamCodeAPIService {
-    constructor(private httpClient: HttpClient, private router: Router) { }
 
-    get_liveStream_Category( username: string, password: string){
+    constructor(private httpClient: HttpClient) { }
+
+    getCategories(username: string, password: string, categoryType: string) {
         const httpParams: HttpParams = new HttpParams().set('username', username).set('password', password).set('action', 'get_live_categories');
         const endpoint = `${config.url}:${config.port}/player_api.php`;
-        return this.httpClient.get(`${endpoint}`, {params: httpParams});
-    }   
+        let category: string = null
 
-    get_vodStream_Category(username: string, password: string){
-        const httpParams: HttpParams = new HttpParams().set('username', username).set('password', password).set('action', 'get_vod_categories');
-        const endpoint = `${config.url}:${config.port}/player_api.php`;
-        return this.httpClient.get(`${endpoint}`, {params: httpParams});
+        if (categoryType == "livetv") {
+            category = "get_live_categories"
+        } else if (categoryType == "vod") {
+            category = "get_vod_categories"
+        } else if (categoryType == "series") {
+            category = "get_series_categories"
+        }
+        const url = `${config.url}:${config.port}/player_api.php?username=${username}&password=${password}&action=${category}`
+        const httpRequestLiveCategory1 = new HttpRequest(
+            "GET",
+            url,
+            {},
+            { reportProgress: true }
+        )
+        return this.httpClient.request(httpRequestLiveCategory1)
     }
-
-    get_seriesStream_Category(username: string, password: string){
-        const httpParams: HttpParams = new HttpParams().set('username', username).set('password', password).set('action', 'get_series_categories');
-        const endpoint = `${config.url}:${config.port}/player_api.php`;
-        return this.httpClient.get(`${endpoint}`, {params: httpParams});
-    }
-    
 }

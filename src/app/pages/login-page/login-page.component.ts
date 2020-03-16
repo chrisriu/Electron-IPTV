@@ -45,7 +45,6 @@ export class LoginPageComponent implements OnInit {
         this.authenticationService.login(this.f.username.value, this.f.password.value)
             .pipe(first())
             .subscribe(data => {
-                console.log(data);
                 // Convert Current date to milliseoncds...
                 const current_milis = new Date().getTime();
                 if (current_milis > data['exp_date'].concat('000')) {
@@ -57,7 +56,7 @@ export class LoginPageComponent implements OnInit {
                 } else if (data['status'] != 'Active') {
                     this.router.navigate(['/login-failed'], { queryParams: { case: "disabled_account" } });
                 } else {
-                    this.router.navigate(['/account-info-loading']);
+                    this.router.navigate(['/account-info-loading'], { queryParams: { username: this.f.username.value, password: this.f.password.value } });
                 }
 
             },

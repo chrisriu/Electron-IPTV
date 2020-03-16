@@ -10,8 +10,7 @@
     <div class="container">
         <p class="title">LOADING ACCOUNT</p>
         <div class="loading_progress">
-            <progress-bar [progress]="10" [color-degraded]="{'0': '#00cbcb',  '15': '#f9c3d3', '25': '#fd8c8e'}">
-            </progress-bar>
+            <div [ngStyle]="{'width': progress_value + '%'}" class="progress_bar"></div>
         </div>
     </div>
 </section>
