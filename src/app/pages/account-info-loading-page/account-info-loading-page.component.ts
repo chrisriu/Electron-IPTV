@@ -1,10 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { XtreamCodeAPIService } from '../../services/xtreamcode-api.service';
-import { first } from 'rxjs/operators';
 import { HttpEventType } from '@angular/common/http';
-import { ThrowStmt } from '@angular/compiler';
-
+import { ShareService } from '../../services/share.service';
 @Component({
     selector: 'app-account-info-loading-page',
     templateUrl: './account-info-loading-page.component.html',
@@ -21,13 +19,13 @@ export class AccountInfoLoadingPageComponent implements OnInit {
 
     categories: Object = {}
 
-    constructor(private xtreamcodesAPIService: XtreamCodeAPIService, private activedRoute: ActivatedRoute, private router: Router) { }
+    constructor(private xtreamcodesAPIService: XtreamCodeAPIService, private sharedService: ShareService, private activedRoute: ActivatedRoute, private router: Router) { }
 
     ngOnInit(): void {
         this.username = this.activedRoute.snapshot.queryParamMap.get('username')
         this.passwword = this.activedRoute.snapshot.queryParamMap.get('password')
         this.downloadCategories(this.username, this.passwword)
-        
+
     }
 
     downloadCategories(username: string, password: string) {
@@ -99,13 +97,15 @@ export class AccountInfoLoadingPageComponent implements OnInit {
             }
         )
         let interval = setInterval(() => {
-            this.router.navigate(['/account-confirm-page'], { queryParams: { categories: this.categories } });
+            console.log(this.categories)
+            this.sharedService.categories = this.categories
+            this.router.navigate(['/account-confirm-page'], { queryParams: { categories: this.categories } })
         }, 2000);
 
-        setInterval(()=>{
+        setInterval(() => {
             clearInterval(interval)
         }, 2100)
-        
+
     }
 
 

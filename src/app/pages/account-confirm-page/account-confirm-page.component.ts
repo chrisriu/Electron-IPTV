@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ShareService } from '../../services/share.service'
+
 @Component({
     selector: 'app-account-confirm-page',
     templateUrl: './account-confirm-page.component.html',
     styleUrls: ['./account-confirm-page.component.css']
 })
 export class AccountConfirmPageComponent implements OnInit {
-
-    constructor(private router: Router) { }
-
+    constructor(private router: Router, private activedRoute: ActivatedRoute, private shareService: ShareService) { }
     ngOnInit(): void {
     }
 
-    mainPage(){
+    mainPage() {
         this.router.navigate(['/main/home']);
     }
 

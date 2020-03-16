@@ -11,7 +11,6 @@ import { MovieGenreDetailPageComponent } from '../pages/movie-genre-detail-page/
 import { AccountConfirmPageComponent } from '../pages/account-confirm-page/account-confirm-page.component';
 import { AccountInfoLoadingPageComponent } from '../pages/account-info-loading-page/account-info-loading-page.component';
 const baseRoutes: Routes = [
-    
     {
         path: '',
         redirectTo: 'account-confirm-page',

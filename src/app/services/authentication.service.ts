@@ -18,7 +18,6 @@ export class AuthenticationService {
     }
 
     public get currentUserValue(): User {
-        console.log("Current USer", this.currentUserSubject.value);
         return this.currentUserSubject.value;
     }
 
@@ -30,7 +29,6 @@ export class AuthenticationService {
                 catchError(error => {
                     if (!(error.error instanceof ErrorEvent)) {
                         if (error.status === 404) {
-                            console.log("this is the 404 error");
                             this.router.navigate(['/login-failed'], { queryParams: { case: "invalid_credit" } });
                         }
                         console.error(
