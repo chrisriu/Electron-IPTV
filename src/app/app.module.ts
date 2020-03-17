@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 // used to create fake backend
-import { JwtInterceptor, ErrorInterceptor } from './helpers';
 
 import { PagesModule } from './pages/pages.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -24,8 +23,6 @@ import { ShareService } from './services';
         BrowserAnimationsModule,
     ],
     providers: [
-        // { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-        // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
         ShareService
     ],
     bootstrap: [AppComponent]
