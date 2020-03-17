@@ -24,9 +24,11 @@ export class SidebarMenuComponent implements OnInit {
     ngOnInit(): void {
         (function ($) {
             $(".components a").on('click', function () {
-                $('.components').find('li.active').find('a').attr('aria-expanded', 'false')
-                $('.components').find('li.active').find('ul').removeClass('show')
-                $('.components').find('li.active').removeClass('active')
+                if ($('.components').find('li.active') !== $(this).parent('li')) {
+                    $('.components').find('li.active').find('a').attr('aria-expanded', 'false')
+                    $('.components').find('li.active').find('ul').removeClass('show')
+                    $('.components').find('li.active').removeClass('active')
+                }
                 $(this).parent('li').addClass('active')
             });
         })(jQuery);
@@ -60,5 +62,4 @@ export class SidebarMenuComponent implements OnInit {
         this.authenticationService.logout();
         this.route.navigate(['/login']);
     }
-
 }

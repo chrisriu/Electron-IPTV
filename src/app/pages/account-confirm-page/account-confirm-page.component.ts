@@ -8,7 +8,7 @@ import { ShareService } from '../../services/share.service'
     styleUrls: ['./account-confirm-page.component.css']
 })
 export class AccountConfirmPageComponent implements OnInit {
-    constructor(private router: Router, private activedRoute: ActivatedRoute, private shareService: ShareService) { }
+    constructor(private router: Router) { }
     ngOnInit(): void {
     }
 

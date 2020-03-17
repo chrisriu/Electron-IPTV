@@ -12,9 +12,11 @@
             </form>
         </div>
         <app-large-card-slider [cards]="movieCards" [slider_title]="movie_title"></app-large-card-slider>
-        <app-small-card-slider [cards]="actionMovieCards" [slider_title]="actionMovieCardsTitle"></app-small-card-slider>
+        <app-small-card-slider [cards]="actionMovieCards" [slider_title]="actionMovieCardsTitle">
+        </app-small-card-slider>
         <app-small-card-slider [cards]="epicMovieCards" [slider_title]="epicMovieCardsTitle"></app-small-card-slider>
-        <app-small-card-slider [cards]="comedyMovieCards" [slider_title]="comedyMovieCardsTitle"></app-small-card-slider>
+        <app-small-card-slider [cards]="comedyMovieCards" [slider_title]="comedyMovieCardsTitle">
+        </app-small-card-slider>
         <app-small-card-slider [cards]="primeMovieCards" [slider_title]="primeMovieCardsTitle"></app-small-card-slider>
         <app-account-part></app-account-part>
     </div>

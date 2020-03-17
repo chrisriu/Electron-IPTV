@@ -19,7 +19,7 @@ import { LoginFailedPageComponent } from './login-failed-page/login-failed-page.
 import { AccountConfirmPageComponent } from './account-confirm-page/account-confirm-page.component';
 import { AccountInfoLoadingPageComponent } from './account-info-loading-page/account-info-loading-page.component';
 import { AngularResizedEventModule } from 'angular-resize-event';
-import {ProgressBarModule} from "angular-progress-bar";
+import { ProgressBarModule } from "angular-progress-bar";
 @NgModule({
     declarations: [
         LoginPageComponent,
