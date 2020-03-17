@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ShareService } from '../../services/share.service'
+import { ShareService } from '../../../services/share.service'
 
 @Component({
     selector: 'app-account-confirm-page',

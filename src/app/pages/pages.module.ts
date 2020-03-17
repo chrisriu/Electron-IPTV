@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { LoginPageComponent } from './login-page/login-page.component';
+import { LoginPageComponent } from './auth/login-page/login-page.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ComponentsModule } from '../components/components.module';
@@ -15,9 +15,9 @@ import { RadioLandPageComponent } from './radio-land-page/radio-land-page.compon
 import { RecordingLandPageComponent } from './recording-land-page/recording-land-page.component';
 import { FavoriteLandPageComponent } from './favorite-land-page/favorite-land-page.component';
 import { MovieGenreDetailPageComponent } from './movie-genre-detail-page/movie-genre-detail-page.component';
-import { LoginFailedPageComponent } from './login-failed-page/login-failed-page.component';
-import { AccountConfirmPageComponent } from './account-confirm-page/account-confirm-page.component';
-import { AccountInfoLoadingPageComponent } from './account-info-loading-page/account-info-loading-page.component';
+import { LoginFailedPageComponent } from './auth/login-failed-page/login-failed-page.component';
+import { AccountConfirmPageComponent } from './auth/account-confirm-page/account-confirm-page.component';
+import { AccountInfoLoadingPageComponent } from './auth/account-info-loading-page/account-info-loading-page.component';
 import { AngularResizedEventModule } from 'angular-resize-event';
 import { ProgressBarModule } from "angular-progress-bar";
 @NgModule({

@@ -1,15 +1,15 @@
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { LoginPageComponent } from '../pages/login-page/login-page.component';
-import { LoginFailedPageComponent } from '../pages/login-failed-page/login-failed-page.component';
+import { LoginPageComponent } from '../pages/auth/login-page/login-page.component';
+import { LoginFailedPageComponent } from '../pages/auth/login-failed-page/login-failed-page.component';
 import { MainPageComponent } from '../pages/main-page/main-page.component';
 import { AuthGuard } from '../guards/auth.guard';
 import { HomePageComponent } from '../pages/home-page';
 import { MovieLandPageComponent } from '../pages/movie-land-page/movie-land-page.component';
 import { MovieGenreDetailPageComponent } from '../pages/movie-genre-detail-page/movie-genre-detail-page.component';
-import { AccountConfirmPageComponent } from '../pages/account-confirm-page/account-confirm-page.component';
-import { AccountInfoLoadingPageComponent } from '../pages/account-info-loading-page/account-info-loading-page.component';
+import { AccountConfirmPageComponent } from '../pages/auth/account-confirm-page/account-confirm-page.component';
+import { AccountInfoLoadingPageComponent } from '../pages/auth/account-info-loading-page/account-info-loading-page.component';
 const baseRoutes: Routes = [
     {
         path: '',
