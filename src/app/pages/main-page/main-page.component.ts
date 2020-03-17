@@ -11,7 +11,7 @@ import { User } from '../../models';
 export class MainPageComponent implements OnInit {
     currentUser: User;
 
-    loading = false;
+    
     submitted = false;
     returnUrl: string;
     error = '';
