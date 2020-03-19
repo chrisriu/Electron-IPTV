@@ -42,16 +42,16 @@ div.auth_form {
     border-radius: 20px;
 }
 
-#loading_info{
+#loading_info {
     margin-top: 163px;
 }
 
-#loading_info > .container > p{
+#loading_info>.container>p {
     text-align: center;
     color: #808182;
     font-size: 29px;
 }
 
-#loading_info > .container > .loading_progress{
+#loading_info>.container>.loading_progress {
     margin-top: 81.5px;
 }

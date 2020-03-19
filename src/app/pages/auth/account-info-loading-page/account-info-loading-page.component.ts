@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { XtreamCodeAPIService } from '../../services/xtreamcode-api.service';
+import { XtreamCodeAPIService } from '../../../services/xtreamcode-api.service';
 import { HttpEventType } from '@angular/common/http';
-import { ShareService } from '../../services/share.service';
+import { ShareService } from '../../../services/share.service';
 @Component({
     selector: 'app-account-info-loading-page',
     templateUrl: './account-info-loading-page.component.html',
@@ -25,7 +25,6 @@ export class AccountInfoLoadingPageComponent implements OnInit {
         this.username = this.activedRoute.snapshot.queryParamMap.get('username')
         this.passwword = this.activedRoute.snapshot.queryParamMap.get('password')
         this.downloadCategories(this.username, this.passwword)
-
     }
 
     downloadCategories(username: string, password: string) {
@@ -37,18 +36,14 @@ export class AccountInfoLoadingPageComponent implements OnInit {
                         console.log(this.totaltime);
                         for (var i = 1; i <= 33; i++) {
                             setTimeout(() => {
-                                console.log("abc i", i);
                                 this.progress_value += 1
-                                console.log("abc progress", this.progress_value);
-
                             }, 100);
                         }
-
                     } else {
                         this.progress_value += Math.round(event.loaded / event.total * 100)
                     }
                 } else if (event.type == HttpEventType.Response) {
-                    this.categories['live'] = event.body
+                    this.categories['livetv'] = event.body
                 }
             }
         )
@@ -60,10 +55,7 @@ export class AccountInfoLoadingPageComponent implements OnInit {
                         this.totaltime += event.loaded
                         for (var i = 1; i <= 33; i++) {
                             setTimeout(() => {
-                                console.log("abc i", i);
                                 this.progress_value += 1
-                                console.log("abc progress", this.progress_value);
-
                             }, 100);
                         }
                     } else {
@@ -82,10 +74,7 @@ export class AccountInfoLoadingPageComponent implements OnInit {
                         this.totaltime += event.loaded
                         for (var i = 1; i <= 34; i++) {
                             setTimeout(() => {
-                                console.log("abc i", i);
                                 this.progress_value += 1
-                                console.log("abc progress", this.progress_value);
-
                             }, 100);
                         }
                     } else {
@@ -96,18 +85,15 @@ export class AccountInfoLoadingPageComponent implements OnInit {
                 }
             }
         )
+
         let interval = setInterval(() => {
-            console.log(this.categories)
+            // Share Data to temp
             this.sharedService.categories = this.categories
-            this.router.navigate(['/account-confirm-page'], { queryParams: { categories: this.categories } })
+            this.router.navigate(['/account-confirm-page'])
         }, 2000);
 
         setInterval(() => {
             clearInterval(interval)
         }, 2100)
-
     }
-
-
-
 }

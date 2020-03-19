@@ -15,83 +15,46 @@
                 </a>
             </li>
             <li>
-                <a routerLink="/main/tvland" data-toggle="collapse" data-target="#livetv_menu" aria-expanded="true"
-                    class="main_category">
+                <a routerLink="/main/livetvland" data-toggle="collapse" data-target="#livetv_menu" aria-expanded="true"
+                    class="main_category" >
                     <div class="livetv_icon"></div>
                     <p class="category_title" id="livetv_category_title">LIVE TV</p>
                 </a>
-                <ul class="collapse list-unstyled" id="livetv_menu">
-                    <li>
+                <ul class="collapse list-unstyled sub_category" id="livetv_menu">
+                    <li *ngFor="let category of categories['livetv']">
                         <a href="#">
-                            <div class="active_bar"></div>ROMANIA
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="active_bar"></div>UNITED KINGDOM
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="active_bar"></div>UNITED STATES
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="active_bar"></div>BEIN SPORTS
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="active_bar"></div>ITALY
+                            <div class="active_bar"></div>{{category["category_name"]}}
                         </a>
                     </li>
                 </ul>
             </li>
             <li>
-                <a routerLink="/main/movieland" data-toggle="collapse" data-target="#movies_menu" aria-expanded="false"
+                <a routerLink="/main/vodland" data-toggle="collapse" data-target="#vod_menu" aria-expanded="false"
                     class="main_category">
                     <div class="movies_icon"></div>
                     <p class="category_title" id="movie_category_title">MOVIES</p>
                 </a>
-                <ul class="collapse list-unstyled" id="movies_menu">
-                    <li>
+                <ul class="collapse list-unstyled " id="vod_menu">
+                    <li *ngFor="let category of categories['vod']">
                         <a href="#">
-                            <div class="active_bar"></div>ACTION
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="active_bar"></div>HORROR
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="active_bar"></div>ADVENTURES
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="active_bar"></div>DOCUMENTARY
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="active_bar"></div>COMEDY
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="active_bar"></div>WESTERN
+                            <div class="active_bar"></div>{{category["category_name"]}}
                         </a>
                     </li>
                 </ul>
             </li>
             <li>
-                <a href="#" class="main_category">
+                <a routerLink="/main/seriesland" data-toggle="collapse" data-target="#series_menu" aria-expanded="false"
+                    class="main_category" >
                     <div class="tvseries_icon "></div>
                     <p class="category_title" id="tvseries_category_title">TV SERIES</p>
                 </a>
+                <ul class="collapse list-unstyled" id="series_menu">
+                    <li *ngFor="let category of categories['series']">
+                        <a href="#">
+                            <div class="active_bar"></div>{{category["category_name"]}}
+                        </a>
+                    </li>
+                </ul>
             </li>
             <li>
                 <a href="#" class="main_category">

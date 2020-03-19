@@ -24,17 +24,23 @@ export class SidebarMenuComponent implements OnInit {
     ngOnInit(): void {
         (function ($) {
             $(".components a").on('click', function () {
-                if ($('.components').find('li.active') !== $(this).parent('li')) {
+                if ($('.components').find('li.active') != $(this).parent('li')) {
                     $('.components').find('li.active').find('a').attr('aria-expanded', 'false')
                     $('.components').find('li.active').find('ul').removeClass('show')
                     $('.components').find('li.active').removeClass('active')
+                } else {
+                    console.log("This is the same input")
                 }
                 $(this).parent('li').addClass('active')
+
+            });
+
+            $(".components a").on('click', function () {
+                console.log($(this).parent('li').lastElementChild)
             });
         })(jQuery);
 
         this.categories = this.shareService.categories
-        console.log(this.categories)
     }
 
     onResized(event: ResizedEvent) {
@@ -60,6 +66,6 @@ export class SidebarMenuComponent implements OnInit {
 
     logout() {
         this.authenticationService.logout();
-        this.route.navigate(['/login']);
+        this.route.navigate(['/login'])
     }
 }

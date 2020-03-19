@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-import { AuthenticationService } from '../../services';
+import { AuthenticationService } from '../../../services/authentication.service';
 
 @Component({
     selector: 'app-login-page',
@@ -33,6 +33,7 @@ export class LoginPageComponent implements OnInit {
         this.authenticationService.logout();
 
         // get return url from route parameters or default to '/'
+        
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/account-info-loading';
     }
 
@@ -58,7 +59,6 @@ export class LoginPageComponent implements OnInit {
                 } else {
                     this.router.navigate(['/account-info-loading'], { queryParams: { username: this.f.username.value, password: this.f.password.value } });
                 }
-
             },
                 error => {
                     this.error = error;
