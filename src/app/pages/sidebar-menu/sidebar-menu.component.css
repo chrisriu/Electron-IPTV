@@ -302,18 +302,16 @@ ul ul a {
     position: absolute;
     right: 28px;
 }
-
-.subMenu{
-    max-height: 250px;
+.list-unstyled.collapse{
+    max-height: 247px;
+    overflow-y: auto;
+}
+.list-unstyled.collapse.show{
+    max-height: 247px;
     overflow-y: auto;
 }
 
-.subMenu::-webkit-scrollbar{
+.list-unstyled.collapse::-webkit-scrollbar{
     width: 0px;
 }
-.subMenu>li{
-    list-style-type: none;
-}
-.subMenu>li>a{
-    padding-left:10px !important;
-}
+
