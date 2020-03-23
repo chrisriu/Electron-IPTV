@@ -20,7 +20,7 @@
                     <div class="livetv_icon"></div>
                     <p class="category_title" id="livetv_category_title">LIVE TV</p>
                 </a>
-                <ul class="collapse list-unstyled sub_category" id="livetv_menu">
+                <ul class="collapse list-unstyled sub_category" id="livetv_menu" class="subMenu" >
                     <li *ngFor="let category of categories['livetv']">
                         <a href="#">
                             <div class="active_bar"></div>{{category["category_name"]}}
@@ -34,7 +34,7 @@
                     <div class="movies_icon"></div>
                     <p class="category_title" id="movie_category_title">MOVIES</p>
                 </a>
-                <ul class="collapse list-unstyled " id="vod_menu">
+                <ul class="collapse list-unstyled " id="vod_menu" class="subMenu">
                     <li *ngFor="let category of categories['vod']">
                         <a href="#">
                             <div class="active_bar"></div>{{category["category_name"]}}
@@ -48,7 +48,7 @@
                     <div class="tvseries_icon "></div>
                     <p class="category_title" id="tvseries_category_title">TV SERIES</p>
                 </a>
-                <ul class="collapse list-unstyled" id="series_menu">
+                <ul class="collapse list-unstyled" id="series_menu" class="subMenu">
                     <li *ngFor="let category of categories['series']">
                         <a href="#">
                             <div class="active_bar"></div>{{category["category_name"]}}

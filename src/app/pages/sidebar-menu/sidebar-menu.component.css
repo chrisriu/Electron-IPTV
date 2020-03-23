@@ -302,3 +302,18 @@ ul ul a {
     position: absolute;
     right: 28px;
 }
+
+.subMenu{
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.subMenu::-webkit-scrollbar{
+    width: 0px;
+}
+.subMenu>li{
+    list-style-type: none;
+}
+.subMenu>li>a{
+    padding-left:10px !important;
+}
