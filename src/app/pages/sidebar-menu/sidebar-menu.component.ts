@@ -40,20 +40,22 @@ export class SidebarMenuComponent implements OnInit {
         this.width = event.newWidth;
         if (this.width < 180) {
             const category_title_components = document.getElementsByClassName("category_title");
-            var i;
+            var i
             for (i = 0; i < category_title_components.length; i++) {
-                category_title_components[i].classList.add("d-none");
+                category_title_components[i].classList.add("d-none")
             }
-            const brand_logo_img = document.getElementById("brand_logo_img");
-            brand_logo_img.classList.add("notext-logo");
+            const brand_logo_img = document.getElementById("brand_logo_img")
+            brand_logo_img.classList.add("notext-logo")
+            this.shareService.setSlideCardTitlePosX(82)
         } else {
-            const category_title_components = document.getElementsByClassName("category_title");
+            const category_title_components = document.getElementsByClassName("category_title")
             var i;
             for (i = 0; i < category_title_components.length; i++) {
-                category_title_components[i].classList.remove("d-none");
+                category_title_components[i].classList.remove("d-none")
             }
-            const brand_logo_img = document.getElementById("brand_logo_img");
-            brand_logo_img.classList.remove("notext-logo");
+            const brand_logo_img = document.getElementById("brand_logo_img")
+            brand_logo_img.classList.remove("notext-logo")
+            this.shareService.setSlideCardTitlePosX(280)
         }
     }
 

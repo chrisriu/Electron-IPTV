@@ -3,6 +3,7 @@ import { Card } from '../../models';
 import jQuery from 'jquery';
 import jQueryBridget from 'jquery-bridget';
 import Flickity from 'flickity';
+import {ShareService} from '../../services/share.service';
 
 declare var $: any;
 @Component({
@@ -14,7 +15,9 @@ export class LargeCardSliderComponent implements OnInit {
 
     @Input() cards: Card[];
     @Input() slider_title: string;
-    constructor() { }
+    sliderTitlePosX: number;
+    subscription: any;
+    constructor(private shareService: ShareService) { }
 
     ngOnInit(): void {
         (function ($) {
@@ -92,6 +95,20 @@ export class LargeCardSliderComponent implements OnInit {
             );
 
         })(jQuery);
+
+        this.subscription = this.shareService.getEmittedPosX().subscribe((sidebarPosX) => {
+            this.sliderTitlePosX = sidebarPosX+10        
+        })
     }
+    setSliderTitlePosX()
+    {
+        const styles = {'margin-left' : this.sliderTitlePosX+'px'};
+        return styles;
+    }
+    
+    
+
+
+    
 
 }
