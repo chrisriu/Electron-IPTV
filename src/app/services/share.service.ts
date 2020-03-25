@@ -1,20 +1,25 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
 import { Movie } from '../models/movies';
+import { LiveTV } from '../models/livetvs';
+import { Series } from '../models/series';
 
 @Injectable()
 export class ShareService {
     @Output() sideBarPosX: EventEmitter<any> = new EventEmitter();
     public categories: any;
-    public lastAddedMovies: Movie[]
-    public setSlideCardTitlePosX(posx){
-        if(posx == 82){
+    public movies: any;
+    public tvchannels: any;
+    public series: any;
+
+    public setSlideCardTitlePosX(posx) {
+        if (posx == 82) {
             this.sideBarPosX.emit(82)
-        }else {
+        } else {
             this.sideBarPosX.emit(280)
         }
     }
 
-    public getEmittedPosX(){
+    public getEmittedPosX() {
         return this.sideBarPosX
     }
 }

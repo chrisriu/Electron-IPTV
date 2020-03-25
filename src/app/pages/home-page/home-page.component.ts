@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Card } from '../../models/card';
+import { ShareService } from '../../services/share.service';
 @Component({
     selector: 'app-home-page',
     templateUrl: './home-page.component.html',
@@ -9,6 +10,8 @@ import { Card } from '../../models/card';
 export class HomePageComponent implements OnInit {
 
     searchForm: FormGroup;
+
+    movies: any;
 
     movieCards: Card[];
     tvchannelCards: Card[];
@@ -19,10 +22,14 @@ export class HomePageComponent implements OnInit {
     tvchannel_title = "Favorite TV Channels";
     series_title: "Latest Added TV Series";
     radio_title: "Latest Added Radio";
+    
 
     constructor(
-        private formBuilder: FormBuilder
+        private formBuilder: FormBuilder,
+        private shareService: ShareService
     ) {
+        this.movies = this.shareService.movies
+        console.log("Movies",this.movies)
         this.movieCards = [
             { title: "The Black Man In San Francisco", imgPath: "assets/img/tmg-article_tall.jpg" },
             { title: "Dark Waters", imgPath: "assets/img/tmg-article_tall(3).jpg" },

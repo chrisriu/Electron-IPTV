@@ -35,15 +35,15 @@ const baseRoutes: Routes = [
                 component: HomePageComponent
             },
             {
-                path:'livetvland',
+                path:'livetv',
                 component: MovieLandPageComponent
             },
             {
-                path:'vodland',
+                path:'vod',
                 component: MovieLandPageComponent
             },
             {
-                path:'seriesland',
+                path:'series',
                 component: MovieLandPageComponent
             },
             {

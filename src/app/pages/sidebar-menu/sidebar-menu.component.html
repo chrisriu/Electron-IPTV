@@ -1,88 +1,78 @@
-<!-- Brand Logo -->
-<div class="brand_logo text-center w-100">
-    <div class="logo_img" id="brand_logo_img"></div>
-</div>
-<!-- Side Bar -->
-<div class="sidebar" id="sidebar" (resized)="onResized($event)">
-
-    <!-- Sidebar Menu -->
-    <nav id="sidebarMenu">
-        <ul class="components">
-            <li class="active">
-                <a routerLink="/main/home" class="main_category">
-                    <div class="home_icon"></div>
-                    <p class="category_title" id="home_category_title">HOME</p>
-                </a>
-            </li>
-            <li>
-                <a routerLink="/main/livetvland" data-toggle="collapse" data-target="#livetv_menu" aria-expanded="true"
-                    class="main_category" >
-                    <div class="livetv_icon"></div>
-                    <p class="category_title" id="livetv_category_title">LIVE TV</p>
-                </a>
-                <ul class="collapse list-unstyled sub_category" id="livetv_menu">
-                    <li *ngFor="let category of categories['livetv']">
-                        <a href="#">
-                            <div class="active_bar"></div>{{category["category_name"]}}
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a routerLink="/main/vodland" data-toggle="collapse" data-target="#vod_menu" aria-expanded="false"
-                    class="main_category">
-                    <div class="movies_icon"></div>
-                    <p class="category_title" id="movie_category_title">MOVIES</p>
-                </a>
-                <ul class="collapse list-unstyled " id="vod_menu">
-                    <li *ngFor="let category of categories['vod']">
-                        <a href="#">
-                            <div class="active_bar"></div>{{category["category_name"]}}
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a routerLink="/main/seriesland" data-toggle="collapse" data-target="#series_menu" aria-expanded="false"
-                    class="main_category" >
-                    <div class="tvseries_icon "></div>
-                    <p class="category_title" id="tvseries_category_title">TV SERIES</p>
-                </a>
-                <ul class="collapse list-unstyled" id="series_menu">
-                    <li *ngFor="let category of categories['series']">
-                        <a href="#">
-                            <div class="active_bar"></div>{{category["category_name"]}}
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#" class="main_category">
-                    <div class="radio_icon"></div>
-                    <p class="category_title" id="radio_category_title">RADIO</p>
-                </a>
-            </li>
-            <li>
-                <a href="#" class="main_category">
-                    <div class="recording_icon"></div>
-                    <p class="category_title" id="recording_category_title">RECORDING</p>
-                </a>
-            </li>
-            <li>
-                <a href="#" class="main_category">
-                    <div class="favorite_icon"></div>
-                    <p class="category_title" id="favorite_category_title">FAVORITE</p>
-                </a>
-            </li>
-        </ul>
-    </nav>
-</div>
-<div class="setting_app_bar text-center w-100">
-    <div style="position:relative; display:inline-flex; width: 100%;">
-        <div class="btn logout" (click)="logout()"><img src="assets/img/logout.png" alt=""></div>
-        <div class="setting_sets">
-            <div class="btn"><img src="assets/img/menu.png" alt=""></div>
-            <div class="btn"><img src="assets/img/setting.png" alt=""></div>
-        </div>
+<div class="sidebar">
+    <div class="brand_logo">
+        <img src="assets/img/brand_logo.png" alt="">
+        <p>strimo</p>
+    </div>
+    <div class="w_main_categories">
+        <nav id="sidebarMenu">
+            <ul class="header_Menu">
+                <li class="active">
+                    <a routerLink="/main/home">
+                        <div class="home_icon"></div>
+                        <p class="header_title">Home</p>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/main/livetv">
+                        <div class="livetv_icon"></div>
+                        <p class="header_title">LIVE TV</p>
+                    </a>
+                    <ul class="sub_Menu">
+                        <li *ngFor="let sub_category of categories['livetv']">
+                            <a href="">
+                                <div class="subcategory_bar"></div>
+                                <p class="sub_title">{{sub_category["category_name"]}}</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a routerLink="/main/vod">
+                        <div class="movies_icon"></div>
+                        <p class="header_title">MOVIES</p>
+                    </a>
+                    <ul class="sub_Menu">
+                        <li *ngFor="let sub_category of categories['vod']">
+                            <a href="">
+                                <div class="subcategory_bar"></div>
+                                <p class="sub_title">{{sub_category["category_name"]}}</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a routerLink="/main/series">
+                        <div class="tvseries_icon "></div>
+                        <p class="header_title">TV SERIES</p>
+                    </a>
+                    <ul class="sub_Menu">
+                        <li *ngFor="let sub_category of categories['series']">
+                            <a href="">
+                                <div class="subcategory_bar"></div>
+                                <p class="sub_title">{{sub_category["category_name"]}}</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a routerLink="/main/radio">
+                        <div class="radio_icon"></div>
+                        <p class="header_title">RADIO</p>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/main/recording">
+                        <div class="recording_icon"></div>
+                        <p class="header_title">RECORDINGS</p>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/main/favorite">
+                        <div class="favorite_icon"></div>
+                        <p class="header_title">FAVOIRTE</p>
+                    </a>
+                </li>
+            </ul>
+        </nav>
     </div>
 </div>

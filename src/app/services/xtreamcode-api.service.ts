@@ -10,10 +10,7 @@ export class XtreamCodeAPIService {
     constructor(private httpClient: HttpClient) { }
 
     getCategories(username: string, password: string, categoryType: string) {
-        const httpParams: HttpParams = new HttpParams().set('username', username).set('password', password).set('action', 'get_live_categories');
-        const endpoint = `${config.url}:${config.port}/player_api.php`;
         let category: string = null
-
         if (categoryType == "livetv") {
             category = "get_live_categories"
         } else if (categoryType == "vod") {
@@ -29,5 +26,10 @@ export class XtreamCodeAPIService {
             { reportProgress: true }
         )
         return this.httpClient.request(httpRequestLiveCategory1)
+    }
+    getContextbyType(username: string, password: string, type: string){
+        const url = `${config.url}:${config.port}/player_api.php?username=${username}&password=${password}&action=${type}`
+        const httpRequestContext = new HttpRequest("GET", url, {}, {reportProgress: true})
+        return this.httpClient.request(httpRequestContext)
     }
 }

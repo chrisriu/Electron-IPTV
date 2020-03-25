@@ -23,13 +23,15 @@ export class SidebarMenuComponent implements OnInit {
 
     ngOnInit(): void {
         (function ($) {
-            $(".components a").on('click', function () {
+            $(".header_Menu>li>a").on('click', function () {
                 // Case of the Selected collapse categories again
                 if(!$(this).parent('li').hasClass('active')){
                     // Collapse & Expand Menu of the Categories Progress...
-                    $('.components').find('li.active').find('ul').removeClass('show')
-                    $('.components').find('li.active').removeClass('active')
+
+                    $('.header_Menu').find('li.active').removeClass('active')
                     $(this).parent('li').addClass('active')
+                } else {
+                    $(this).parent('li').removeClass('active')
                 }
             });
         })(jQuery)

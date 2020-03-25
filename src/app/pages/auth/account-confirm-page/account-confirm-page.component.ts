@@ -15,6 +15,9 @@ export class AccountConfirmPageComponent implements OnInit {
     currentUser: any
     currentUserObj: Object = {}
     categories: Object = {}
+    movies: Object = null;
+    tvchannels: Object = null
+    series: Object = null
     constructor(private router: Router, private xtreamcodesAPIService: XtreamCodeAPIService, private shareService: ShareService) { }
     ngOnInit(): void {
         this.currentUser = localStorage.getItem("currentUser")
@@ -38,10 +41,42 @@ export class AccountConfirmPageComponent implements OnInit {
             }
         })
 
+        this.xtreamcodesAPIService.getContextbyType(this.username, this.password, "get_live_streams").subscribe((event)=>{
+            if(event.type == HttpEventType.Response){
+                this.tvchannels = event.body
+            }
+        })
+
+        this.xtreamcodesAPIService.getContextbyType(this.username, this.password, "get_vod_streams").subscribe((event)=>{
+            if(event.type == HttpEventType.Response){
+                this.movies = event.body
+                console.log("body",event.body)
+                console.log("movie", this.movies)
+            }
+        })
+
+        this.xtreamcodesAPIService.getContextbyType(this.username, this.password, "get_series").subscribe((event)=>{
+            if(event.type == HttpEventType.Response){
+                this.series = event.body
+            }
+        })
+        
         if(this.shareService.categories == null || undefined ){
             this.shareService.categories = this.categories
         }
-        
+
+        if(this.shareService.movies == null || undefined){
+            this.shareService.movies = this.movies;
+            
+        }
+
+        if(this.shareService.tvchannels == null || undefined){
+            this.shareService.tvchannels = this.tvchannels
+        }
+
+        if(this.shareService.series == null || undefined){
+            this.shareService.series = this.series
+        }
     }
 
     mainPage() {
