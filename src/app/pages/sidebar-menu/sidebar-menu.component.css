@@ -55,14 +55,19 @@
     text-decoration: none;
 }
 
-#sidebarMenu ul li>ul {
-    display:none;
+#sidebarMenu ul li ul {
+    display: none;
+    opacity: 1;
+    -webkit-animation: none;
+    animation: none;
+    visibility: visible;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-transition: none;
+    -o-transition: none;
+    transition: none;
 }
 
-#sidebarMenu ul li.active>ul {
-    display: block;
-    transition: all 5s linear;
-}
 
 #sidebarMenu ul li a>.home_icon {
     content: url(../../../assets/img/home.png);
@@ -268,10 +273,11 @@
     overflow-y: auto;
     transition: width 2s, height 4s;
 }
+
 .w_main_categories .sub_Menu::-webkit-scrollbar {
     width: 0px;
 }
-  
+
 .w_main_categories .sub_Menu>li {
     padding-left: 45px !important;
 }
