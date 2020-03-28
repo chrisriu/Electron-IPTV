@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
 import { LoginPageComponent } from './auth/login-page/login-page.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -20,6 +21,10 @@ import { AccountConfirmPageComponent } from './auth/account-confirm-page/account
 import { AccountInfoLoadingPageComponent } from './auth/account-info-loading-page/account-info-loading-page.component';
 import { AngularResizedEventModule } from 'angular-resize-event';
 import { ProgressBarModule } from "angular-progress-bar";
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { NgProgressModule } from 'ngx-progressbar';
 @NgModule({
     declarations: [
         LoginPageComponent,
@@ -36,7 +41,6 @@ import { ProgressBarModule } from "angular-progress-bar";
         LoginFailedPageComponent,
         AccountConfirmPageComponent,
         AccountInfoLoadingPageComponent,
-
     ],
 
     imports: [
@@ -46,15 +50,21 @@ import { ProgressBarModule } from "angular-progress-bar";
         ReactiveFormsModule,
         ComponentsModule,
         AngularResizedEventModule,
-        ProgressBarModule
+        ProgressBarModule,
+        HttpClientModule,
+        BrowserModule,
+        BrowserAnimationsModule,
+        MatProgressSpinnerModule,
+        NgProgressModule,
     ],
-
+    providers:[
+    ],
     exports: [
         LoginPageComponent,
         MainPageComponent,
         SidebarMenuComponent,
         HomePageComponent,
-        MovieLandPageComponent
+        MovieLandPageComponent,
     ],
 })
 export class PagesModule { }

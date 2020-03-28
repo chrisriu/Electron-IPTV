@@ -1,99 +1,79 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { XtreamCodeAPIService } from '../../../services/xtreamcode-api.service';
-import { HttpEventType } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { ShareService } from '../../../services/share.service';
+import jQuery from 'jquery';
+
+declare var $: any;
 @Component({
     selector: 'app-account-info-loading-page',
     templateUrl: './account-info-loading-page.component.html',
     styleUrls: ['./account-info-loading-page.component.css']
 })
 export class AccountInfoLoadingPageComponent implements OnInit {
-
     @Input() progress_value: number = 0
-
     username: string = null
-    passwword: string = null
-    progress: number = 0
-    totaltime: number = 0
-
+    password: string = null
     categories: Object = {}
-
-    constructor(private xtreamcodesAPIService: XtreamCodeAPIService, private sharedService: ShareService, private activedRoute: ActivatedRoute, private router: Router) { }
+    totalData: Object = {}
+    constructor(private xtreamcodesAPIService: XtreamCodeAPIService,
+        private sharedService: ShareService,
+        private http: HttpClient) { }
 
     ngOnInit(): void {
-        this.username = this.activedRoute.snapshot.queryParamMap.get('username')
-        this.passwword = this.activedRoute.snapshot.queryParamMap.get('password')
-        this.downloadCategories(this.username, this.passwword)
-    }
+        this.username = this.sharedService.selectedUsername
+        this.password = this.sharedService.selectedUserpass
+        const promise_vod_data = new Promise((resolve, reject) => {
+            this.http.get('http://hd.qicktech.com:2095/player_api.php?username=SuperDev&password=SuperDev&action=get_vod_streams')
+                .subscribe(data => {
+                    this.totalData["vod_data"] = data
+                })
+            this.http.get('http://hd.qicktech.com:2095/player_api.php?username=SuperDev&password=SuperDev&action=get_live_streams')
+                .subscribe(data => {
+                    this.totalData["live_data"] = data
+                })
+            this.http.get('http://hd.qicktech.com:2095/player_api.php?username=SuperDev&password=SuperDev&action=get_series')
+                .subscribe(data => {
+                    this.totalData["series"] = data
+                })
+            this.http.get('http://hd.qicktech.com:2095/player_api.php?username=SuperDev&password=SuperDev&action=get_live_categories')
+                .subscribe(data => {
+                    this.totalData["live_categories"] = data
+                })
+            this.http.get('http://hd.qicktech.com:2095/player_api.php?username=SuperDev&password=SuperDev&action=get_vod_categories')
+                .subscribe(data => {
+                    this.totalData["vod_categories"] = data
+                })
+            this.http.get('http://hd.qicktech.com:2095/player_api.php?username=SuperDev&password=SuperDev&action=get_series_categories')
+                .subscribe(data => {
+                    this.totalData["series_categories"] = data
+                })
+            setTimeout(() => {
+                resolve(this.totalData)
+            }, 7000);
+        })
 
-    downloadCategories(username: string, password: string) {
-        this.xtreamcodesAPIService.getCategories(username, password, "livetv").subscribe(
-            event => {
-                if (event.type == HttpEventType.DownloadProgress) {
-                    if (event.total == null) {
-                        this.totaltime += event.loaded
-                        console.log(this.totaltime);
-                        for (var i = 1; i <= 33; i++) {
-                            setTimeout(() => {
-                                this.progress_value += 1
-                            }, 100);
-                        }
-                    } else {
-                        this.progress_value += Math.round(event.loaded / event.total * 100)
+        promise_vod_data.then(values => {
+            console.log("total data", values)
+        });
+
+        (function ($) {
+            $(document).ready(function () {
+                console.log("This is the function")
+                var size = 0;
+                var interval = setInterval(function () {
+                    if (size > 91){
+                        size = 100
+                    }else {
+                        size += Math.random() * 9
                     }
-                } else if (event.type == HttpEventType.Response) {
-                    this.categories['livetv'] = event.body
-                }
-            }
-        )
-
-        this.xtreamcodesAPIService.getCategories(username, password, "vod").subscribe(
-            event => {
-                if (event.type == HttpEventType.DownloadProgress) {
-                    if (event.total == null) {
-                        this.totaltime += event.loaded
-                        for (var i = 1; i <= 33; i++) {
-                            setTimeout(() => {
-                                this.progress_value += 1
-                            }, 100);
-                        }
-                    } else {
-                        this.progress_value += Math.round(event.loaded / event.total * 100)
+                    
+                    $('.inner_bar').css('width', size + '%')
+                    if (size >= 100) {
+                        clearInterval(interval)
                     }
-                } else if (event.type == HttpEventType.Response) {
-                    this.categories['vod'] = event.body
-                }
-            }
-        )
-
-        this.xtreamcodesAPIService.getCategories(username, password, "series").subscribe(
-            event => {
-                if (event.type == HttpEventType.DownloadProgress) {
-                    if (event.total == null) {
-                        this.totaltime += event.loaded
-                        for (var i = 1; i <= 34; i++) {
-                            setTimeout(() => {
-                                this.progress_value += 1
-                            }, 100);
-                        }
-                    } else {
-                        this.progress_value += Math.round(event.loaded / event.total * 100)
-                    }
-                } else if (event.type == HttpEventType.Response) {
-                    this.categories['series'] = event.body
-                }
-            }
-        )
-
-        let interval = setInterval(() => {
-            // Share Data to temp
-            this.sharedService.categories = this.categories
-            this.router.navigate(['/account-confirm-page'])
-        }, 2000);
-
-        setInterval(() => {
-            clearInterval(interval)
-        }, 2100)
+                }, 700)
+            })
+        })(jQuery)
     }
 }

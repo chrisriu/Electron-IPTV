@@ -50,8 +50,6 @@ export class AccountConfirmPageComponent implements OnInit {
         this.xtreamcodesAPIService.getContextbyType(this.username, this.password, "get_vod_streams").subscribe((event)=>{
             if(event.type == HttpEventType.Response){
                 this.movies = event.body
-                console.log("body",event.body)
-                console.log("movie", this.movies)
             }
         })
 
@@ -80,6 +78,6 @@ export class AccountConfirmPageComponent implements OnInit {
     }
 
     mainPage() {
-        this.router.navigate(['/main/home']);
+        this.router.navigate(['/account-info-loading']);
     }
 }

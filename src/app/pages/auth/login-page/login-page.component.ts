@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AuthenticationService } from '../../../services/authentication.service';
-
+import { ShareService } from '../../../services/share.service';
 @Component({
     selector: 'app-login-page',
     templateUrl: './login-page.component.html',
@@ -20,7 +20,8 @@ export class LoginPageComponent implements OnInit {
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
-        private authenticationService: AuthenticationService
+        private authenticationService: AuthenticationService,
+        private shareService: ShareService
     ) { }
 
     ngOnInit(): void {
@@ -49,15 +50,19 @@ export class LoginPageComponent implements OnInit {
                 // Convert Current date to milliseoncds...
                 const current_milis = new Date().getTime();
                 if (current_milis > data['exp_date'].concat('000')) {
-                    this.router.navigate(['/login-failed'], { queryParams: { case: "expired" } });
+                    this.router.navigate(['/login-failed'], { queryParams: { case: "expired" } })
                 } else if (data['active_cons'] >= data['max_connections']) {
-                    this.router.navigate(['/login-failed'], { queryParams: { case: "device_limited" } });
+                    this.router.navigate(['/login-failed'], { queryParams: { case: "device_limited" } })
                 } else if (data['is_trial'] != 0) {
-                    this.router.navigate(['/login-failed'], { queryParams: { case: "trial_limited" } });
+                    this.router.navigate(['/login-failed'], { queryParams: { case: "trial_limited" } })
                 } else if (data['status'] != 'Active') {
-                    this.router.navigate(['/login-failed'], { queryParams: { case: "disabled_account" } });
+                    this.router.navigate(['/login-failed'], { queryParams: { case: "disabled_account" } })
                 } else {
-                    this.router.navigate(['/account-info-loading'], { queryParams: { username: this.f.username.value, password: this.f.password.value } });
+                    this.shareService.selectedUsername = this.f.username.value
+                    this.shareService.selectedUserpass = this.f.password.value
+                    console.log("username", this.shareService.selectedUsername)
+                    console.log("password", this.shareService.selectedUsername)
+                    this.router.navigate(['/account-info-loading']);
                 }
             },
                 error => {
