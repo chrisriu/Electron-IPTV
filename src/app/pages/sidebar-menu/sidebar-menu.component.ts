@@ -22,7 +22,7 @@ export class SidebarMenuComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-
+        var self = this;
         (function ($) {
             var $menu = $('.header_Menu')
             $menu.find('a').each(function () {
@@ -31,6 +31,7 @@ export class SidebarMenuComponent implements OnInit {
                     $(this).on('click', function (event) {
                         event.preventDefault()
                         if (!$(this).siblings('.sub_Menu').hasClass('opened')) {
+
                             $menu.find('.opened').slideToggle()
                             $menu.find('.opened').removeClass('opened')
                             $menu.find('.active').removeClass('active')
@@ -39,10 +40,10 @@ export class SidebarMenuComponent implements OnInit {
                             $(this).siblings('.sub_Menu').addClass('opened')
                             $(this).parent('li').addClass('active')
                         } else {
-                            $(this).siblings('.sub_Menu').removeClass('opened')
-                            $(this).siblings('.sub_Menu').slideToggle()
+                            
+                                $(this).siblings('.sub_Menu').removeClass('opened')
+                                $(this).siblings('.sub_Menu').slideToggle()
                         }
-
                     })
                 }
             })
@@ -52,23 +53,46 @@ export class SidebarMenuComponent implements OnInit {
 
     onResized(event: ResizedEvent) {
         this.width = event.newWidth;
-        if (this.width < 180) {
-            const category_title_components = document.getElementsByClassName("category_title");
+        if (this.width < 200) {
+            this.doSlideAnimation(82)
+        } else {
+            this.doSlideAnimation(280)
+        }
+    }
+
+    doSlideAnimation(x) {
+        if (x < 83) {
+            const header_titles = document.getElementsByClassName('header_title')
+
             var i
-            for (i = 0; i < category_title_components.length; i++) {
-                category_title_components[i].classList.add("d-none")
+            for (i = 0; i < header_titles.length; i++) {
+                header_titles[i].classList.add('d-none')
             }
-            const brand_logo_img = document.getElementById("brand_logo_img")
-            brand_logo_img.classList.add("notext-logo")
+
+            const opened_sub_category = document.getElementsByClassName('sub_Menu')
+            for (i = 0; i < opened_sub_category.length; i++) {
+                opened_sub_category[i].classList.remove('opened')
+                opened_sub_category[i].classList.add('d-none')
+            }
+
+            const brand_logo_text = document.getElementById("brand_text")
+            brand_logo_text.classList.add("d-none")
             this.shareService.setSlideCardTitlePosX(82)
         } else {
-            const category_title_components = document.getElementsByClassName("category_title")
+            const header_titles = document.getElementsByClassName('header_title')
+
             var i;
-            for (i = 0; i < category_title_components.length; i++) {
-                category_title_components[i].classList.remove("d-none")
+            for (i = 0; i < header_titles.length; i++) {
+                header_titles[i].classList.remove("d-none")
             }
-            const brand_logo_img = document.getElementById("brand_logo_img")
-            brand_logo_img.classList.remove("notext-logo")
+            
+            const opened_sub_category = document.getElementsByClassName('sub_Menu')
+            for (i = 0; i < opened_sub_category.length; i++) {
+                opened_sub_category[i].classList.remove('d-none')
+            }
+
+            const brand_logo_text = document.getElementById("brand_text")
+            brand_logo_text.classList.remove("d-none")
             this.shareService.setSlideCardTitlePosX(280)
         }
     }
