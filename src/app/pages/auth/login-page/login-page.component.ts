@@ -58,7 +58,6 @@ export class LoginPageComponent implements OnInit {
                     this.router.navigate(['/login-failed'], { queryParams: { case: "disabled_account" } })
                 } else {
                     // Store authenticated data to currentUser of UserService...
-                    console.log(data)
                     this.userService.currentUser = data
 
                     // Direct to Account Info Loading page...

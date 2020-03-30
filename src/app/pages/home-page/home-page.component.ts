@@ -29,7 +29,6 @@ export class HomePageComponent implements OnInit {
         private shareService: ShareService
     ) {
         this.movies = this.shareService.movies
-        console.log("Movies",this.movies)
         this.movieCards = [
             { title: "The Black Man In San Francisco", imgPath: "assets/img/tmg-article_tall.jpg" },
             { title: "Dark Waters", imgPath: "assets/img/tmg-article_tall(3).jpg" },

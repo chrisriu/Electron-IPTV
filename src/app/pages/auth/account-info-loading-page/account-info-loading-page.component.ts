@@ -1,10 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEventType } from '@angular/common/http';
 import jQuery from 'jquery';
 import { Router } from '@angular/router';
 import { UserService } from '../../../services/user.service';
 import { User } from '../../../models/user';
-import { XtreamCodeAPIService } from 'src/app/services';
+import { XtreamCodeAPIService, ShareService } from 'src/app/services';
 declare var $: any;
 @Component({
     selector: 'app-account-info-loading-page',
@@ -19,10 +19,10 @@ export class AccountInfoLoadingPageComponent implements OnInit {
     totalData: Object = {}
     selectedUser: User = null
     constructor(
-        private http: HttpClient,
         private router: Router,
         private userService: UserService,
-        private xcService: XtreamCodeAPIService
+        private xcService: XtreamCodeAPIService,
+        private shareService: ShareService
     ) { }
     ngOnInit(): void {
         // Get Selected User info...
@@ -37,22 +37,23 @@ export class AccountInfoLoadingPageComponent implements OnInit {
             let params = ['live_category', 'vod_category', 'serie_category', 'live_stream', 'vod_stream', 'serie_stream']
             actions.forEach((action, index) => {
                 this.xcService.sendRequest(this.selectedUser.username, this.selectedUser.password, action).subscribe(data =>{
-                    this.totalData[params[index]] = data                   
+                    if(data.type == HttpEventType.Response){
+                        this.totalData[params[index]] = data.body    
+                    }
+                    
                 })
             })
-
             setTimeout(() => {
                 resolve(this.totalData)
             }, 7000);
         })
 
         promise_data.then(values => {
-            console.log("total data", values)
+            this.shareService.totalVideos = values
         });
 
         (function ($) {
             $(document).ready(function () {
-                console.log("This is the function")
                 var size = 0;
                 var interval = setInterval(function () {
                     if (size > 91) {

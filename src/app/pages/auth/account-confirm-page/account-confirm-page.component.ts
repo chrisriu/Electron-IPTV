@@ -28,7 +28,6 @@ export class AccountConfirmPageComponent implements OnInit {
             this.xcService.sendRequest(this.currentUserObj['username'], this.currentUserObj['password']).subscribe(event=>{
                 if (event.type == HttpEventType.Response){
                     this.userService.currentUser = event.body['user_info']
-                    console.log("User Service Data ", this.userService.currentUser)
                 }
             })
             setTimeout(()=>{
@@ -42,8 +41,5 @@ export class AccountConfirmPageComponent implements OnInit {
                 this.router.navigate(['/login-failed'], { queryParams: { case: "login-failed" } })
             }
         })
-        
-
-        
     }
 }

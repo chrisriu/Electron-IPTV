@@ -22,6 +22,7 @@ export class SidebarMenuComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
+
         (function ($) {
             var $menu = $('.header_Menu')
             $menu.find('a').each(function () {
@@ -46,7 +47,7 @@ export class SidebarMenuComponent implements OnInit {
                 }
             })
         })(jQuery)
-        this.categories = this.shareService.categories
+        this.categories = this.shareService.getCategories()
     }
 
     onResized(event: ResizedEvent) {
