@@ -1,4 +1,4 @@
-export class Series{
+export class Serie{
   num: number
   name: string
   series_id: number
@@ -13,6 +13,6 @@ export class Series{
   rating_5based: number
   backdrop_path: string[]
   youtube_trailer: string
-  episode_runtime: string
+  episode_run_time: string
   category_id: string
 }

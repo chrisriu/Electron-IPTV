@@ -20,6 +20,8 @@ section.alert-dialog{
 
 .dialog p{
     color: #F5F5F5;
+    padding-left: 10px;
+    padding-right: 10px;
     margin-bottom: 10px;
 }
 

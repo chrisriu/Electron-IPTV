@@ -6,7 +6,7 @@ export class LiveTV {
   stream_icon: string
   epg_channel_id: string
   added: string
-  category_id: number
+  category_id: string
   custom_sid: string
   tv_archive: number
   direct_source: string

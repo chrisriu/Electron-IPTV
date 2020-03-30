@@ -23,7 +23,7 @@ export class LoginFailedPageComponent implements OnInit {
         } else if (this.case == 'disabled_account') {
             this.pstring = "YOUR ACCOUNT HAS BEEN SUSPENDED. PLEASE CONTACT YOUR SERVICE PROVIDER";
         } else if (this.case == 'login-failed'){
-            this.pstring = "YOUR ACCOUNT INFO CHANGED SOMETHING OR PASSED A LOT OF TIME. PLEASE LOGIN AGAIN.";
+            this.pstring = "YOUR NETWORK HAS ISSUE. PLEASE USE VPN IF YOU HAVE ISSUE OF NETWORK.";
         }
 
     }

@@ -4,7 +4,7 @@ export class Movie{
   stream_type: string
   stream_id: number
   stream_icon: string
-  rating: string
+  rating: any
   rating_5based: number
   added: string
   category_id: string
