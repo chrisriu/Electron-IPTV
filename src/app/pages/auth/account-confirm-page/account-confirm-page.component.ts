@@ -1,83 +1,49 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { ShareService } from '../../../services/share.service'
-import { XtreamCodeAPIService } from 'src/app/services';
+import { Router } from '@angular/router';
+import { UserService } from '../../../services/user.service';
+import { XtreamCodeAPIService } from '../../../services/xtreamcode-api.service';
 import { HttpEventType } from '@angular/common/http';
-
 @Component({
     selector: 'app-account-confirm-page',
     templateUrl: './account-confirm-page.component.html',
     styleUrls: ['./account-confirm-page.component.css']
 })
 export class AccountConfirmPageComponent implements OnInit {
-    username: string = null
-    password: string = null
+    username: string
     currentUser: any
     currentUserObj: Object = {}
-    categories: Object = {}
-    movies: Object = null;
-    tvchannels: Object = null
-    series: Object = null
-    constructor(private router: Router, private xtreamcodesAPIService: XtreamCodeAPIService, private shareService: ShareService) { }
+
+    constructor(private router: Router, private userService: UserService, private xcService: XtreamCodeAPIService) { }
     ngOnInit(): void {
         this.currentUser = localStorage.getItem("currentUser")
         this.currentUserObj = JSON.parse(this.currentUser)
-        this.username = this.currentUserObj["username"]
-        this.password = this.currentUserObj["password"]
-        this.xtreamcodesAPIService.getCategories(this.username, this.password, "livetv").subscribe((event) => {
-            if(event.type == HttpEventType.Response){
-                this.categories["livetv"] = event.body
-            }
-        })
-        this.xtreamcodesAPIService.getCategories(this.username, this.password, "vod").subscribe((event)=>{
-            if(event.type == HttpEventType.Response){
-                this.categories["vod"] = event.body
-            }
-        })
-
-        this.xtreamcodesAPIService.getCategories(this.username, this.password, "series").subscribe((event)=>{
-            if(event.type == HttpEventType.Response){
-                this.categories["series"] = event.body
-            }
-        })
-
-        this.xtreamcodesAPIService.getContextbyType(this.username, this.password, "get_live_streams").subscribe((event)=>{
-            if(event.type == HttpEventType.Response){
-                this.tvchannels = event.body
-            }
-        })
-
-        this.xtreamcodesAPIService.getContextbyType(this.username, this.password, "get_vod_streams").subscribe((event)=>{
-            if(event.type == HttpEventType.Response){
-                this.movies = event.body
-            }
-        })
-
-        this.xtreamcodesAPIService.getContextbyType(this.username, this.password, "get_series").subscribe((event)=>{
-            if(event.type == HttpEventType.Response){
-                this.series = event.body
-            }
-        })
         
-        if(this.shareService.categories == null || undefined ){
-            this.shareService.categories = this.categories
-        }
-
-        if(this.shareService.movies == null || undefined){
-            this.shareService.movies = this.movies;
-            
-        }
-
-        if(this.shareService.tvchannels == null || undefined){
-            this.shareService.tvchannels = this.tvchannels
-        }
-
-        if(this.shareService.series == null || undefined){
-            this.shareService.series = this.series
-        }
+        // Present username from Current User Object data...
+        this.username = this.currentUserObj['username']
     }
 
     mainPage() {
-        this.router.navigate(['/account-info-loading']);
+        // Store confirmed account info to currentUser of UserService...
+        const promise = new Promise((resolve, reject) => {
+            this.xcService.sendRequest(this.currentUserObj['username'], this.currentUserObj['password']).subscribe(event=>{
+                if (event.type == HttpEventType.Response){
+                    this.userService.currentUser = event.body['user_info']
+                    console.log("User Service Data ", this.userService.currentUser)
+                }
+            })
+            setTimeout(()=>{
+                resolve(this.userService.currentUser)
+            },1250)
+        })
+        promise.then((value)=>{
+            if (value){
+                this.router.navigate(['/account-info-loading']);    
+            } else {
+                this.router.navigate(['/login-failed'], { queryParams: { case: "login-failed" } })
+            }
+        })
+        
+
+        
     }
 }

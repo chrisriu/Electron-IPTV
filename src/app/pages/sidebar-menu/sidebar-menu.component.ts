@@ -24,19 +24,24 @@ export class SidebarMenuComponent implements OnInit {
     ngOnInit(): void {
         (function ($) {
             var $menu = $('.header_Menu')
-            $menu.find('a').each(function(){
+            $menu.find('a').each(function () {
                 $(this).off('click')
-                if($(this).siblings('.sub_Menu').length){
-                    $(this).on('click', function(event){
+                if ($(this).siblings('.sub_Menu').length) {
+                    $(this).on('click', function (event) {
                         event.preventDefault()
+                        if (!$(this).siblings('.sub_Menu').hasClass('opened')) {
+                            $menu.find('.opened').slideToggle()
+                            $menu.find('.opened').removeClass('opened')
+                            $menu.find('.active').removeClass('active')
 
-                        $menu.find('.opened').slideToggle()
-                        $menu.find('.opened').removeClass('opened')
-                        $menu.find('.active').removeClass('active')
-                        
-                        $(this).siblings('.sub_Menu').slideToggle()
-                        $(this).siblings('.sub_Menu').addClass('opened')
-                        $(this).parent('li').addClass('active')
+                            $(this).siblings('.sub_Menu').slideToggle()
+                            $(this).siblings('.sub_Menu').addClass('opened')
+                            $(this).parent('li').addClass('active')
+                        } else {
+                            $(this).siblings('.sub_Menu').removeClass('opened')
+                            $(this).siblings('.sub_Menu').slideToggle()
+                        }
+
                     })
                 }
             })

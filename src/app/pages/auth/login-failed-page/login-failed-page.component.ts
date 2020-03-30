@@ -22,6 +22,8 @@ export class LoginFailedPageComponent implements OnInit {
             this.pstring = "YOUR TRIAL HAS FINISHED. PLEASE UPGRADE OR ORDER NEW SERVICE";
         } else if (this.case == 'disabled_account') {
             this.pstring = "YOUR ACCOUNT HAS BEEN SUSPENDED. PLEASE CONTACT YOUR SERVICE PROVIDER";
+        } else if (this.case == 'login-failed'){
+            this.pstring = "YOUR ACCOUNT INFO CHANGED SOMETHING OR PASSED A LOT OF TIME. PLEASE LOGIN AGAIN.";
         }
 
     }

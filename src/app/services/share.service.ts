@@ -6,8 +6,6 @@ import { Series } from '../models/series';
 @Injectable()
 export class ShareService {
     @Output() sideBarPosX: EventEmitter<any> = new EventEmitter();
-    public selectedUsername: any;
-    public selectedUserpass: any;
     public categories: any;
     public movies: any;
     public tvchannels: any;
@@ -23,7 +21,4 @@ export class ShareService {
     public getEmittedPosX() {
         return this.sideBarPosX
     }
-
-    
-    
 }

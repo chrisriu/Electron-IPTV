@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AuthenticationService } from '../../../services/authentication.service';
 import { ShareService } from '../../../services/share.service';
+import { UserService } from '../../../services/user.service';
 @Component({
     selector: 'app-login-page',
     templateUrl: './login-page.component.html',
@@ -21,7 +22,7 @@ export class LoginPageComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private authenticationService: AuthenticationService,
-        private shareService: ShareService
+        private userService: UserService,
     ) { }
 
     ngOnInit(): void {
@@ -32,9 +33,7 @@ export class LoginPageComponent implements OnInit {
 
         // reset login status
         this.authenticationService.logout();
-
         // get return url from route parameters or default to '/'
-        
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/account-info-loading';
     }
 
@@ -58,10 +57,11 @@ export class LoginPageComponent implements OnInit {
                 } else if (data['status'] != 'Active') {
                     this.router.navigate(['/login-failed'], { queryParams: { case: "disabled_account" } })
                 } else {
-                    this.shareService.selectedUsername = this.f.username.value
-                    this.shareService.selectedUserpass = this.f.password.value
-                    console.log("username", this.shareService.selectedUsername)
-                    console.log("password", this.shareService.selectedUsername)
+                    // Store authenticated data to currentUser of UserService...
+                    console.log(data)
+                    this.userService.currentUser = data
+
+                    // Direct to Account Info Loading page...
                     this.router.navigate(['/account-info-loading']);
                 }
             },

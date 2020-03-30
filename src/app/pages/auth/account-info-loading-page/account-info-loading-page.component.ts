@@ -1,9 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { XtreamCodeAPIService } from '../../../services/xtreamcode-api.service';
 import { HttpClient } from '@angular/common/http';
-import { ShareService } from '../../../services/share.service';
 import jQuery from 'jquery';
-
+import { Router } from '@angular/router';
+import { UserService } from '../../../services/user.service';
+import { User } from '../../../models/user';
+import { XtreamCodeAPIService } from 'src/app/services';
 declare var $: any;
 @Component({
     selector: 'app-account-info-loading-page',
@@ -16,44 +17,36 @@ export class AccountInfoLoadingPageComponent implements OnInit {
     password: string = null
     categories: Object = {}
     totalData: Object = {}
-    constructor(private xtreamcodesAPIService: XtreamCodeAPIService,
-        private sharedService: ShareService,
-        private http: HttpClient) { }
-
+    selectedUser: User = null
+    constructor(
+        private http: HttpClient,
+        private router: Router,
+        private userService: UserService,
+        private xcService: XtreamCodeAPIService
+    ) { }
     ngOnInit(): void {
-        this.username = this.sharedService.selectedUsername
-        this.password = this.sharedService.selectedUserpass
-        const promise_vod_data = new Promise((resolve, reject) => {
-            this.http.get('http://hd.qicktech.com:2095/player_api.php?username=SuperDev&password=SuperDev&action=get_vod_streams')
-                .subscribe(data => {
-                    this.totalData["vod_data"] = data
+        // Get Selected User info...
+        this.selectedUser = this.userService.currentUser;
+        // Create this variable for using typescript methods in jQuery...
+        var self = this
+
+        // Fetching Data from XC API...
+        const promise_data = new Promise((resolve, reject) => {
+
+            let actions = ['get_live_categories', 'get_vod_categories', 'get_series_categories', 'get_live_streams', 'get_vod_streams', 'get_series']
+            let params = ['live_category', 'vod_category', 'serie_category', 'live_stream', 'vod_stream', 'serie_stream']
+            actions.forEach((action, index) => {
+                this.xcService.sendRequest(this.selectedUser.username, this.selectedUser.password, action).subscribe(data =>{
+                    this.totalData[params[index]] = data                   
                 })
-            this.http.get('http://hd.qicktech.com:2095/player_api.php?username=SuperDev&password=SuperDev&action=get_live_streams')
-                .subscribe(data => {
-                    this.totalData["live_data"] = data
-                })
-            this.http.get('http://hd.qicktech.com:2095/player_api.php?username=SuperDev&password=SuperDev&action=get_series')
-                .subscribe(data => {
-                    this.totalData["series"] = data
-                })
-            this.http.get('http://hd.qicktech.com:2095/player_api.php?username=SuperDev&password=SuperDev&action=get_live_categories')
-                .subscribe(data => {
-                    this.totalData["live_categories"] = data
-                })
-            this.http.get('http://hd.qicktech.com:2095/player_api.php?username=SuperDev&password=SuperDev&action=get_vod_categories')
-                .subscribe(data => {
-                    this.totalData["vod_categories"] = data
-                })
-            this.http.get('http://hd.qicktech.com:2095/player_api.php?username=SuperDev&password=SuperDev&action=get_series_categories')
-                .subscribe(data => {
-                    this.totalData["series_categories"] = data
-                })
+            })
+
             setTimeout(() => {
                 resolve(this.totalData)
             }, 7000);
         })
 
-        promise_vod_data.then(values => {
+        promise_data.then(values => {
             console.log("total data", values)
         });
 
@@ -62,18 +55,24 @@ export class AccountInfoLoadingPageComponent implements OnInit {
                 console.log("This is the function")
                 var size = 0;
                 var interval = setInterval(function () {
-                    if (size > 91){
+                    if (size > 91) {
                         size = 100
-                    }else {
+
+                    } else {
                         size += Math.random() * 9
                     }
-                    
+
                     $('.inner_bar').css('width', size + '%')
                     if (size >= 100) {
+                        self.directToMain()
                         clearInterval(interval)
                     }
                 }, 700)
             })
         })(jQuery)
+    }
+
+    directToMain() {
+        this.router.navigate(['/main/home'])
     }
 }

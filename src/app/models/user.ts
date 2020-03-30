@@ -1,14 +1,14 @@
 export class User {
-    username: String;
-    password: String;
-    message: String;
-    auth: Number;
-    status: String;
-    exp_date: String;
-    is_trial: String;
-    active_cons: String;
-    created_at: String;
-    max_connections: String;
-    allowed_output_formats: String[];
+    username: string;
+    password: string;
+    message: string;
+    auth: number;
+    status: string;
+    exp_date: string;
+    is_trial: string;
+    active_cons: string;
+    created_at: string;
+    max_connections: string;
+    allowed_output_formats: string[];
     token?: string;
 }

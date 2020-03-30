@@ -19,13 +19,11 @@ export class MainPageComponent implements OnInit {
     constructor(
         private router: Router,
         private authenticationService: AuthenticationService,
-        private shareService: ShareService
     ) {
         this.authenticationService.currentUser.subscribe(x => this.currentUser = x)
     }
 
     ngOnInit(): void {
-        console.log(this.shareService.selectedUsername)
     }
     logout() {
         this.authenticationService.logout();
