@@ -9914,7 +9914,7 @@ export class TestService {
   public getLastAddedLiveTVs(livetv_videos?: Object, count?: number) {
     var i, j
     var maxIndex, maxValue, tmp;
-    let tmp_object: Movie[] = [];
+    let tmp_object: LiveTV[] = [];
     for (i = 0; i < count; i++) {
       maxIndex = i
       maxValue = this.livetvs[i].added
