@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Card } from '../../models/card';
-import { ShareService } from '../../services/share.service';
-import { LiveTV } from '../../models/livetvs';
-import { Movie } from '../../models/movies';
-import { Serie } from '../../models/series';
-import { TestService } from '../../services/test.service'
+import { Card, LiveTV, Movie, Serie } from '../../models';
+import { ShareService, TestService } from '../../services';
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',

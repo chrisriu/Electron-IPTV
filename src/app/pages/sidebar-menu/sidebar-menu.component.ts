@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import jQuery from 'jquery';
 import { ResizedEvent } from 'angular-resize-event';
 import { Router } from '@angular/router'
-import { AuthenticationService, ShareService } from '../../services';
+import { AuthService, ShareService } from '../../services';
 import { TestService } from '../../services/test.service'
 declare var $: any;
 
@@ -18,7 +18,7 @@ export class SidebarMenuComponent implements OnInit {
   categories: any
   constructor(
     private route: Router,
-    private authenticationService: AuthenticationService,
+    private authService: AuthService,
     private shareService: ShareService,
     private testService: TestService,
   ) { }
@@ -100,7 +100,7 @@ export class SidebarMenuComponent implements OnInit {
   }
 
   logout() {
-    this.authenticationService.logout();
+    this.authService.logout();
     this.route.navigate(['/login'])
   }
 }

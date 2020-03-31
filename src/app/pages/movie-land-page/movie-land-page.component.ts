@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Card } from '../../models/card';
+import { Card } from '../../models';
 @Component({
     selector: 'app-movie-land-page',
     templateUrl: './movie-land-page.component.html',

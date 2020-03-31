@@ -2,8 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import jQuery from 'jquery';
 import jQueryBridget from 'jquery-bridget';
 import Flickity from 'flickity';
-import { Card } from '../../models/card';
-import { ShareService } from '../../services/share.service';
+import { Card } from '../../models';
+import { ShareService } from '../../services';
 declare var $: any;
 
 @Component({

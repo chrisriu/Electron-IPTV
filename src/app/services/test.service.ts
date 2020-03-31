@@ -1,8 +1,8 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
 
-import { Movie } from '../models/movies'
-import { LiveTV } from '../models/livetvs'
-import { Serie } from '../models/series';
+import { Movie } from '../models'
+import { LiveTV } from '../models'
+import { Serie } from '../models';
 
 @Injectable({ providedIn: 'root' })
 export class TestService {

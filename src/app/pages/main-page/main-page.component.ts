@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationService } from '../../services';
+import { AuthService } from '../../services';
 import { User } from '../../models';
 import { ShareService } from '../../services/share.service';
 
@@ -18,15 +18,15 @@ export class MainPageComponent implements OnInit {
     error = '';
     constructor(
         private router: Router,
-        private authenticationService: AuthenticationService,
+        private authService: AuthService,
     ) {
-        this.authenticationService.currentUser.subscribe(x => this.currentUser = x)
+        this.authService.currentUser.subscribe(x => this.currentUser = x)
     }
 
     ngOnInit(): void {
     }
     logout() {
-        this.authenticationService.logout();
+        this.authService.logout();
         this.router.navigate(['/login']);
     }
 }

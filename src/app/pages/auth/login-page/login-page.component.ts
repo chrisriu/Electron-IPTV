@@ -1,71 +1,54 @@
 import { Component, OnInit } from '@angular/core';
-
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
-import { AuthenticationService } from '../../../services/authentication.service';
-import { UserService } from '../../../services/user.service';
+import { AuthService, ShareService, XtreamCodeAPIService } from 'src/app/services';
 @Component({
-    selector: 'app-login-page',
-    templateUrl: './login-page.component.html',
-    styleUrls: ['./login-page.component.css']
+  selector: 'app-login-page',
+  templateUrl: './login-page.component.html',
+  styleUrls: ['./login-page.component.css']
 })
 export class LoginPageComponent implements OnInit {
-    loginForm: FormGroup;
-    loading = false;
-    submitted = false;
-    returnUrl: string;
-    error = '';
-    constructor(
-        private formBuilder: FormBuilder,
-        private route: ActivatedRoute,
-        private router: Router,
-        private authenticationService: AuthenticationService,
-        private userService: UserService,
-    ) { }
+  loginForm: FormGroup;
+  loading = false;
+  submitted = false;
+  returnUrl: string;
+  error = '';
 
-    ngOnInit(): void {
-        this.loginForm = this.formBuilder.group({
-            username: ['', Validators.required],
-            password: ['', Validators.required]
-        });
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private authService: AuthService,
+    private XCAPIService: XtreamCodeAPIService,
+    private shareService: ShareService
+  ) { }
 
-        // reset login status
-        this.authenticationService.logout();
-        // get return url from route parameters or default to '/'
-        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/account-info-loading';
-    }
-    get form() { return this.loginForm.controls; }
-
-    onSubmit() {
-        this.submitted = true;
-        // this.authenticationService.login(this.f.username.value, this.f.password.value);
-
-        this.authenticationService.login(this.form.username.value, this.form.password.value)
-            .pipe(first())
-            .subscribe(data => {
-                // Convert Current date to milliseoncds...
-                const current_milis = new Date().getTime();
-                if (current_milis > data['exp_date'].concat('000')) {
-                    this.router.navigate(['/login-failed'], { queryParams: { case: "expired" } })
-                } else if (data['active_cons'] >= data['max_connections']) {
-                    this.router.navigate(['/login-failed'], { queryParams: { case: "device_limited" } })
-                } else if (data['is_trial'] != 0) {
-                    this.router.navigate(['/login-failed'], { queryParams: { case: "trial_limited" } })
-                } else if (data['status'] != 'Active') {
-                    this.router.navigate(['/login-failed'], { queryParams: { case: "disabled_account" } })
-                } else {
-                    // Store authenticated data to currentUser of UserService...
-                    this.userService.currentUser = data
-
-                    // Direct to Account Info Loading page...
-                    this.router.navigate(['/account-info-loading']);
-                }
-            },
-                error => {
-                    this.error = error;
-                    this.loading = false;
-                }
-            )
-    }
+  ngOnInit(): void {
+    this.loginForm = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+    this.authService.logout();
+  }
+  get form() { return this.loginForm.controls; }
+  onSubmit() {
+    this.submitted = true;
+    this.XCAPIService.sendLoginRequest(this.form.username.value, this.form.password.value).subscribe(data => {
+      const loginUser = data['user_info']
+      const loginServer = data['server_info']
+      const currentTSDate = new Date().getTime() / 1000
+      if (currentTSDate > loginUser['exp_date']) {
+        this.router.navigate(['/login-failed', { queryParams: { case: 'expired' } }])
+      } else if (loginUser['active_cons'] >= loginUser['max_connections']) {
+        this.router.navigate(['/login-failed'], { queryParams: { case: 'device_limited' } })
+      } else if (loginUser['is_trial'] != 0) {
+        this.router.navigate(['login-failed'], { queryParams: { case: 'trial_limited' } })
+      } else if (loginUser['status'] != 'Active') {
+        this.router.navigate(['login-failed'], { queryParams: { case: 'disabled_account' } })
+      } else {
+        this.shareService.currentUser = loginUser
+        this.shareService.currentServer = loginServer
+        this.router.navigate(['/account-info-loading']);
+      }
+    })
+  }
 }

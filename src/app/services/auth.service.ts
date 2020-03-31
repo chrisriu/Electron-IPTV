@@ -8,7 +8,7 @@ import { config } from '../configs/xc.api.config';
 import { User } from '../models';
 
 @Injectable({ providedIn: 'root' })
-export class AuthenticationService {
+export class AuthService {
     private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
 
