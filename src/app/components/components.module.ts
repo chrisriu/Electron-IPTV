@@ -13,6 +13,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LastAddedMoviesComponent } from './last-added-movies/last-added-movies.component';
 import { LastAddedLiveTVsComponent } from './last-added-live-tvs/last-added-live-tvs.component';
+import { FavoriteTVSeriesComponent } from './favorite-tvseries/favorite-tvseries.component';
+import { FavoriteRadioChannelComponent } from './favorite-radio-channel/favorite-radio-channel.component';
 
 @NgModule({
     declarations: [
@@ -22,6 +24,8 @@ import { LastAddedLiveTVsComponent } from './last-added-live-tvs/last-added-live
         SmallCardSliderComponent,
         LastAddedMoviesComponent,
         LastAddedLiveTVsComponent,
+        FavoriteTVSeriesComponent,
+        FavoriteRadioChannelComponent,
     ],
     imports: [
         BrowserModule,
@@ -36,6 +40,10 @@ import { LastAddedLiveTVsComponent } from './last-added-live-tvs/last-added-live
         AccountPartComponent,
         LargeCardSliderComponent,
         SmallCardSliderComponent,
+        LastAddedMoviesComponent,
+        LastAddedLiveTVsComponent,
+        FavoriteTVSeriesComponent,
+        FavoriteRadioChannelComponent
     ],
 })
 export class ComponentsModule { }

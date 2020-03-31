@@ -7,6 +7,214 @@ import { Category } from '../models/category';
 
 @Injectable({ providedIn: 'root' })
 export class TestService {
+  categories: Object = {
+    "livetv": [
+      {
+        "category_id": "1",
+        "category_name": "Romania",
+        "parent_id": 0
+      },
+      {
+        "category_id": "20",
+        "category_name": "Romania On Demand",
+        "parent_id": 0
+      },
+      {
+        "category_id": "47",
+        "category_name": "United Kingdom VIP",
+        "parent_id": 0
+      },
+      {
+        "category_id": "18",
+        "category_name": "United States",
+        "parent_id": 0
+      },
+      {
+        "category_id": "23",
+        "category_name": "Canada EN + FR",
+        "parent_id": 0
+      },
+      {
+        "category_id": "27",
+        "category_name": "Ex Yugoslavia",
+        "parent_id": 0
+      },
+      {
+        "category_id": "26",
+        "category_name": "Arabia Saudita",
+        "parent_id": 0
+      },
+      {
+        "category_id": "29",
+        "category_name": "Portugalia",
+        "parent_id": 0
+      },
+      {
+        "category_id": "28",
+        "category_name": "Ntherland",
+        "parent_id": 0
+      },
+      {
+        "category_id": "24",
+        "category_name": "Germania",
+        "parent_id": 0
+      },
+      {
+        "category_id": "30",
+        "category_name": "Brazilia",
+        "parent_id": 0
+      },
+      {
+        "category_id": "31",
+        "category_name": "Grecia",
+        "parent_id": 0
+      },
+      {
+        "category_id": "19",
+        "category_name": "Spania",
+        "parent_id": 0
+      },
+      {
+        "category_id": "21",
+        "category_name": "Italia",
+        "parent_id": 0
+      },
+      {
+        "category_id": "22",
+        "category_name": "Franta",
+        "parent_id": 0
+      },
+      {
+        "category_id": "25",
+        "category_name": "Turcia",
+        "parent_id": 0
+      },
+      {
+        "category_id": "2",
+        "category_name": "Adult Live",
+        "parent_id": 0
+      }
+    ],
+    "vod": [
+      {
+        "category_id": "3",
+        "category_name": "Actiune",
+        "parent_id": 0
+      },
+      {
+        "category_id": "9",
+        "category_name": "Animatie",
+        "parent_id": 0
+      },
+      {
+        "category_id": "10",
+        "category_name": "Aventura",
+        "parent_id": 0
+      },
+      {
+        "category_id": "4",
+        "category_name": "Comedie",
+        "parent_id": 0
+      },
+      {
+        "category_id": "11",
+        "category_name": "Drama",
+        "parent_id": 0
+      },
+      {
+        "category_id": "7",
+        "category_name": "Romantice",
+        "parent_id": 0
+      },
+      {
+        "category_id": "6",
+        "category_name": "Documentare",
+        "parent_id": 0
+      },
+      {
+        "category_id": "13",
+        "category_name": "Adult VOD",
+        "parent_id": 0
+      },
+      {
+        "category_id": "41",
+        "category_name": "Family",
+        "parent_id": 0
+      },
+      {
+        "category_id": "14",
+        "category_name": "English VOD",
+        "parent_id": 0
+      },
+      {
+        "category_id": "34",
+        "category_name": "Sci-Fi",
+        "parent_id": 0
+      },
+      {
+        "category_id": "15",
+        "category_name": "Fantezie",
+        "parent_id": 0
+      },
+      {
+        "category_id": "33",
+        "category_name": "Horror",
+        "parent_id": 0
+      },
+      {
+        "category_id": "16",
+        "category_name": "Mister",
+        "parent_id": 0
+      },
+      {
+        "category_id": "32",
+        "category_name": "Western",
+        "parent_id": 0
+      },
+      {
+        "category_id": "50",
+        "category_name": "Filme 4K UHD",
+        "parent_id": 0
+      },
+      {
+        "category_id": "8",
+        "category_name": "Filme Romanesti",
+        "parent_id": 0
+      }
+    ],
+    "series": [
+      {
+        "category_id": "40",
+        "category_name": "The Witcher",
+        "parent_id": 0
+      },
+      {
+        "category_id": "42",
+        "category_name": "Chernobyl",
+        "parent_id": 0
+      },
+      {
+        "category_id": "48",
+        "category_name": "Las Fierbinţi",
+        "parent_id": 0
+      },
+      {
+        "category_id": "51",
+        "category_name": "Peaky Blinders",
+        "parent_id": 0
+      },
+      {
+        "category_id": "43",
+        "category_name": "SEE",
+        "parent_id": 0
+      },
+      {
+        "category_id": "53",
+        "category_name": "Vlad",
+        "parent_id": 0
+      }
+    ]
+  }
   vods: Movie[] = [
     {
       num: 1555,
@@ -9880,6 +10088,8 @@ export class TestService {
       tv_archive_duration: 0
     }
   ]
+
+
 
   public getSizeObject(object: Object) {
     return Object.keys(object).length

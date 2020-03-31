@@ -1,0 +1,17 @@
+<div class="sliders" id="fav_tvseries">
+  <div class="slider_title">
+      <p [ngStyle]="setSliderTitlePosX()">{{slider_title}}</p>
+  </div>
+  <div class="slider_content">
+      <section class="items">
+          <div class="carouselOfImages">
+              <div class="carouselImage" style="background-size:cover" *ngFor = "let card of cards">
+                  <img data-tab="bright" src="{{card.imgPath}}" />
+                  <p>{{card.title}}</p>
+              </div>
+          </div>
+      </section>
+      <div id="dark"></div>
+      <div id="lightbox"></div>
+  </div>
+</div>
