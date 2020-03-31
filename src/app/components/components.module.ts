@@ -11,13 +11,17 @@ import { AccountPartComponent } from './account-part/account-part.component';
 import { AngularResizedEventModule } from 'angular-resize-event';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { NgProgressModule } from 'ngx-progressbar';
+import { LastAddedMoviesComponent } from './last-added-movies/last-added-movies.component';
+import { LastAddedLiveTVsComponent } from './last-added-live-tvs/last-added-live-tvs.component';
+
 @NgModule({
     declarations: [
         ResizeDiv,
         AccountPartComponent,
         LargeCardSliderComponent,
         SmallCardSliderComponent,
+        LastAddedMoviesComponent,
+        LastAddedLiveTVsComponent,
     ],
     imports: [
         BrowserModule,
