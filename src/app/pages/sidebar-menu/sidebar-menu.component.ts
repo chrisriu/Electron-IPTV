@@ -48,7 +48,7 @@ export class SidebarMenuComponent implements OnInit {
                 }
             })
         })(jQuery)
-        this.categories = this.shareService.getCategories()
+        // this.categories = this.shareService.getCategories()
     }
 
     onResized(event: ResizedEvent) {

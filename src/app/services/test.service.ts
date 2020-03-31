@@ -3,6 +3,7 @@ import { Injectable, Output, EventEmitter } from '@angular/core';
 import { Movie } from '../models/movies'
 import { LiveTV } from '../models/livetvs'
 import { Serie } from '../models/series';
+import { Category } from '../models/category';
 
 @Injectable({ providedIn: 'root' })
 export class TestService {
@@ -9891,9 +9892,7 @@ export class TestService {
     for (i = 0; i < count; i++) {
       maxIndex = i
       maxValue = this.vods[i].added
-      console.log(maxValue)
       for (j = i + 1; j < this.getSizeObject(this.vods); j++) {
-        console.log(this.vods[j].added)
         if (this.vods[j].added > maxValue) {
           maxIndex = j
           maxValue = this.vods[j].added

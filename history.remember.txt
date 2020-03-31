@@ -1,0 +1,6 @@
+// App Routing Fix after done.
+
+path: '',
+        redirectTo: 'account-confirm-page',
+        canActivate: [AuthGuard],
+        pathMatch: 'full'

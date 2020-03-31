@@ -13,8 +13,7 @@ import { AccountInfoLoadingPageComponent } from '../pages/auth/account-info-load
 const baseRoutes: Routes = [
     {
         path: '',
-        redirectTo: 'account-confirm-page',
-        canActivate: [AuthGuard],
+        redirectTo: '/main/home',
         pathMatch: 'full'
     },
     {
