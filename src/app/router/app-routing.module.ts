@@ -11,62 +11,63 @@ import { MovieGenreDetailPageComponent } from '../pages/movie-genre-detail-page/
 import { AccountConfirmPageComponent } from '../pages/auth/account-confirm-page/account-confirm-page.component';
 import { AccountInfoLoadingPageComponent } from '../pages/auth/account-info-loading-page/account-info-loading-page.component';
 const baseRoutes: Routes = [
-    {
-        path: '',
-        redirectTo: '/main/home',
-        pathMatch: 'full'
-    },
-    {
-        path: 'account-info-loading',
-        component: AccountInfoLoadingPageComponent,
-    },
-    {
-        path: 'account-confirm-page',
-        canActivate: [AuthGuard],
-        component: AccountConfirmPageComponent
-    },
-    {
-        path: 'main',
-        component: MainPageComponent,
-        children: [
-            {
-                path:'home',
-                component: HomePageComponent
-            },
-            {
-                path:'livetv',
-                component: MovieLandPageComponent
-            },
-            {
-                path:'vod',
-                component: MovieLandPageComponent
-            },
-            {
-                path:'series',
-                component: MovieLandPageComponent
-            },
-            {
-                path:'movie-genre-detail/:genre_id', 
-                component: MovieGenreDetailPageComponent
-            }
-        ]
-    },
-    {
-        path: 'login',
-        component: LoginPageComponent
-    },
-    {
-        path: 'login-failed',
-        component: LoginFailedPageComponent
-    },
-    {
-        path: '**',
-        redirectTo: ''
-    }
+  {
+    path: '',
+    redirectTo: 'account-confirm-page',
+    canActivate: [AuthGuard],
+    pathMatch: 'full'
+  },
+  {
+    path: 'account-info-loading',
+    component: AccountInfoLoadingPageComponent,
+  },
+  {
+    path: 'account-confirm-page',
+    canActivate: [AuthGuard],
+    component: AccountConfirmPageComponent
+  },
+  {
+    path: 'main',
+    component: MainPageComponent,
+    children: [
+      {
+        path: 'home',
+        component: HomePageComponent
+      },
+      {
+        path: 'livetv',
+        component: MovieLandPageComponent
+      },
+      {
+        path: 'vod',
+        component: MovieLandPageComponent
+      },
+      {
+        path: 'series',
+        component: MovieLandPageComponent
+      },
+      {
+        path: 'movie-genre-detail/:genre_id',
+        component: MovieGenreDetailPageComponent
+      }
+    ]
+  },
+  {
+    path: 'login',
+    component: LoginPageComponent
+  },
+  {
+    path: 'login-failed',
+    component: LoginFailedPageComponent
+  },
+  {
+    path: '**',
+    redirectTo: ''
+  }
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(baseRoutes)],
-    exports: [RouterModule]
+  imports: [RouterModule.forRoot(baseRoutes)],
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }
