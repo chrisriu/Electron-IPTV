@@ -8,9 +8,9 @@ describe('FavoriteRadioChannelComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FavoriteRadioChannelComponent ]
+      declarations: [FavoriteRadioChannelComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

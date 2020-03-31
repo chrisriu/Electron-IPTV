@@ -1,17 +1,17 @@
 <div class="sliders" id="last_livetvs">
   <div class="sliders_title">
-      <p [ngStyle]="setSliderTitlePosX()">{{slider_title}}</p>
+    <p [ngStyle]="setSliderTitlePosX()">{{slider_title}}</p>
   </div>
   <div class="sliders_content">
-      <section class="items">
-          <div class="carouselOfImages" >
-              <div class="carouselImage" style="background-size:cover" *ngFor="let card of cards">
-                  <img data-tab="bright" src="{{card.imgPath}}" />
-                  <p>{{card.title}}</p>
-              </div>
-          </div>
-      </section>
-      <div id="dark"></div>
-      <div id="lightbox"></div>
+    <section class="items">
+      <div class="carouselOfImages">
+        <div class="carouselImage" style="background-size:cover" *ngFor="let card of cards">
+          <img data-tab="bright" src="{{card.imgPath}}" />
+          <p>{{card.title}}</p>
+        </div>
+      </div>
+    </section>
+    <div id="dark"></div>
+    <div id="lightbox"></div>
   </div>
 </div>

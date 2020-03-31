@@ -5,8 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { ResizeDiv } from './resize-div/resize-div';
 
-import { LargeCardSliderComponent } from './large-card-slider/large-card-slider.component';
-import { SmallCardSliderComponent } from './small-card-slider/small-card-slider.component';
+
 import { AccountPartComponent } from './account-part/account-part.component';
 import { AngularResizedEventModule } from 'angular-resize-event';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
@@ -17,33 +16,29 @@ import { FavoriteTVSeriesComponent } from './favorite-tvseries/favorite-tvseries
 import { FavoriteRadioChannelComponent } from './favorite-radio-channel/favorite-radio-channel.component';
 
 @NgModule({
-    declarations: [
-        ResizeDiv,
-        AccountPartComponent,
-        LargeCardSliderComponent,
-        SmallCardSliderComponent,
-        LastAddedMoviesComponent,
-        LastAddedLiveTVsComponent,
-        FavoriteTVSeriesComponent,
-        FavoriteRadioChannelComponent,
-    ],
-    imports: [
-        BrowserModule,
-        CommonModule, 
-        FormsModule,
-        AngularResizedEventModule,
-        BrowserAnimationsModule,
-        MatProgressSpinnerModule,
-    ],
-    exports: [
-        ResizeDiv,
-        AccountPartComponent,
-        LargeCardSliderComponent,
-        SmallCardSliderComponent,
-        LastAddedMoviesComponent,
-        LastAddedLiveTVsComponent,
-        FavoriteTVSeriesComponent,
-        FavoriteRadioChannelComponent
-    ],
+  declarations: [
+    ResizeDiv,
+    AccountPartComponent,
+    LastAddedMoviesComponent,
+    LastAddedLiveTVsComponent,
+    FavoriteTVSeriesComponent,
+    FavoriteRadioChannelComponent,
+  ],
+  imports: [
+    BrowserModule,
+    CommonModule,
+    FormsModule,
+    AngularResizedEventModule,
+    BrowserAnimationsModule,
+    MatProgressSpinnerModule,
+  ],
+  exports: [
+    ResizeDiv,
+    AccountPartComponent,
+    LastAddedMoviesComponent,
+    LastAddedLiveTVsComponent,
+    FavoriteTVSeriesComponent,
+    FavoriteRadioChannelComponent
+  ],
 })
 export class ComponentsModule { }

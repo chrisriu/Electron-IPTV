@@ -4,7 +4,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AuthenticationService } from '../../../services/authentication.service';
-import { ShareService } from '../../../services/share.service';
 import { UserService } from '../../../services/user.service';
 @Component({
     selector: 'app-login-page',
@@ -36,14 +35,13 @@ export class LoginPageComponent implements OnInit {
         // get return url from route parameters or default to '/'
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/account-info-loading';
     }
-
-    get f() { return this.loginForm.controls; }
+    get form() { return this.loginForm.controls; }
 
     onSubmit() {
         this.submitted = true;
         // this.authenticationService.login(this.f.username.value, this.f.password.value);
 
-        this.authenticationService.login(this.f.username.value, this.f.password.value)
+        this.authenticationService.login(this.form.username.value, this.form.password.value)
             .pipe(first())
             .subscribe(data => {
                 // Convert Current date to milliseoncds...

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders, HttpRequest, HttpEventType } from '@angular/common/http';
-import { config } from '../configs/auth.config';
+import { config } from '../configs/xc.api.config';
 import { catchError, map } from 'rxjs/operators';
 import { of, forkJoin } from 'rxjs';
 import { NoopAnimationPlayer } from '@angular/animations';

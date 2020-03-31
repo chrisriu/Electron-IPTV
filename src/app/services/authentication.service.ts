@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
-import { config } from '../configs/auth.config';
+import { config } from '../configs/xc.api.config';
 import { User } from '../models';
 
 @Injectable({ providedIn: 'root' })
