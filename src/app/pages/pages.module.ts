@@ -26,7 +26,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NgProgressModule } from 'ngx-progressbar';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { ConfirmLogoutPageComponent } from './confirm-logout-page/confirm-logout-page.component'
+import { ConfirmLogoutPageComponent } from './auth/confirm-logout-page/confirm-logout-page.component'
 @NgModule({
   declarations: [
     LoginPageComponent,

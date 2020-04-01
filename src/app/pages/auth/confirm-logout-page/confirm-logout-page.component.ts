@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'
-import { ShareService } from '../../services/share.service'
+import { ShareService } from '../../../services/share.service'
 @Component({
   selector: 'app-confirm-logout-page',
   templateUrl: './confirm-logout-page.component.html',

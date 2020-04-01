@@ -9,7 +9,7 @@ import { HomePageComponent } from '../pages/home-page';
 import { MovieLandPageComponent } from '../pages/movie-land-page/movie-land-page.component';
 import { MovieGenreDetailPageComponent } from '../pages/movie-genre-detail-page/movie-genre-detail-page.component';
 import { AccountConfirmPageComponent } from '../pages/auth/account-confirm-page/account-confirm-page.component';
-import { ConfirmLogoutPageComponent } from '../pages/confirm-logout-page/confirm-logout-page.component';
+import { ConfirmLogoutPageComponent } from '../pages/auth/confirm-logout-page/confirm-logout-page.component';
 import { AccountInfoLoadingPageComponent } from '../pages/auth/account-info-loading-page/account-info-loading-page.component';
 const baseRoutes: Routes = [
   {
