@@ -2,6 +2,7 @@ import { HttpEventType } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ShareService, UserService, XtreamCodeAPIService } from '../../../services';
+import { faPlus, faTimes } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-account-confirm-page',
   templateUrl: './account-confirm-page.component.html',
@@ -11,7 +12,8 @@ export class AccountConfirmPageComponent implements OnInit {
   username: string
   currentUser: any
   currentUserObj: Object = {}
-
+  plusIcon = faPlus;
+  timesIcon = faTimes;
   constructor(private router: Router, private shareService: ShareService,  private userService: UserService, private xcService: XtreamCodeAPIService) { }
   ngOnInit(): void {
     this.currentUser = localStorage.getItem("currentUser")
@@ -36,6 +38,7 @@ export class AccountConfirmPageComponent implements OnInit {
           this.shareService.currentUser = user_info
           this.shareService.currentServer = server_info
           success = true
+          resolve(success)
         }
       }, 1250)
     })
@@ -46,5 +49,12 @@ export class AccountConfirmPageComponent implements OnInit {
         this.router.navigate(['/login-failed'], { queryParams: { case: "login-failed" } })
       }
     })
+  }
+  addAccount(){
+    this.router.navigate(['/login'])
+  }
+
+  logout(){
+    this.router.navigate(['/confirm-logout'])
   }
 }

@@ -21,6 +21,7 @@ import { ShareService } from './services';
         HttpClientModule,
         PagesModule,
         BrowserAnimationsModule,
+        
     ],
     providers: [
         ShareService

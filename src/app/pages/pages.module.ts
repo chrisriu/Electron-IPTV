@@ -25,46 +25,51 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NgProgressModule } from 'ngx-progressbar';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ConfirmLogoutPageComponent } from './confirm-logout-page/confirm-logout-page.component'
 @NgModule({
-    declarations: [
-        LoginPageComponent,
-        MainPageComponent,
-        SidebarMenuComponent,
-        HomePageComponent,
-        MovieLandPageComponent,
-        TvchannelLandPageComponent,
-        TvseriesLandPageComponent,
-        RadioLandPageComponent,
-        RecordingLandPageComponent,
-        FavoriteLandPageComponent,
-        MovieGenreDetailPageComponent,
-        LoginFailedPageComponent,
-        AccountConfirmPageComponent,
-        AccountInfoLoadingPageComponent,
-    ],
+  declarations: [
+    LoginPageComponent,
+    MainPageComponent,
+    SidebarMenuComponent,
+    HomePageComponent,
+    MovieLandPageComponent,
+    TvchannelLandPageComponent,
+    TvseriesLandPageComponent,
+    RadioLandPageComponent,
+    RecordingLandPageComponent,
+    FavoriteLandPageComponent,
+    MovieGenreDetailPageComponent,
+    LoginFailedPageComponent,
+    AccountConfirmPageComponent,
+    AccountInfoLoadingPageComponent,
+    ConfirmLogoutPageComponent,
+  ],
 
-    imports: [
-        CommonModule,
-        FormsModule,
-        RouterModule,
-        ReactiveFormsModule,
-        ComponentsModule,
-        AngularResizedEventModule,
-        ProgressBarModule,
-        HttpClientModule,
-        BrowserModule,
-        BrowserAnimationsModule,
-        MatProgressSpinnerModule,
-        NgProgressModule,
-    ],
-    providers:[
-    ],
-    exports: [
-        LoginPageComponent,
-        MainPageComponent,
-        SidebarMenuComponent,
-        HomePageComponent,
-        MovieLandPageComponent,
-    ],
+  imports: [
+    CommonModule,
+    FormsModule,
+    RouterModule,
+    ReactiveFormsModule,
+    ComponentsModule,
+    AngularResizedEventModule,
+    ProgressBarModule,
+    HttpClientModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatProgressSpinnerModule,
+    NgProgressModule,
+    FontAwesomeModule,
+  ],
+  providers: [
+  ],
+  exports: [
+    LoginPageComponent,
+    MainPageComponent,
+    SidebarMenuComponent,
+    HomePageComponent,
+    MovieLandPageComponent,
+  ],
 })
-export class PagesModule { }
+export class PagesModule {
+}

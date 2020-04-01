@@ -1,26 +1,30 @@
 <section id="brand">
-    <div class="container">
-        <div class="brand_logo text-center">
-            <img src="assets/img/logo.png" alt="">
-        </div>
+  <div class="container">
+    <div class="brand_logo text-center">
+      <img src="assets/img/logo.png" alt="">
     </div>
+  </div>
 </section>
 
 <section id="user_info">
-    <div class="container">
-        <div class="img">
-            <div class="profile_circle" (click)="mainPage()">
-                <img src="assets/img/user.png" alt="">
-            </div>
-        </div>
-        <p>{{username}}</p>
+  <div class="container">
+    <div class="img">
+      <div class="profile_circle" (click)="mainPage()">
+        <img src="assets/img/user.png" alt="">
+      </div>
     </div>
+    <p>{{username}}</p>
+  </div>
 </section>
 
 <section id="control">
-    <div class="container">
-        <div class="btn"><img src="assets/img/plus.png" alt=""></div>
-        <div class="btn"><img src="assets/img/close.png" alt=""></div>
-        <p>EDIT USER DETAILS</p>
+  <div class="container">
+    <div class="btn" (click)="addAccount()">
+      <fa-icon [icon]="plusIcon"></fa-icon>
     </div>
+    <div class="btn" (click)="logout()">
+      <fa-icon [icon]="timesIcon"></fa-icon>
+    </div>
+    <p>EDIT USER DETAILS</p>
+  </div>
 </section>

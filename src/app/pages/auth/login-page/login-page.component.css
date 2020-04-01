@@ -1,30 +1,30 @@
 #brand {
-    margin-top: 170px;
+  margin-top: 170px;
 }
 
 #auth_form {
-    margin-top: 133px;
+  margin-top: 133px;
 }
 
 div.auth_form {
-    width: 510px;
-    margin-left: auto;
-    margin-right: auto;
+  width: 510px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #auth_form form input {
-    background: #2F3136;
-    border: 1px solid #EB761C;
-    color: #808182;
+  background: #2F3136;
+  border: 1px solid #EB761C;
+  color: #808182;
 }
 
 .btn-black {
-    width: 100%;
-    background: #1B1C1D;
-    border: 1px solid #EB761C;
-    color: #808182;
+  width: 100%;
+  background: #1B1C1D;
+  border: 1px solid #EB761C;
+  color: #808182;
 }
 
 .btn-black:hover {
-    color: #a0a1a2;
+  color: #a0a1a2;
 }

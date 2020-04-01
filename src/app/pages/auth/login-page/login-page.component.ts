@@ -47,6 +47,7 @@ export class LoginPageComponent implements OnInit {
       } else {
         this.shareService.currentUser = loginUser
         this.shareService.currentServer = loginServer
+        localStorage.setItem('currentUser', JSON.stringify(loginUser));
         this.router.navigate(['/account-info-loading']);
       }
     })

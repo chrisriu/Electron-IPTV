@@ -31,7 +31,6 @@ export class HomePageComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private shareService: ShareService,
     private testService: TestService
   ) {
 

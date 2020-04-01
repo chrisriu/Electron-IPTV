@@ -49,7 +49,7 @@ export class SidebarMenuComponent implements OnInit {
         }
       })
     })(jQuery)
-    // this.categories = this.shareService.getCategories()
+    // this.categories = this.shareService.categories
     this.categories = this.testService.categories
   }
 

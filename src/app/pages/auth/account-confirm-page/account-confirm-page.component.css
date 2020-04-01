@@ -39,6 +39,7 @@ section .container>p {
     background: #1B1C1D;
     margin-left: 10px;
     margin-right: 10px;
+    padding-top: 13px;
 }
 
 .btn>img {
@@ -51,4 +52,7 @@ section .container>p {
 
 #control .container>p {
     font-size: 13px !important;
+}
+fa-icon{
+  color:#A8A8A8
 }
