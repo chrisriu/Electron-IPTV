@@ -1522,21 +1522,19 @@ export class TestService {
       tv_archive_duration: 0
     }
   ]
-  public getSizeObject(object: Object) {
-    return Object.keys(object).length
-  }
 
-  public getLastAddedVods(vod_videos?: Object, count?: number) {
-    var i, j
-    var maxIndex, maxValue, tmp;
-    let tmp_object: Movie[] = [];
+  public getLastMovies(count: number) {
+    var i, j;
+    var maxIndex, maxDate
+    var tmp: Movie;
+    let tmp_Object: Movie[] = []
     for (i = 0; i < count; i++) {
       maxIndex = i
-      maxValue = this.vods[i].added
-      for (j = i + 1; j < this.getSizeObject(this.vods); j++) {
-        if (this.vods[j].added > maxValue) {
+      maxDate = this.vods[i].added
+      for (j = i + 1; j < this.vods.length; j++) {
+        if (this.vods[j].added > maxDate) {
           maxIndex = j
-          maxValue = this.vods[j].added
+          maxDate = this.vods[j].added
           tmp = this.vods[i]
           this.vods[i] = this.vods[maxIndex]
           this.vods[maxIndex] = tmp
@@ -1544,37 +1542,13 @@ export class TestService {
       }
     }
 
-    // Get largest n variables of tmp...
     for (var k = 0; k < count; k++) {
-      tmp_object.push(this.vods[k])
+      tmp_Object[k] = this.vods[k]
     }
-    return tmp_object;
+    console.log(tmp_Object)
   }
 
-  public getLastAddedLiveTVs(livetv_videos?: Object, count?: number) {
-    var i, j
-    var maxIndex, maxValue, tmp;
-    let tmp_object: LiveTV[] = [];
-    for (i = 0; i < count; i++) {
-      maxIndex = i
-      maxValue = this.livetvs[i].added
-      console.log(maxValue)
-      for (j = i + 1; j < this.getSizeObject(this.vods); j++) {
-        console.log(this.livetvs[j].added)
-        if (this.livetvs[j].added > maxValue) {
-          maxIndex = j
-          maxValue = this.livetvs[j].added
-          tmp = this.vods[i]
-          this.livetvs[i] = this.livetvs[maxIndex]
-          this.livetvs[maxIndex] = tmp
-        }
-      }
-    }
+  public makeArraywithDateAndId() {
 
-    // Get largest n variables of tmp...
-    for (var k = 0; k < count; k++) {
-      tmp_object.push(this.livetvs[k])
-    }
-    return tmp_object;
   }
 }

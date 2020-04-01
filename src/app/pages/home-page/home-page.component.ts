@@ -15,7 +15,6 @@ export class HomePageComponent implements OnInit {
   serie_videos: Serie[];
 
   tmp: any;
-  
 
   movieCards: Card[];
   tvchannelCards: Card[];
@@ -33,8 +32,10 @@ export class HomePageComponent implements OnInit {
     private formBuilder: FormBuilder,
     private testService: TestService
   ) {
-
-    this.last_videos = this.testService.getLastAddedVods(null, 10)
+    console.log("Vods", this.testService.vods)
+    console.log("Lives", this.testService.livetvs)
+    console.log("Series", this.testService.series)
+    this.testService.getLastMovies(10)
     // this.movieCards = [
     //   { title: "The Black Man In San Francisco", imgPath: "assets/img/tmg-article_tall.jpg" },
     //   { title: "Dark Waters", imgPath: "assets/img/tmg-article_tall(3).jpg" },
@@ -87,7 +88,6 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit(): void {
     this.searchForm = this.formBuilder.group({});
-
   }
 
 
