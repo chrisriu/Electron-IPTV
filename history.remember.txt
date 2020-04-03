@@ -4,3 +4,13 @@ path: '',
         redirectTo: 'account-confirm-page',
         canActivate: [AuthGuard],
         pathMatch: 'full'
+
+// OMDB API
+
+f99724f6
+
+// TMDB API
+
+675a0678b964dc810918383d58ee83e3
+
+eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2NzVhMDY3OGI5NjRkYzgxMDkxODM4M2Q1OGVlODNlMyIsInN1YiI6IjVkZDgzZjg1M2ZhYmEwMDAxOWY5YmE3MiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.244D9JkhX1fwId9Fn39pX0PIG_lYzRhcvnCe4q9r4bE
