@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Card } from '../../models';
+import { MovieCard, LiveTVCard, SerieCard } from '../../models';
 @Component({
     selector: 'app-movie-land-page',
     templateUrl: './movie-land-page.component.html',
@@ -9,11 +9,11 @@ import { Card } from '../../models';
 export class MovieLandPageComponent implements OnInit {
     searchForm: FormGroup;
 
-    movieCards: Card[];
-    actionMovieCards: Card[];
-    epicMovieCards: Card[];
-    comedyMovieCards: Card[];
-    primeMovieCards: Card[];
+    movieCards: MovieCard[];
+    actionMovieCards: MovieCard[];
+    epicMovieCards: MovieCard[];
+    comedyMovieCards: MovieCard[];
+    primeMovieCards: MovieCard[];
 
     movie_title: string;
     actionMovieCardsTitle: string;

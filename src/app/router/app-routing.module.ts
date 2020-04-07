@@ -1,4 +1,4 @@
-import { NgModule, Component } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { LoginPageComponent } from '../pages/auth/login-page/login-page.component';
@@ -11,11 +11,11 @@ import { MovieGenreDetailPageComponent } from '../pages/movie-genre-detail-page/
 import { AccountConfirmPageComponent } from '../pages/auth/account-confirm-page/account-confirm-page.component';
 import { ConfirmLogoutPageComponent } from '../pages/auth/confirm-logout-page/confirm-logout-page.component';
 import { AccountInfoLoadingPageComponent } from '../pages/auth/account-info-loading-page/account-info-loading-page.component';
+
 const baseRoutes: Routes = [
   {
     path: '',
-    redirectTo: 'account-confirm-page',
-    canActivate: [AuthGuard],
+    redirectTo: 'main/home',
     pathMatch: 'full'
   },
   {

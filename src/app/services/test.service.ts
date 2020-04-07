@@ -177,7 +177,7 @@ export class TestService {
       }
     ]
   }
-  vods: Movie[] = [
+  movies: Movie[] = [
     {
       num: 1,
       name: "6 Underground - 2019",
@@ -1366,34 +1366,9 @@ export class TestService {
     }
   ]
 
-  public getLastMovies(count: number) {
-    var i, j;
-    var maxIndex, maxDate
-    var tmp: Movie;
-    let tmp_Object: Movie[] = []
-    for (i = 0; i < count; i++) {
-      maxIndex = i
-      maxDate = this.vods[i].added
-      for (j = i + 1; j < this.vods.length; j++) {
-        if (this.vods[j].added > maxDate) {
-          maxIndex = j
-          maxDate = this.vods[j].added
-          tmp = this.vods[i]
-          this.vods[i] = this.vods[maxIndex]
-          this.vods[maxIndex] = tmp
-        }
-      }
-    }
-
-    for (var k = 0; k < count; k++) {
-      tmp_Object[k] = this.vods[k]
-    }
-
-    return tmp_Object
-  }
+  
 
   public extractMovieCards(movies: Movie[]) {
-
     for (var i = 0; i < movies.length; i++) {
 
     }

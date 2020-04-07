@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
-import { config } from '../configs/xc.api.config';
+import { xcConfig } from '../configs/xc.api.config';
 import { User } from '../models';
 
 @Injectable({ providedIn: 'root' })
@@ -23,7 +23,7 @@ export class AuthService {
 
     login(username: string, password: string) {
         const httpParams = new HttpParams().set('username', username).set('password', password);
-        const endpoint = `${config.url}:${config.port}/player_api.php`;
+        const endpoint = `${xcConfig.url}:${xcConfig.port}/player_api.php`;
         return this.httpClient.get(`${endpoint}`, { params: httpParams })
             .pipe(
                 catchError(error => {

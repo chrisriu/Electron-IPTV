@@ -7,4 +7,9 @@ export class UtilService {
     const datePipe = new DatePipe('en-US');
     return datePipe.transform(timestamps, 'EEEE, MMMM d');
   }
+  public convertTitleToQuery(title: string) {
+    title.replace(" ", "%20")
+    title.replace(":", "%3A")
+    return title
+  }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Card } from '../../models';
+import { MovieCard } from '../../models';
 import jQuery from 'jquery';
 import jQueryBridget from 'jquery-bridget';
 import Flickity from 'flickity';
@@ -13,7 +13,7 @@ declare var $: any;
 })
 export class LastAddedLiveTVsComponent implements OnInit {
 
-  @Input() cards: Card[];
+  @Input() cards: MovieCard[];
   @Input() slider_title: string;
   sliderTitlePosX: number;
   subscription: any;
