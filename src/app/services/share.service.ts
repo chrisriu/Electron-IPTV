@@ -1,5 +1,5 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
-import { LiveTV, Movie, Serie, MovieCard, LiveTVCard } from '../models'
+import { LiveTV, Movie, Serie, MovieCard, LiveTVCard, SerieCard } from '../models'
 import { IpcRenderer } from 'electron';
 @Injectable()
 export class ShareService {
@@ -132,9 +132,7 @@ export class ShareService {
     return null
   }
 
-
-
-  public getLastLiveTVs(livetvs: LiveTV[], count: number) {
+  public getFavLiveTVs(livetvs: LiveTV[], count: number) {
     var i, j;
     var maxIndex, maxDate
     var tmp: LiveTV;
@@ -197,5 +195,70 @@ export class ShareService {
     return null
   }
 
+  public getLastSeries(series: Serie[], count: number) {
+    var i, j;
+    var maxIndex, maxDate
+    var tmp: Serie;
+    let tmp_Object: Serie[] = []
+    count = series.length < count ? series.length : count
+    for (i = 0; i < count; i++) {
+      maxIndex = i
+      maxDate = series[i].releaseDate
+      for (j = i + 1; j < series.length; j++) {
+        if (series[j].releaseDate > maxDate) {
+          maxIndex = j
+          maxDate = series[j].releaseDate
+          tmp = series[i]
+          series[i] = series[maxIndex]
+          series[maxIndex] = tmp
+        }
+      }
+    }
+    var coount = 0;
+    for (var k = 0; k < series.length; k++) {
+      if (series[k].cover != null) {
+        tmp_Object[k] = series[k]
+        coount++;
+      }
+      if (coount == 10) {
+        break;
+      }
+    }
+    return tmp_Object
+  }
 
+  public extractSerieCards(series) {
+    if (series.length > 0) {
+      if (typeof (series[0] == Serie)) {
+        let serieCards: SerieCard[] = []
+        series.forEach((video, index) => {
+          var serieCard: SerieCard = {
+            num: 0,
+            name: "example",
+            streamType: 'Serie',
+            serieID: 0,
+            releaseDate: null,
+            rating: null,
+            rating_5based: 0,
+            posterImg: "",
+            backdropImg: "",
+            categoryID: ""
+          }
+
+          serieCard.num = video.num
+          serieCard.name = video.name
+          serieCard.serieID = video.series_id
+          serieCard.releaseDate = video.releaseDate
+          serieCard.rating = video.rating
+          serieCard.rating_5based = video.rating_5based
+          serieCard.posterImg = video.cover
+          serieCard.backdropImg = ""
+
+          serieCards[index] = serieCard
+        });
+        return serieCards
+      }
+    }
+    return null
+  }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { MovieCard, LiveTVCard, SerieCard, RadioCard, LiveTV, Movie, Serie } from '../../models';
+import { MovieCard, LiveTVCard, SerieCard, RadioCard, LiveTV, Movie, Serie, Radio } from '../../models';
 import { ShareService, TestService, TMDbAPIService, UtilService, XtreamCodeAPIService } from '../../services';
 @Component({
   selector: 'app-home-page',
@@ -10,12 +10,16 @@ import { ShareService, TestService, TMDbAPIService, UtilService, XtreamCodeAPISe
 export class HomePageComponent implements OnInit {
   searchForm: FormGroup;
 
-  last_videos: Movie[]
-  last_livetvs: LiveTV[]
-
+  last_movies: Movie[]
   movieCards: MovieCard[];
+
+  fav_livetvs: LiveTV[]
   liveTVCards: LiveTVCard[];
+  
+  last_series: Serie[];
   serieCards: SerieCard[];
+
+  fav_radios: Radio[];
   radioCards: RadioCard[];
 
   movie_title = "Latest Added Movies";
@@ -29,22 +33,17 @@ export class HomePageComponent implements OnInit {
     private shareService: ShareService,
     private xcService: XtreamCodeAPIService,
   ) {
-    this.last_videos = this.shareService.getLastMovies(this.testService.movies, 10)
-    this.movieCards = this.shareService.extractMovieCards(this.last_videos)
+    this.last_movies = this.shareService.getLastMovies(this.testService.movies, 10)
+    this.movieCards = this.shareService.extractMovieCards(this.last_movies)
 
-    this.last_livetvs = this.shareService.getLastLiveTVs(this.testService.livetvs, 10)
-    console.log("LiveTV", this.last_livetvs)
-    this.liveTVCards = this.shareService.extractLiveTVCards(this.last_livetvs)
-    console.log("LiveTVCards", this.liveTVCards)
+    this.fav_livetvs = this.shareService.getFavLiveTVs(this.testService.livetvs, 10)
+    this.liveTVCards = this.shareService.extractLiveTVCards(this.fav_livetvs)
 
-
-    // this.xcService.sendVodStreamRequest("SuperDev", "SuperDev").subscribe(data=>{
-    //   console.log("data", data)
-    //   this.last_videos = this.shareService.getLastMovies(data, 10)
-    //   console.log("Last data", this.last_videos)
-    //   this.movieCards = this.shareService.extractCards(this.last_videos)
-    // })
-
+    this.last_series = this.shareService.getLastSeries(this.testService.series, 10)
+    console.log("serie", this.last_series)
+    this.serieCards = this.shareService.extractSerieCards(this.last_series)
+    console.log("seriecards", this.serieCards)
+    
   }
 
   ngOnInit(): void {

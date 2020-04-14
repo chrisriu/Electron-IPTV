@@ -2,8 +2,11 @@ export class SerieCard{
   num: number;
   name: string;
   streamType: string;
-  streamId: string;
-  releaseYear: string;
+  serieID: number;
+  releaseDate: string;
   rating: string;
-  img: string;
+  rating_5based: number;
+  posterImg: string;
+  backdropImg: string;
+  categoryID: string;
 }
