@@ -1,5 +1,5 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
-import { LiveTV, Movie, Serie, MovieCard } from '../models'
+import { LiveTV, Movie, Serie, MovieCard, LiveTVCard } from '../models'
 import { IpcRenderer } from 'electron';
 @Injectable()
 export class ShareService {
@@ -44,6 +44,27 @@ export class ShareService {
   public closeApp() {
     this.ipc.send("closeApp")
   }
+  public extractName(name_Year) {
+    var name_Year_Array = name_Year.split(" - ")
+    var name = "";
+    name_Year_Array.forEach((element, index) => {
+      if (index != name_Year_Array.length - 1) {
+        name += element + " "
+      }
+    });
+
+    if (name.substr(name.length - 1) == " ") {
+      return name.substring(0, name.length - 1)
+    }
+    return name
+  }
+
+  public extractYear(name_Year) {
+    var name_Year_Array = name_Year.split(" - ")
+    var year = "";
+    year = name_Year_Array[name_Year_Array.length - 1]
+    return year
+  }
 
   public getLastMovies(movies: Movie[], count: number) {
     var i, j;
@@ -63,18 +84,26 @@ export class ShareService {
         }
       }
     }
-    for (var k = 0; k < count; k++) {
-      tmp_Object[k] = movies[k]
+    var coount = 0;
+    for (var k = 0; k < movies.length; k++) {
+
+      if (movies[k].stream_icon != null) {
+        tmp_Object[k] = movies[k]
+        coount++;
+      }
+      if (coount == 10) {
+        break;
+      }
     }
     return tmp_Object
   }
 
-  public extractCards(videos) {
+  public extractMovieCards(videos) {
     if (videos.length > 0) {
       if (typeof (videos[0] == Movie)) {
         let movieCards: MovieCard[] = []
-        
-        videos.forEach((video,index) => {
+
+        videos.forEach((video, index) => {
           var movieCard: MovieCard = {
             num: 0,
             name: "example",
@@ -100,28 +129,72 @@ export class ShareService {
         return movieCards
       }
     }
+    return null
   }
 
-  public extractName(name_Year) {
-    var name_Year_Array = name_Year.split(" - ")
-    var name = "";
-    name_Year_Array.forEach((element, index) => {
-      if (index != name_Year_Array.length - 1) {
-        name += element + " "
+
+
+  public getLastLiveTVs(livetvs: LiveTV[], count: number) {
+    var i, j;
+    var maxIndex, maxDate
+    var tmp: LiveTV;
+    let tmp_Object: LiveTV[] = []
+    for (i = 0; i < count; i++) {
+      maxIndex = i
+      maxDate = livetvs[i].added
+      for (j = i + 1; j < livetvs.length; j++) {
+        if (livetvs[j].added > maxDate) {
+          maxIndex = j
+          maxDate = livetvs[j].added
+          tmp = livetvs[i]
+          livetvs[i] = livetvs[maxIndex]
+          livetvs[maxIndex] = tmp
+        }
       }
-    });
-
-    if (name.substr(name.length - 1) == " ") {
-      return name.substring(0, name.length - 1)
     }
-    return name
+    var coount = 0;
+    for (var k = 0; k < livetvs.length; k++) {
+
+      if (livetvs[k].stream_icon != null) {
+        tmp_Object[k] = livetvs[k]
+        coount++;
+      }
+      if (coount == 10) {
+        break;
+      }
+    }
+    return tmp_Object
   }
 
-  public extractYear(name_Year) {
-    var name_Year_Array = name_Year.split(" - ")
-    var year = "";
-    year = name_Year_Array[name_Year_Array.length - 1]
-    return year
+  public extractLiveTVCards(videos) {
+    if (videos.length > 0) {
+      if (typeof (videos[0] == LiveTV)) {
+        let liveTVCards: LiveTVCard[] = []
+        videos.forEach((video, index) => {
+          var liveTVCard: LiveTVCard = {
+            num: 0,
+            name: "example",
+            streamType: 'LiveTV',
+            streamId: "0",
+            streamIcon: null,
+            epg_channel_id: null,
+            category_id: "0",
+            tv_archive_duration: 0
+          }
+          liveTVCard.num = video.num;
+          liveTVCard.name = video.name;
+          liveTVCard.streamType = video.stream_type;
+          liveTVCard.streamIcon = video.stream_icon;
+          liveTVCard.streamId = video.stream_id;
+          liveTVCard.epg_channel_id = video.epg_channel_id;
+          liveTVCard.category_id = video.category_id;
+          liveTVCard.tv_archive_duration = video.tv_archive_duration;
+          liveTVCards[index] = liveTVCard
+        });
+        return liveTVCards
+      }
+    }
+    return null
   }
 
 

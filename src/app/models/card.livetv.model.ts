@@ -3,7 +3,8 @@ export class LiveTVCard{
   name: string;
   streamType: string;
   streamId: string;
-  releaseYear: string;
-  rating: string;
-  img: string;
+  streamIcon: string;
+  epg_channel_id: string;
+  category_id: string;
+  tv_archive_duration: number;
 }

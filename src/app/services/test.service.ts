@@ -191,7 +191,7 @@ export class TestService {
       container_extension: "mp4",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 2,
       name: "47 Meters Down: Uncaged - 2019",
       stream_type: "movie",
@@ -204,7 +204,7 @@ export class TestService {
       container_extension: "mkv",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 3,
       name: "300: Rise of an Empire - 2014",
       stream_type: "movie",
@@ -217,7 +217,7 @@ export class TestService {
       container_extension: "mkv",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 4,
       name: "Agora - 2009",
       stream_type: "movie",
@@ -230,7 +230,7 @@ export class TestService {
       container_extension: "mkv",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 5,
       name: "American Made - 2017",
       stream_type: "movie",
@@ -243,7 +243,7 @@ export class TestService {
       container_extension: "mkv",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 6,
       name: "Angel Has Fallen - 2019",
       stream_type: "movie",
@@ -256,7 +256,7 @@ export class TestService {
       container_extension: "avi",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 7,
       name: "Armageddon - 1998",
       stream_type: "movie",
@@ -269,7 +269,7 @@ export class TestService {
       container_extension: "mkv",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 8,
       name: "12 Years a Slave - 2013",
       stream_type: "movie",
@@ -282,7 +282,7 @@ export class TestService {
       container_extension: "avi",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 9,
       name: "Atomic Blonde - 2017",
       stream_type: "movie",
@@ -295,7 +295,7 @@ export class TestService {
       container_extension: "mkv",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 10,
       name: "Avengers: Endgame - 2019",
       stream_type: "movie",
@@ -308,7 +308,7 @@ export class TestService {
       container_extension: "avi",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 11,
       name: "Ben-Hur - 2016",
       stream_type: "movie",
@@ -321,7 +321,7 @@ export class TestService {
       container_extension: "mkv",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 12,
       name: "Blood Diamond - 2006",
       stream_type: "movie",
@@ -334,7 +334,7 @@ export class TestService {
       container_extension: "mkv",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 13,
       name: "Brotherhood of Blades - 2014",
       stream_type: "movie",
@@ -347,7 +347,7 @@ export class TestService {
       container_extension: "mkv",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 14,
       name: "Centurion - 2010",
       stream_type: "movie",
@@ -360,7 +360,7 @@ export class TestService {
       container_extension: "mkv",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 15,
       name: "Creed - 2015",
       stream_type: "movie",
@@ -373,7 +373,7 @@ export class TestService {
       container_extension: "mkv",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 16,
       name: "Creed II - 2018",
       stream_type: "movie",
@@ -386,7 +386,7 @@ export class TestService {
       container_extension: "mkv",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 17,
       name: "Death Race: Beyond Anarchy - 2018",
       stream_type: "movie",
@@ -399,7 +399,7 @@ export class TestService {
       container_extension: "mkv",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 18,
       name: "Django Unchained - 2012",
       stream_type: "movie",
@@ -412,7 +412,7 @@ export class TestService {
       container_extension: "avi",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 19,
       name: "El Camino: A Breaking Bad Movie - 2019",
       stream_type: "movie",
@@ -425,7 +425,7 @@ export class TestService {
       container_extension: "mkv",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 20,
       name: "Fan-Fan the Tulip - 2003",
       stream_type: "movie",
@@ -438,7 +438,7 @@ export class TestService {
       container_extension: "mkv",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 21,
       name: "Fast & Furious Presents: Hobbs & Shaw - 2019",
       stream_type: "movie",
@@ -451,7 +451,7 @@ export class TestService {
       container_extension: "avi",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 22,
       name: "Fractured - 2019",
       stream_type: "movie",
@@ -464,7 +464,7 @@ export class TestService {
       container_extension: "mkv",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 23,
       name: "Gemini Man - 2019",
       stream_type: "movie",
@@ -477,7 +477,7 @@ export class TestService {
       container_extension: "mkv",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 24,
       name: "Get the Gringo - 2012",
       stream_type: "movie",
@@ -490,7 +490,7 @@ export class TestService {
       container_extension: "mkv",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 25,
       name: "Gladiator - 2000",
       stream_type: "movie",
@@ -503,7 +503,7 @@ export class TestService {
       container_extension: "mkv",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 26,
       name: "Get Smart - 2008",
       stream_type: "movie",
@@ -516,7 +516,7 @@ export class TestService {
       container_extension: "mkv",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 27,
       name: "Gods of Egypt - 2016",
       stream_type: "movie",
@@ -529,7 +529,7 @@ export class TestService {
       container_extension: "mkv",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 28,
       name: "Guardians of the Galaxy - 2014",
       stream_type: "movie",
@@ -542,7 +542,7 @@ export class TestService {
       container_extension: "mkv",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 29,
       name: "Haider - 2014",
       stream_type: "movie",
@@ -555,7 +555,7 @@ export class TestService {
       container_extension: "mkv",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 30,
       name: "Hercules - 1997",
       stream_type: "movie",
@@ -568,7 +568,7 @@ export class TestService {
       container_extension: "mkv",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 31,
       name: "Hitman - 1998",
       stream_type: "movie",
@@ -581,7 +581,7 @@ export class TestService {
       container_extension: "mkv",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 32,
       name: "Home Alone 2: Lost in New York - 1992",
       stream_type: "movie",
@@ -594,7 +594,7 @@ export class TestService {
       container_extension: "avi",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 33,
       name: "Home Alone - 1990",
       stream_type: "movie",
@@ -607,7 +607,7 @@ export class TestService {
       container_extension: "avi",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 34,
       name: "Illang: The Wolf Brigade - 2018",
       stream_type: "movie",
@@ -620,7 +620,7 @@ export class TestService {
       container_extension: "mkv",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 35,
       name: "Inglourious Basterds - 2009",
       stream_type: "movie",
@@ -633,7 +633,7 @@ export class TestService {
       container_extension: "mkv",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 36,
       name: "In the Name of the King 2: Two Worlds - 2011",
       stream_type: "movie",
@@ -646,7 +646,7 @@ export class TestService {
       container_extension: "mkv",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 37,
       name: "Iron Man - 2008",
       stream_type: "movie",
@@ -659,7 +659,7 @@ export class TestService {
       container_extension: "mkv",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 38,
       name: "Iron Man 2 - 2010",
       stream_type: "movie",
@@ -672,7 +672,7 @@ export class TestService {
       container_extension: "mkv",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 39,
       name: "Iron Man 3 - 2013",
       stream_type: "movie",
@@ -685,7 +685,7 @@ export class TestService {
       container_extension: "mkv",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 40,
       name: "Jack Reacher: Never Go Back - 2016",
       stream_type: "movie",
@@ -698,7 +698,7 @@ export class TestService {
       container_extension: "mkv",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 41,
       name: "Jack Reacher - 2012",
       stream_type: "movie",
@@ -711,7 +711,7 @@ export class TestService {
       container_extension: "mkv",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 42,
       name: "Jack the Giant Slayer - 2013",
       stream_type: "movie",
@@ -724,7 +724,7 @@ export class TestService {
       container_extension: "mkv",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 43,
       name: "Jarhead: Law of Return - 2019",
       stream_type: "movie",
@@ -737,7 +737,7 @@ export class TestService {
       container_extension: "mkv",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 44,
       name: "Killers Anonymous - 2019",
       stream_type: "movie",
@@ -750,7 +750,7 @@ export class TestService {
       container_extension: "mkv",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 45,
       name: "Killing Gunther - 2017",
       stream_type: "movie",
@@ -763,7 +763,7 @@ export class TestService {
       container_extension: "mkv",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 46,
       name: "Hancock - 2008",
       stream_type: "movie",
@@ -776,7 +776,7 @@ export class TestService {
       container_extension: "mkv",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 47,
       name: "King Arthur: Legend of the Sword - 2017",
       stream_type: "movie",
@@ -789,7 +789,7 @@ export class TestService {
       container_extension: "mkv",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 48,
       name: "Kingsman: The Golden Circle - 2017",
       stream_type: "movie",
@@ -802,7 +802,7 @@ export class TestService {
       container_extension: "mkv",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 49,
       name: "Last Knights - 2015",
       stream_type: "movie",
@@ -815,7 +815,7 @@ export class TestService {
       container_extension: "mkv",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 50,
       name: "Lucky Day - 2019",
       stream_type: "movie",
@@ -828,7 +828,7 @@ export class TestService {
       container_extension: "mkv",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 51,
       name: "Maleficent - 2014",
       stream_type: "movie",
@@ -841,7 +841,7 @@ export class TestService {
       container_extension: "mkv",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 52,
       name: "Men in Black 3 - 2012",
       stream_type: "movie",
@@ -854,7 +854,7 @@ export class TestService {
       container_extension: "mkv",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 53,
       name: "Men in Black II - 2002",
       stream_type: "movie",
@@ -867,7 +867,7 @@ export class TestService {
       container_extension: "mkv",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 54,
       name: "Minority Report - 2002",
       stream_type: "movie",
@@ -880,7 +880,7 @@ export class TestService {
       container_extension: "mkv",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 55,
       name: "Mission: Impossible - Fallout - 2018",
       stream_type: "movie",
@@ -893,7 +893,7 @@ export class TestService {
       container_extension: "mkv",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 56,
       name: "Mission: Impossible - Ghost Protocol - 2011",
       stream_type: "movie",
@@ -906,7 +906,7 @@ export class TestService {
       container_extension: "mkv",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 57,
       name: "Kingsman: The Secret Service - 2014",
       stream_type: "movie",
@@ -919,7 +919,7 @@ export class TestService {
       container_extension: "mkv",
       custom_sid: "",
       direct_source: ""
-    },    {
+    }, {
       num: 58,
       name: "Mission: Impossible - 1996",
       stream_type: "movie",
@@ -1366,7 +1366,7 @@ export class TestService {
     }
   ]
 
-  
+
 
   public extractMovieCards(movies: Movie[]) {
     for (var i = 0; i < movies.length; i++) {

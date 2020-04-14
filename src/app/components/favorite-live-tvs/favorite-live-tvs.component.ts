@@ -1,23 +1,23 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MovieCard } from '../../models';
 import jQuery from 'jquery';
 import jQueryBridget from 'jquery-bridget';
 import Flickity from 'flickity';
-import { ShareService } from '../../services/share.service';
-
+import { MovieCard } from '../../models';
+import { ShareService } from '../../services';
 declare var $: any;
+
 @Component({
-  selector: 'app-last-added-live-tvs',
-  templateUrl: './last-added-live-tvs.component.html',
-  styleUrls: ['./last-added-live-tvs.component.css']
+  selector: 'app-favorite-live-tvs',
+  templateUrl: './favorite-live-tvs.component.html',
+  styleUrls: ['./favorite-live-tvs.component.css']
 })
-export class LastAddedLiveTVsComponent implements OnInit {
+export class FavoriteLiveTVsComponent implements OnInit {
 
   @Input() cards: MovieCard[];
   @Input() slider_title: string;
   sliderTitlePosX: number;
   subscription: any;
-  constructor(private shareService: ShareService) { }
+  constructor(public shareService: ShareService) { }
 
   ngOnInit(): void {
     (function ($) {
@@ -26,35 +26,35 @@ export class LastAddedLiveTVsComponent implements OnInit {
           Flickity.setJQuery($);
           jQueryBridget('flickity', Flickity, $);
 
-          var $imagesCarousel = $('#last_livetvs .carouselOfImages').flickity({
+          var $imagesCarousel = $('#fav_livetvs .carouselOfImages').flickity({
             contain: true,
-            autoplay: false,
+            autoPlay: false,
             wrapAround: true,
-            friction: 0.2,
+            friction: 0.3,
             pageDots: false
           });
           function resizeCells() {
             var flkty = $imagesCarousel.data('flickity');
             var $current = flkty.selectedIndex;
             var $length = flkty.cells.length;
-            if ($length <= '3') {
+            if ($length <= '5') {
               $imagesCarousel.flickity('destroy');
             }
-            $('#last_livetvs .carouselOfImages .carouselImage').removeClass("nextToSelected");
-            $('#last_livetvs .carouselOfImages .carouselImage').eq($current - 1).addClass("nextToSelected");
+            $('#fav_livetvs .carouselOfImages .carouselImage').removeClass("nextToSelected");
+            $('#fav_livetvs .carouselOfImages .carouselImage').eq($current - 3).addClass("nextToSelected");
             if ($current + 1 == $length) {
-              var $endCell = "0"
+              var $endCell = "2"
             } else {
-              var $endCell_num = $current + 1;
+              var $endCell_num = $current + 3;
               var $endCell: string = $endCell_num.toString();
             }
-            $('#last_livetvs .carouselOfImages .carouselImage').eq($endCell).addClass("nextToSelected");
+            $('#fav_livetvs .carouselOfImages .carouselImage').eq($endCell).addClass("nextToSelected");
           };
           resizeCells();
           $imagesCarousel.on('scroll.flickity', function () {
             resizeCells();
           });
-          $("#last_livetvs .carouselImage img").click(function () {
+          $("#fav_livetvs .carouselImage img").click(function () {
             var $this = $(this);
             var imageID = $this.attr('data-tab');
             var imageSrc = $this.attr('src');
@@ -62,7 +62,7 @@ export class LastAddedLiveTVsComponent implements OnInit {
             $('.' + imageID).removeClass('hide');
             $('.' + imageID + ' .product-detail-image img').attr('src', imageSrc);
           });
-          $('.product-detail-close,.product-detail').on('click', function () {
+          $('#fav_livetvs .product-detail-close,#fav_livetvs .product-detail').on('click', function () {
             $('.product-detail').addClass('hide');
           });
           $('.modal-video').on('hidden.bs.modal', function (e) {
@@ -95,7 +95,6 @@ export class LastAddedLiveTVsComponent implements OnInit {
       );
 
     })(jQuery);
-
     this.subscription = this.shareService.getEmittedPosX().subscribe((sidebarPosX) => {
       this.sliderTitlePosX = sidebarPosX + 10
     })
@@ -104,4 +103,5 @@ export class LastAddedLiveTVsComponent implements OnInit {
     const styles = { 'margin-left': this.sliderTitlePosX + 'px' };
     return styles;
   }
+
 }

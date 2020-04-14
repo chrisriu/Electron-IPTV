@@ -1,13 +1,13 @@
-<div class="sliders" id="last_livetvs">
-  <div class="sliders_title">
+<div class="sliders" id="fav_livetvs">
+  <div class="slider_title">
     <p [ngStyle]="setSliderTitlePosX()">{{slider_title}}</p>
   </div>
-  <div class="sliders_content">
+  <div class="slider_content">
     <section class="items">
       <div class="carouselOfImages">
         <div class="carouselImage" style="background-size:cover" *ngFor="let card of cards">
-          <img data-tab="bright" src="{{card.imgPath}}" />
-          <p>{{card.title}}</p>
+          <img data-tab="bright" src="{{card.streamIcon}}" />
+          <p>{{card.name}}</p>
         </div>
       </div>
     </section>

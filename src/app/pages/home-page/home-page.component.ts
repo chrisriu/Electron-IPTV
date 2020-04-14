@@ -11,6 +11,7 @@ export class HomePageComponent implements OnInit {
   searchForm: FormGroup;
 
   last_videos: Movie[]
+  last_livetvs: LiveTV[]
 
   movieCards: MovieCard[];
   liveTVCards: LiveTVCard[];
@@ -18,7 +19,7 @@ export class HomePageComponent implements OnInit {
   radioCards: RadioCard[];
 
   movie_title = "Latest Added Movies";
-  tvchannel_title = "Favorite TV Channels";
+  livetv_title = "Favorite TV Channels";
   series_title: "Latest Added TV Series";
   radio_title: "Latest Added Radio";
 
@@ -28,16 +29,22 @@ export class HomePageComponent implements OnInit {
     private shareService: ShareService,
     private xcService: XtreamCodeAPIService,
   ) {
-    // this.last_videos = this.shareService.getLastMovies(this.testService.movies, 10)
-    // this.movieCards = this.shareService.extractCards(this.last_videos)
-    
-    this.xcService.sendVodStreamRequest("SuperDev", "SuperDev").subscribe(data=>{
-      this.last_videos = this.shareService.getLastMovies(data, 10)
-      this.movieCards = this.shareService.extractCards(this.last_videos)
-    })
+    this.last_videos = this.shareService.getLastMovies(this.testService.movies, 10)
+    this.movieCards = this.shareService.extractMovieCards(this.last_videos)
 
-    
-    
+    this.last_livetvs = this.shareService.getLastLiveTVs(this.testService.livetvs, 10)
+    console.log("LiveTV", this.last_livetvs)
+    this.liveTVCards = this.shareService.extractLiveTVCards(this.last_livetvs)
+    console.log("LiveTVCards", this.liveTVCards)
+
+
+    // this.xcService.sendVodStreamRequest("SuperDev", "SuperDev").subscribe(data=>{
+    //   console.log("data", data)
+    //   this.last_videos = this.shareService.getLastMovies(data, 10)
+    //   console.log("Last data", this.last_videos)
+    //   this.movieCards = this.shareService.extractCards(this.last_videos)
+    // })
+
   }
 
   ngOnInit(): void {

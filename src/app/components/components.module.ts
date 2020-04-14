@@ -11,18 +11,20 @@ import { AngularResizedEventModule } from 'angular-resize-event';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LastAddedMoviesComponent } from './last-added-movies/last-added-movies.component';
-import { LastAddedLiveTVsComponent } from './last-added-live-tvs/last-added-live-tvs.component';
 import { FavoriteTVSeriesComponent } from './favorite-tvseries/favorite-tvseries.component';
 import { FavoriteRadioChannelComponent } from './favorite-radio-channel/favorite-radio-channel.component';
+import { FavoriteLiveTVsComponent } from './favorite-live-tvs/favorite-live-tvs.component';
+import { LastAddedTVSeriesComponent } from './last-added-tvseries/last-added-tvseries.component';
 
 @NgModule({
   declarations: [
     ResizeDiv,
     AccountPartComponent,
     LastAddedMoviesComponent,
-    LastAddedLiveTVsComponent,
     FavoriteTVSeriesComponent,
     FavoriteRadioChannelComponent,
+    FavoriteLiveTVsComponent,
+    LastAddedTVSeriesComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,9 +38,10 @@ import { FavoriteRadioChannelComponent } from './favorite-radio-channel/favorite
     ResizeDiv,
     AccountPartComponent,
     LastAddedMoviesComponent,
-    LastAddedLiveTVsComponent,
     FavoriteTVSeriesComponent,
-    FavoriteRadioChannelComponent
+    FavoriteRadioChannelComponent,
+    FavoriteLiveTVsComponent,
+    LastAddedTVSeriesComponent,
   ],
 })
 export class ComponentsModule { }
