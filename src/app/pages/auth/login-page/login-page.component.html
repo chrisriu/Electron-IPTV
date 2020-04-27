@@ -2,6 +2,7 @@
   <div class="container">
     <div class="brand_logo text-center">
       <img src="assets/img/logo.png" alt="">
+      <h4>strimo</h4>
     </div>
   </div>
 </section>
@@ -10,16 +11,16 @@
   <div class="container">
     <div class="auth_form">
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-        <div class="form-grup mb-32">
+        <div class="form-group mb-32">
           <input type="text" class="form-control" formControlName="username"
-            [ngClass]="{ 'is-invalid': submitted && form.username.errors }" placeholder="username">
+            [ngClass]="{ 'is-invalid': submitted && form.username.errors }" placeholder="Username" autocomplete="username">
           <div *ngIf="submitted && form.username.errors" class="invalid-feedback">
             <div *ngIf="form.username.errors.required">Username is required</div>
           </div>
         </div>
         <div class="form-group mb-240">
           <input type="password" class="form-control" formControlName="password"
-            [ngClass]="{ 'is-invalid': submitted && form.password.errors }" placeholder="password">
+            [ngClass]="{ 'is-invalid': submitted && form.password.errors }" placeholder="Password" autocomplete="password">
           <div *ngIf="submitted && form.password.errors" class="invalid-feedback">
             <div *ngIf="form.password.errors.required">Password is required</div>
           </div>

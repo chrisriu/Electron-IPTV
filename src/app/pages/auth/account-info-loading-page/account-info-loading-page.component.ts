@@ -17,7 +17,7 @@ export class AccountInfoLoadingPageComponent implements OnInit {
   livetvStream: LiveTV[]
   vodStream: Movie[]
   serieStream: Serie[]
-  
+
   constructor(
     private router: Router,
     private xcService: XtreamCodeAPIService,
@@ -32,9 +32,7 @@ export class AccountInfoLoadingPageComponent implements OnInit {
     var self = this
 
     // Fetching Data from XC API...
-    const promise_data = new Promise((resolve, reject) => {
-
-
+    const promise_data = new Promise((resolve) => {
       let categories = ['get_live_categories', 'get_vod_categories', 'get_series_categories']
       let category_params = ['live_categories', 'vod_categories', 'serie_categories']
       categories.forEach((category, index) => {
@@ -44,7 +42,7 @@ export class AccountInfoLoadingPageComponent implements OnInit {
       })
 
       this.xcService.sendLiveTVStreamRequest(this.selectedUser.username, this.selectedUser.password).subscribe(data=>{
-        this.livetvStream = data 
+        this.livetvStream = data
       })
 
       this.xcService.sendVodStreamRequest(this.selectedUser.username, this.selectedUser.password).subscribe(data=>{
@@ -54,15 +52,17 @@ export class AccountInfoLoadingPageComponent implements OnInit {
       this.xcService.sendSerieStreamRequest(this.selectedUser.username, this.selectedUser.password).subscribe(data=>{
         this.serieStream = data
       })
-      
+
       setTimeout(() => {
         var success = false
         if (this.categoryData&&this.livetvStream&&this.vodStream&&this.serieStream){
           success = true
           this.shareService.categories = this.categoryData
-          this.shareService.livetvStreams = this.livetvStream
-          this.shareService.vodStreams = this.vodStream
-          this.shareService.serieStreams = this.serieStream
+          this.shareService.livetvs = this.livetvStream
+          this.shareService.movies = this.vodStream
+          this.shareService.series = this.serieStream
+          this.shareService.lastMovies = this.shareService.getLastMovies(this.shareService.movies, 10)
+          this.shareService.lastSeries = this.shareService.getLastSeries(this.shareService.series, 10)
         }
         resolve(success)
       }, 7000);

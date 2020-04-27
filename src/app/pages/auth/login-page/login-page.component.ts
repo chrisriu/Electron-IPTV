@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService, ShareService, XtreamCodeAPIService } from 'src/app/services';
+import { HttpErrorResponse } from '@angular/common/http';
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
@@ -18,7 +19,7 @@ export class LoginPageComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private authService: AuthService,
-    private XCAPIService: XtreamCodeAPIService,
+    private xcAPIService: XtreamCodeAPIService,
     private shareService: ShareService
   ) { }
 
@@ -32,23 +33,36 @@ export class LoginPageComponent implements OnInit {
   get form() { return this.loginForm.controls; }
   onSubmit() {
     this.submitted = true;
-    this.XCAPIService.sendLoginRequest(this.form.username.value, this.form.password.value).subscribe(data => {
-      const loginUser = data['user_info']
-      const loginServer = data['server_info']
+
+    // Send Login Request...
+    this.xcAPIService.sendLoginRequest(this.form.username.value, this.form.password.value).subscribe((data) => {
+
+      // User Data...
+      const userInfo = data['user_info']
+
+      //Server Data...
+      const serverInfo = data['server_info']
+
       const currentTSDate = new Date().getTime() / 1000
-      if (currentTSDate > loginUser['exp_date']) {
+      if (currentTSDate > userInfo['exp_date']) {
         this.router.navigate(['/login-failed', { queryParams: { case: 'expired' } }])
-      } else if (loginUser['active_cons'] >= loginUser['max_connections']) {
+      } else if (userInfo['active_cons'] >= userInfo['max_connections']) {
         this.router.navigate(['/login-failed'], { queryParams: { case: 'device_limited' } })
-      } else if (loginUser['is_trial'] != 0) {
+      } else if (userInfo['is_trial'] != 0) {
         this.router.navigate(['login-failed'], { queryParams: { case: 'trial_limited' } })
-      } else if (loginUser['status'] != 'Active') {
+      } else if (userInfo['status'] != 'Active') {
         this.router.navigate(['login-failed'], { queryParams: { case: 'disabled_account' } })
       } else {
-        this.shareService.currentUser = loginUser
-        this.shareService.currentServer = loginServer
-        localStorage.setItem('currentUser', JSON.stringify(loginUser));
+
+        this.shareService.currentUser = userInfo
+        this.shareService.currentServer = serverInfo
+        localStorage.setItem('currentUser', JSON.stringify(userInfo));
         this.router.navigate(['/account-info-loading']);
+
+      }
+    },(error) => {
+      if(error instanceof HttpErrorResponse){
+        this.router.navigate(['login-failed'], {queryParams: {case: 'wrong_credential_or_network_vpn'}})
       }
     })
   }

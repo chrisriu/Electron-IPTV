@@ -2,6 +2,14 @@
     margin-top: 170px;
 }
 
+.brand_logo h4{
+  margin-top: 30px;
+  font-size: 68px;
+  color: #808182;
+  letter-spacing: 41px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 #auth_form {
     margin-top: 133px;
 }
@@ -43,7 +51,7 @@ div.auth_form {
 }
 
 #loading_info {
-    margin-top: 163px;
+    margin-top: 218px;
 }
 
 #loading_info>.container>p {

@@ -1,13 +1,24 @@
 .showcase#last_movies {
   margin-top: 44px;
 }
+#last_movies .sliders_title {
+  display: inline-flex;
+  width: 100%;
+  position: relative;
+}
+#last_movies .searchComponent{
+  position: absolute;
+  right: 13px;
+}
 
 #last_movies .sliders_title p {
   color: white;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 200;
   margin-bottom: 0px;
-  margin-left: 10px;
+  margin-left: 114px;
+  letter-spacing: 5px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 #last_movies .carouselOfImages {

@@ -6,16 +6,6 @@ import { LiveTV, Movie, Serie } from '../models'
 @Injectable({ providedIn: 'root' })
 export class XtreamCodeAPIService {
   constructor(private httpClient: HttpClient) { }
-  sendRequest(username: string, password: string, action?: string) {
-    var url = null;
-    if (action == null) {
-      url = `${xcConfig.url}:${xcConfig.port}/player_api.php?username=${username}&password=${password}`
-    } else {
-      url = `${xcConfig.url}:${xcConfig.port}/player_api.php?username=${username}&password=${password}&action=${action}`
-    }
-    const request = new HttpRequest("GET", url)
-    return this.httpClient.request(request)
-  }
 
   sendLoginRequest(username: string, password: string) {
     const url = `${xcConfig.url}:${xcConfig.port}/player_api.php?username=${username}&password=${password}`

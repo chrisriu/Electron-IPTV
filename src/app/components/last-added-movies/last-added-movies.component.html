@@ -1,13 +1,16 @@
 <div class="sliders" id="last_movies">
   <div class="sliders_title">
-    <p [ngStyle]="setSliderTitlePosX()">{{slider_title}}</p>
+    <p>LATEST MOVIES ADDED</p>
+    <div class="searchComponent">
+      <app-search-box></app-search-box>
+    </div>
   </div>
   <div class="sliders_content">
     <section class="items">
       <div class="carouselOfImages">
         <div class="carouselImage" style="background-size:cover" *ngFor="let card of cards">
           <img data-tab="bright" src="{{card.posterImg}}" />
-          <p>{{card.title}}</p>
+          <p>{{card.name}}</p>
         </div>
       </div>
     </section>

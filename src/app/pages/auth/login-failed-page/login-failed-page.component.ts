@@ -8,10 +8,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class LoginFailedPageComponent implements OnInit {
     case: string = null;
     pstring: string = null;
-    constructor(private router: Router, private activedRoute: ActivatedRoute) { }
+    constructor(private router: Router, private activatedRoute: ActivatedRoute) { }
 
     ngOnInit(): void {
-        this.case = this.activedRoute.snapshot.queryParamMap.get('case');
+        this.case = this.activatedRoute.snapshot.queryParamMap.get('case');
         if (this.case == 'invalid_credit') {
             this.pstring = "INCORRECT USERNAME OR PASSWORD";
         } else if (this.case == 'expired') {
@@ -24,6 +24,8 @@ export class LoginFailedPageComponent implements OnInit {
             this.pstring = "YOUR ACCOUNT HAS BEEN SUSPENDED. PLEASE CONTACT YOUR SERVICE PROVIDER";
         } else if (this.case == 'login-failed'){
             this.pstring = "YOUR NETWORK HAS ISSUE. PLEASE USE VPN IF YOU HAVE ISSUE OF NETWORK.";
+        } else if (this.case == 'wrong_credential_or_network_vpn'){
+          this.pstring = "YOU HAVE WRONG CREDENTIAL OR BAD NETWORK, PLEASE CHECK THEM NOW."
         }
 
     }

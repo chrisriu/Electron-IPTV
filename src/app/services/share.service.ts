@@ -6,10 +6,14 @@ export class ShareService {
 
   public currentUser: any;
   public currentServer: any;
+
   public categories: Object = {}
-  public livetvStreams: LiveTV[]
-  public vodStreams: Movie[]
-  public serieStreams: Serie[]
+  public livetvs: LiveTV[]
+  public movies: Movie[]
+  public series: Serie[]
+
+  public lastMovies: Movie[]
+  public lastSeries: Serie[]
 
   private ipc: IpcRenderer
 
@@ -70,7 +74,7 @@ export class ShareService {
     var i, j;
     var maxIndex, maxDate
     var tmp: Movie;
-    let tmp_Object: Movie[] = []
+    let result_Object: Movie[] = []
     for (i = 0; i < count; i++) {
       maxIndex = i
       maxDate = movies[i].added
@@ -83,19 +87,10 @@ export class ShareService {
           movies[maxIndex] = tmp
         }
       }
+      result_Object[i] = movies[i]
     }
-    var coount = 0;
-    for (var k = 0; k < movies.length; k++) {
 
-      if (movies[k].stream_icon != null) {
-        tmp_Object[k] = movies[k]
-        coount++;
-      }
-      if (coount == 10) {
-        break;
-      }
-    }
-    return tmp_Object
+    return result_Object
   }
 
   public extractMovieCards(videos) {
@@ -199,7 +194,7 @@ export class ShareService {
     var i, j;
     var maxIndex, maxDate
     var tmp: Serie;
-    let tmp_Object: Serie[] = []
+    let resultObjects: Serie[] = []
     count = series.length < count ? series.length : count
     for (i = 0; i < count; i++) {
       maxIndex = i
@@ -213,18 +208,9 @@ export class ShareService {
           series[maxIndex] = tmp
         }
       }
+      resultObjects[i] = series[i]
     }
-    var coount = 0;
-    for (var k = 0; k < series.length; k++) {
-      if (series[k].cover != null) {
-        tmp_Object[k] = series[k]
-        coount++;
-      }
-      if (coount == 10) {
-        break;
-      }
-    }
-    return tmp_Object
+    return resultObjects
   }
 
   public extractSerieCards(series) {

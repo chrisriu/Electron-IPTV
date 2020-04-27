@@ -1,15 +1,8 @@
 <div class="main">
     <div class="main_content">
-        <div class="search_field">
-            <form [formGroup]="searchForm">
-                <div class="form-grup">
-                    <input type="text" class="form-control search_input" placeholder="Search">
-                </div>
-            </form>
-        </div>
         <app-last-added-movies [cards]="movieCards" [slider_title]="movie_title"></app-last-added-movies>
         <app-last-added-tvseries [cards]="serieCards" [slider_title]="series_title"></app-last-added-tvseries>
-        
+
         <app-account-part></app-account-part>
     </div>
 </div>

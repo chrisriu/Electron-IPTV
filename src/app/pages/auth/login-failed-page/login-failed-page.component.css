@@ -1,6 +1,13 @@
 #brand {
     margin-top: 170px;
 }
+.brand_logo h4{
+  margin-top: 30px;
+  font-size: 68px;
+  color: #808182;
+  letter-spacing: 41px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
 section.alert-dialog{
     width: 50%;
@@ -23,6 +30,10 @@ section.alert-dialog{
     padding-left: 10px;
     padding-right: 10px;
     margin-bottom: 10px;
+    font-size: 18px;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .dialog button.btn_submit{
@@ -34,4 +45,12 @@ section.alert-dialog{
     font-size: 14px;
     padding-top: 3px;
     padding-bottom: 3px;
+    border: 2px #2F3136 solid;
+    margin-top: 15px;
+}
+.dialog button.btn_submit:hover{
+  background: #F5F5F5;
+  color:#1B1C1D;
+  border: 2px #f5f5f5 solid;
+  margin-top: 15px;
 }

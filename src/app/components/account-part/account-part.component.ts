@@ -15,8 +15,4 @@ export class AccountPartComponent implements OnInit {
       this.sliderTitlePosX = sidebarPosX + 10
     })
   }
-  setSliderTitlePosX() {
-    const styles = { 'margin-left': this.sliderTitlePosX + 'px' };
-    return styles;
-  }
 }

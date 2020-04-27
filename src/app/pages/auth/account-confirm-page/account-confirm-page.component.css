@@ -2,8 +2,16 @@
     margin-top: 170px;
 }
 
+.brand_logo h4{
+  margin-top: 30px;
+  font-size: 68px;
+  color: #808182;
+  letter-spacing: 41px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 section#user_info {
-    margin-top: 62px;
+    margin-top: 102px;
 }
 
 section .container {
@@ -13,28 +21,34 @@ section .container {
 
 section .container>p {
     color: #808182;
-    margin-top: 5px;
-    font-size: 23px;
+    margin-top: 18px;
+    font-size: 25px;
+    font-weight: lighter;
 }
 
 .profile_circle {
-    width: 205px;
-    height: 205px;
+    width: 235px;
+    height: 235px;
     border-radius: 100%;
     border: 1px solid #707070;
     margin-left: auto;
     margin-right: auto;
     background: #2F3136;
+    position: relative;
 }
 
 .profile_circle>img {
-    margin-top: 30px;
+    text-align: center;
     margin-left: 2px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .btn {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border-radius: 100%;
     background: #1B1C1D;
     margin-left: 10px;
@@ -47,11 +61,12 @@ section .container>p {
 }
 
 #control .container {
-    margin-top: 50px;
+    margin-top: 81.5px;
 }
 
 #control .container>p {
-    font-size: 13px !important;
+    font-size: 15px !important;
+    letter-spacing: 3px;
 }
 fa-icon{
   color:#A8A8A8

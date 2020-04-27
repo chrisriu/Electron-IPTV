@@ -1,5 +1,25 @@
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 30px #2F3136 inset !important;
+    -webkit-text-fill-color: #808182 !important;
+    -webkit-text-size-adjust: inherit;
+    font-size: 68px;
+    -webkit-text-size-adjust: none;
+}
+
 #brand {
   margin-top: 170px;
+}
+
+.brand_logo h4{
+  margin-top: 30px;
+  font-size: 68px;
+  color: #808182;
+  letter-spacing: 41px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 #auth_form {
@@ -7,24 +27,37 @@
 }
 
 div.auth_form {
-  width: 510px;
+  width: 543px;
   margin-left: auto;
   margin-right: auto;
 }
 
 #auth_form form input {
+  height: 59px;
   background: #2F3136;
-  border: 1px solid #EB761C;
-  color: #808182;
+  border: 2px solid #808182;
+  color: #808182 !important;
+  font-size: 30px;
+}
+
+#auth_form form input:focus{
+  border: 2px solid #EB761C;
+  font-size: 30px;
+  font-size-adjust: initial;
 }
 
 .btn-black {
   width: 100%;
   background: #1B1C1D;
-  border: 1px solid #EB761C;
+  border: 2px solid #808182; /*EB761C*/
   color: #808182;
+  height: 59px;
+  font-size: 30px;
 }
 
 .btn-black:hover {
-  color: #a0a1a2;
+  color: #1B1C1D;
+  font-size: 30px;
+  background: #f5f5f5;
+  border: 2px solid #f5f5f5;
 }
