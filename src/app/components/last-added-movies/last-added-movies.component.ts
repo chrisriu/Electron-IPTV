@@ -40,8 +40,10 @@ export class LastAddedMoviesComponent implements OnInit {
             if ($length <= '3') {
               $imagesCarousel.flickity('destroy');
             }
+            $('#last_movies .carouselOfImages .carouselImage').css('margin-left', '0px');
             $('#last_movies .carouselOfImages .carouselImage').removeClass("nextToSelected");
             $('#last_movies .carouselOfImages .carouselImage').eq($current - 1).addClass("nextToSelected");
+            $('#last_movies .carouselOfImages .carouselImage').eq($current - 1).css('margin-left', '-35px');
             if ($current + 1 == $length) {
               var $endCell = "0"
             } else {
@@ -49,6 +51,7 @@ export class LastAddedMoviesComponent implements OnInit {
               var $endCell: string = $endCell_num.toString();
             }
             $('#last_movies .carouselOfImages .carouselImage').eq($endCell).addClass("nextToSelected");
+            $('#last_movies .carouselOfImages .carouselImage').eq($endCell).css('margin-left', '35px');
           };
           resizeCells();
           $imagesCarousel.on('scroll.flickity', function () {
