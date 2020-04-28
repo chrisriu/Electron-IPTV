@@ -52,6 +52,11 @@ export class LastAddedMoviesComponent implements OnInit {
             }
             $('#last_movies .carouselOfImages .carouselImage').eq($endCell).addClass("nextToSelected");
             $('#last_movies .carouselOfImages .carouselImage').eq($endCell).css('margin-left', '35px');
+            $('#last_movies .flickity-button.flickity-prev-next-button.previous').css('left', '114px');
+            $('#last_movies .flickity-button.flickity-prev-next-button.next').css('right', '34px');
+            $('#last_movies .flickity-prev-next-button').css('width', '50px');
+            $('#last_movies .flickity-prev-next-button').css('height', '50px');
+            $('.flickity-viewport').css('height', '400px')
           };
           resizeCells();
           $imagesCarousel.on('scroll.flickity', function () {

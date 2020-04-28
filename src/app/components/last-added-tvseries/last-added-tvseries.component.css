@@ -2,12 +2,27 @@
   margin-top: 44px;
 }
 
+#last_tvseries .sliders_title {
+  display: inline-flex;
+  width: 100%;
+  position: relative;
+  margin-bottom: 32px;
+}
+
+
 #last_tvseries .sliders_title p {
   color: white;
-  font-size: 18px;
-  font-weight: 200;
+  font-size: 20px;
+  font-weight: lighter;
   margin-bottom: 0px;
-  margin-left: 10px;
+  margin-left: 114px;
+  letter-spacing: 5px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#last_tvseries .carousel-cell {
+  margin-left: 35px;
+  margin-right: 35px;
 }
 
 #last_tvseries .carouselOfImages {
@@ -17,47 +32,49 @@
 }
 
 #last_tvseries .carouselImage {
-  width: 680px !important;
-  height: 400px;
+  width: 670px !important;
   margin-top: 30px;
   padding-bottom: 40px;
   border-radius: 20px;
   counter-increment: carousel-cell;
   transition: transform 0.5s;
-  transform: scale(0.88);
   text-align: center;
 }
 
 #last_tvseries .carouselImage img {
   width: 100%;
-  height: 100%;
+  height: 316px !important;
   border-radius: 20px;
 }
 
 #last_tvseries .carouselImage.is-selected {
   z-index: 10;
-  transform: scale(1.05);
+  transform: scaleY(1.10442);
 }
 
 #last_tvseries .carouselImage.is-selected img {
-  -webkit-box-shadow: 3px 3px 20px 3px rgba(0, 0, 0, 0.6);
-  -moz-box-shadow: 3px 3px 20px 3px rgba(0, 0, 0, 0.6);
-  box-shadow: 3px 3px 20px 3px rgba(0, 0, 0, 0.6);
+  -webkit-box-shadow: 3px 3px 20px 3px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: 3px 3px 20px 3px rgba(0, 0, 0, 0.7);
+  box-shadow: 3px 3px 20px 3px rgba(0, 0, 0, 0.7);
   border: 1px solid #EB761C;
 }
 
 #last_tvseries .carouselImage p {
   display: none;
-  color: white;
+  color: #f5f5f5;
   width: 100%;
-  font-size: 15px;
+  font-size: 20px;
+  letter-spacing: 3px;
 }
 
 #last_tvseries .carouselImage.is-selected p {
-  margin-top: 5px;
+  margin-top: 12px;
+  margin-bottom: 0px !important;
   display: block;
-  color: #A8A8A8;
+  color: #F5F5F5;
   width: 100%;
+  font-size: 20px;
+  letter-spacing: 3px;
 }
 
 /* .carouselImage.nextToSelected {
@@ -65,8 +82,9 @@
   z-index: 5;
 } */
 
-#last_tvseries .carouselImage.nextToSelected {
+#last_tvseries .carouselImage.nextToSelected img{
   opacity: 0.15;
+  border: 2px solid #707070;
 }
 
 /*! Flickity v2.0.5

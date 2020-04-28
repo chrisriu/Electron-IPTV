@@ -15,7 +15,7 @@ export class HomePageComponent implements OnInit {
 
   fav_livetvs: LiveTV[]
   liveTVCards: LiveTVCard[];
-  
+
   last_series: Serie[];
   serieCards: SerieCard[];
 
@@ -43,7 +43,7 @@ export class HomePageComponent implements OnInit {
     console.log("serie", this.last_series)
     this.serieCards = this.shareService.extractSerieCards(this.last_series)
     console.log("seriecards", this.serieCards)
-    
+
   }
 
   ngOnInit(): void {

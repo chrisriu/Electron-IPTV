@@ -89,7 +89,7 @@ https://flickity.metafizzy.co
 #fav_livetvs .flickity-viewport {
   overflow: hidden;
   position: relative;
-  height: 100%;
+  height: 100% !important;
 }
 
 #fav_livetvs .flickity-slider {

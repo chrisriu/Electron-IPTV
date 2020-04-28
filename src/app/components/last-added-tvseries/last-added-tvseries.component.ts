@@ -1,5 +1,5 @@
 import { Component, OnInit, Input} from '@angular/core';
-import { MovieCard, LiveTVCard } from '../../models';
+import { MovieCard, LiveTVCard, SerieCard } from '../../models';
 import jQuery from 'jquery';
 import jQueryBridget from 'jquery-bridget';
 import Flickity from 'flickity';
@@ -12,7 +12,7 @@ declare var $: any;
 })
 export class LastAddedTVSeriesComponent implements OnInit {
 
-  @Input() cards: LiveTVCard[];
+  @Input() cards: SerieCard[];
   @Input() slider_title: string;
   sliderTitlePosX: number;
   subscription: any;
@@ -39,8 +39,10 @@ export class LastAddedTVSeriesComponent implements OnInit {
             if ($length <= '3') {
               $imagesCarousel.flickity('destroy');
             }
+            $('#last_tvseries .carouselOfImages .carouselImage').css('margin-left', '0px');
             $('#last_tvseries .carouselOfImages .carouselImage').removeClass("nextToSelected");
             $('#last_tvseries .carouselOfImages .carouselImage').eq($current - 1).addClass("nextToSelected");
+            $('#last_tvseries .carouselOfImages .carouselImage').eq($current - 1).css('margin-left', '-35px');
             if ($current + 1 == $length) {
               var $endCell = "0"
             } else {
@@ -48,6 +50,12 @@ export class LastAddedTVSeriesComponent implements OnInit {
               var $endCell: string = $endCell_num.toString();
             }
             $('#last_tvseries .carouselOfImages .carouselImage').eq($endCell).addClass("nextToSelected");
+            $('#last_tvseries .carouselOfImages .carouselImage').eq($endCell).css('margin-left', '35px');
+            $('#last_tvseries .flickity-prev-next-button').css('width', '50px');
+            $('#last_tvseries .flickity-prev-next-button').css('height', '50px');
+            $('#last_tvseries .flickity-button.flickity-prev-next-button.previous').css('left', '114px');
+            $('#last_tvseries .flickity-button.flickity-prev-next-button.next').css('right', '34px');
+            $('.flickity-viewport').css('height', '400px')
           };
           resizeCells();
           $imagesCarousel.on('scroll.flickity', function () {
