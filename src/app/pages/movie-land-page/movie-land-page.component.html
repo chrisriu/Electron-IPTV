@@ -1,23 +1,5 @@
 <div class="main">
     <div class="main_content">
-        <div class="search_field">
-            <form [formGroup]="searchForm">
-                <div class="form-grup">
-                    <input type="text" class="form-control search_input" placeholder="Search">
-                    <!-- [ngClass]="{ 'is-invalid': submitted && f.username.errors }" placeholder="username"> -->
-                    <!-- <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-                            <div *ngIf="f.username.errors.required">Username is required</div>
-                        </div> -->
-                </div>
-            </form>
-        </div>
-        <!-- <app-large-card-slider [cards]="movieCards" [slider_title]="movie_title"></app-large-card-slider>
-        <app-small-card-slider [cards]="actionMovieCards" [slider_title]="actionMovieCardsTitle">
-        </app-small-card-slider>
-        <app-small-card-slider [cards]="epicMovieCards" [slider_title]="epicMovieCardsTitle"></app-small-card-slider>
-        <app-small-card-slider [cards]="comedyMovieCards" [slider_title]="comedyMovieCardsTitle">
-        </app-small-card-slider>
-        <app-small-card-slider [cards]="primeMovieCards" [slider_title]="primeMovieCardsTitle"></app-small-card-slider>
-        <app-account-part></app-account-part> -->
+      <app-last-added-movies [cards]="movieCards" [slider_title]="movie_title"></app-last-added-movies>
     </div>
 </div>
