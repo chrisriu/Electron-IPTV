@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { MovieCard, LiveTVCard, SerieCard, RadioCard, LiveTV, Movie, Serie, Radio } from '../../models';
-import { ShareService, TestService, TMDbAPIService, UtilService, XtreamCodeAPIService } from '../../services';
+
+import {
+    LiveTV, LiveTVCard, Movie, MovieCard, Radio, RadioCard, Serie, SerieCard
+} from '../../models';
+import { ShareService, TestService } from '../../services';
+
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
@@ -31,7 +35,6 @@ export class HomePageComponent implements OnInit {
     private formBuilder: FormBuilder,
     private testService: TestService,
     private shareService: ShareService,
-    private xcService: XtreamCodeAPIService,
   ) {
     this.last_movies = this.shareService.getLastMovies(this.testService.movies, 10)
     this.movieCards = this.shareService.extractMovieCards(this.last_movies)
@@ -40,9 +43,9 @@ export class HomePageComponent implements OnInit {
     this.liveTVCards = this.shareService.extractLiveTVCards(this.fav_livetvs)
 
     this.last_series = this.shareService.getLastSeries(this.testService.series, 10)
-    console.log("serie", this.last_series)
     this.serieCards = this.shareService.extractSerieCards(this.last_series)
-    console.log("seriecards", this.serieCards)
+
+    this.radioCards = []
 
   }
 

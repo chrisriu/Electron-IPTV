@@ -1,8 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
 import jQuery from 'jquery';
+import { ShareService, XtreamCodeAPIService } from 'src/app/services';
+
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { User, LiveTV, Movie, Serie } from '../../../models';
-import { XtreamCodeAPIService, ShareService } from 'src/app/services';
+
+import { LiveTV, Movie, Serie, User } from '../../../models';
 
 declare var $: any;
 @Component({

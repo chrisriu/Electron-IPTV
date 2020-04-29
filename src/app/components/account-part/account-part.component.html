@@ -1,47 +1,86 @@
 <div class="content">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="row">
-                <div class="col-md-6 profile_img">
-                    <img class="user_profile_img" src="assets/img/images.jpg" alt="">
-                </div>
-                <div class="col-md-6 account-info-pane">
-                    <p>USER ACCOUNT INFO</p>
-                    <p>Username: strimo</p>
-                    <p>Status: Active</p>
-                    <p>Allowed Formats: m3u8 ts rtmp hls</p>
-                    <p>Trial: NO</p>
-                    <p>Max Connections: 5</p>
-                    <p>Created at: 2020-01-25</p>
-                    <p>Expire: 2020-03-25</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6" class="payment_pane">
-            <p>UNLOCK STRIMO</p>
-            <p>Please unlock STRIMO app for full functionalities.</p>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="payment_check active" id="paypal">
-                        <div class="check_icon"></div>
-                        <div class="icon paypal"></div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="payment_check" id="credit">
-                        <div class="check_icon"></div>
-                        <div class="icon credit"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="pay_btn">
-                    <button>PLEASE UNLOCK
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$20</button>
-                    <p> One Time Payment </p>
-                </div>
-            </div>
-        </div>
+  <div class="profile">
+    <div class="avatar">
+      <img src="assets/img/user.png"/>
     </div>
+    <div class="info">
+      <p class="title">USER ACCOUNT INFO</p>
+      <label>Username: <p>strimo</p> </label>
+      <label>Status: <p>Active</p> </label>
+      <label>Allowed formats: <p>m3u8 ts rtmp hls</p> </label>
+      <label>Trial: <p>no</p> </label>
+      <label>Max Connections: <p>5</p> </label>
+      <label>Created at: <p>2020-01-25</p> </label>
+      <label>Expire: <p>2020-03-25</p> </label>
+    </div>
+  </div>
+  <div class="seperator"></div>
+  <div class="payment">
+    <p class="title">UNLOCK STRIMO</p>
+    <p class="description">PLEASE UNLOCK STRIMO FOR FULL FUNCTIONALITIES</p>
+    <div class="payment_form">
+      <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
+        <div class="cardNumber">
+          <label for="cardNumber">CARD NUMBER</label>
+          <div class="cardnumber_form">
+            <div class="form-group">
+              <input type="text" class="form-control" formControlName="cardNumber"
+                [ngClass]="{ 'is-invalid': submitted && form.cardNumber.errors }" placeholder="1234 5678 9876 5432">
+              <div *ngIf="submitted && form.cardNumber.errors" class="invalid-feedback">
+                <div *ngIf="form.cardNumber.errors.required">Card Number is required</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="expiration">
+          <label for="expirationDate">EXPIRATION DATE</label>
+          <div class="expiration_form">
+            <div class="month">
+              <div class="form-group">
+                <input type="text" class="form-control" formControlName="expirationMM"
+                  [ngClass]="{ 'is-invalid': submitted && form.expirationMM.errors }" placeholder="MM">
+                <div *ngIf="submitted && form.expirationMM.errors" class="invalid-feedback">
+                  <div *ngIf="form.expirationMM.errors.required">Card Number is required</div>
+                </div>
+              </div>
+            </div>
+            <div class="seperator_line">
+              <img src="assets/img/seperator_line.png" alt="">
+            </div>
+            <div class="year">
+              <div class="form-group">
+                <input type="text" class="form-control" formControlName="expirationYY"
+                  [ngClass]="{ 'is-invalid': submitted && form.expirationYY.errors }" placeholder="YY">
+                <div *ngIf="submitted && form.expirationYY.errors" class="invalid-feedback">
+                  <div *ngIf="form.expirationYY.errors.required">Card Number is required</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="csc">
+          <label for="csc">CSC</label>
+          <div class="csc_form">
+            <div class="form-group">
+              <input type="text" class="form-control" formControlName="csc"
+                [ngClass]="{ 'is-invalid': submitted && form.csc.errors }" placeholder="123">
+              <div *ngIf="submitted && form.csc.errors" class="invalid-feedback">
+                <div *ngIf="form.csc.errors.required">Card Number is required</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </form>
+    </div>
+    <div class="unlockBtn">
+      <div class="unlock">
+        <p class="title">PLEASE UNLOCK</p>
+        <p class="amount">$20</p>
+      </div>
+      <p class="method">One Time Payment</p>
+    </div>
+  </div>
 </div>

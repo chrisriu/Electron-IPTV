@@ -1,8 +1,9 @@
-import { HttpEventType } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ShareService, UserService, XtreamCodeAPIService } from '../../../services';
 import { faPlus, faTimes } from '@fortawesome/free-solid-svg-icons';
+
+import { ShareService, UserService, XtreamCodeAPIService } from '../../../services';
+
 @Component({
   selector: 'app-account-confirm-page',
   templateUrl: './account-confirm-page.component.html',

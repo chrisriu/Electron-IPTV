@@ -1,6 +1,6 @@
 import * as CryptoJS from 'crypto-js';
-import { Injectable, Output, EventEmitter } from '@angular/core';
-import { computeDecimalDigest } from '@angular/compiler/src/i18n/digest';
+
+import { Injectable } from '@angular/core';
 
 @Injectable()
 export class EncDecryptService {

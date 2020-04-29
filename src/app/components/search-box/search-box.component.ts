@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import jQuery from 'jquery';
+
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 declare var $: any;
 

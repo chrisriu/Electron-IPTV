@@ -1,6 +1,9 @@
-import { Injectable, Output, EventEmitter } from '@angular/core';
-import { LiveTV, Movie, Serie, MovieCard, LiveTVCard, SerieCard } from '../models'
 import { IpcRenderer } from 'electron';
+
+import { EventEmitter, Injectable, Output } from '@angular/core';
+
+import { LiveTV, LiveTVCard, Movie, MovieCard, Serie, SerieCard } from '../models';
+
 @Injectable()
 export class ShareService {
 

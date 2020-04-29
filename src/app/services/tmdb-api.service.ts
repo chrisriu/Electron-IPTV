@@ -1,6 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpRequest } from '@angular/common/http';
+
 import { tmdbConfig } from '../configs/tmdb.api.config';
+
 @Injectable({ providedIn: 'root' })
 export class TMDbAPIService {
   constructor(private httpClient: HttpClient, ) { }

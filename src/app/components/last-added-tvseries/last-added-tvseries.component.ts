@@ -55,7 +55,7 @@ export class LastAddedTVSeriesComponent implements OnInit {
             $('#last_tvseries .flickity-prev-next-button').css('height', '50px');
             $('#last_tvseries .flickity-button.flickity-prev-next-button.previous').css('left', '114px');
             $('#last_tvseries .flickity-button.flickity-prev-next-button.next').css('right', '34px');
-            $('.flickity-viewport').css('height', '400px')
+            $('#last_tvseries .flickity-viewport').css('height', '400px')
           };
           resizeCells();
           $imagesCarousel.on('scroll.flickity', function () {

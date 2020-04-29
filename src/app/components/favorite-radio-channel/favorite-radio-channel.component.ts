@@ -1,9 +1,12 @@
-import { Component, OnInit, Input } from '@angular/core';
+import Flickity from 'flickity';
 import jQuery from 'jquery';
 import jQueryBridget from 'jquery-bridget';
-import Flickity from 'flickity';
-import { MovieCard } from '../../models';
+
+import { Component, Input, OnInit } from '@angular/core';
+
+import { RadioCard } from '../../models';
 import { ShareService } from '../../services';
+
 declare var $: any;
 
 @Component({
@@ -13,20 +16,22 @@ declare var $: any;
 })
 export class FavoriteRadioChannelComponent implements OnInit {
 
-  @Input() cards: MovieCard[];
+  @Input() cards: RadioCard[];
   @Input() slider_title: string;
   sliderTitlePosX: number;
   subscription: any;
   constructor(public shareService: ShareService) { }
 
   ngOnInit(): void {
+    console.log("Radio Cards Count", this.cards.length);
+
     (function ($) {
       $(document).ready(
         function () {
           Flickity.setJQuery($);
           jQueryBridget('flickity', Flickity, $);
 
-          var $imagesCarousel = $('#fav_radio_channel .carouselOfImages').flickity({
+          var $imagesCarousel = $('#fav_radios .carouselOfImages').flickity({
             contain: true,
             autoPlay: false,
             wrapAround: true,
@@ -40,21 +45,38 @@ export class FavoriteRadioChannelComponent implements OnInit {
             if ($length <= '5') {
               $imagesCarousel.flickity('destroy');
             }
-            $('#fav_radio_channel .carouselOfImages .carouselImage').removeClass("nextToSelected");
-            $('#fav_radio_channel .carouselOfImages .carouselImage').eq($current - 3).addClass("nextToSelected");
+
+            $('#fav_radios .carouselOfImages .carouselImage').css('margin-left', '0px');
+            $('#fav_radios .carouselOfImages .carouselImage').removeClass("nextToSelected");
+            $('#fav_radios .carouselOfImages .carouselImage').eq($current - 3).addClass("nextToSelected");
+            $('#fav_radios .carouselOfImages .carouselImage').eq($current - 1).css('margin-left', '-20px');
+            $('#fav_radios .carouselOfImages .carouselImage').eq($current - 2).css('margin-left', '-40px');
+            $('#fav_radios .carouselOfImages .carouselImage').eq($current - 3).css('margin-left', '-60px');
+            console.log('current =>', $current)
+            console.log('length =>', $length)
             if ($current + 1 == $length) {
               var $endCell = "2"
             } else {
-              var $endCell_num = $current + 3;
+              var $endCell_num = ($current + 3)%10;
               var $endCell: string = $endCell_num.toString();
             }
-            $('#fav_radio_channel .carouselOfImages .carouselImage').eq($endCell).addClass("nextToSelected");
+
+            $('#fav_radios .carouselOfImages .carouselImage').eq($endCell).addClass("nextToSelected");
+            $('#fav_radios .carouselOfImages .carouselImage').eq(Number($endCell)).css('margin-left', '60px');
+            $('#fav_radios .carouselOfImages .carouselImage').eq(Number($endCell) - 1).css('margin-left', '40px');
+            $('#fav_radios .carouselOfImages .carouselImage').eq(Number($endCell) - 2).css('margin-left', '20px');
+            $('#fav_radios .flickity-prev-next-button').css('width', '50px');
+            $('#fav_radios .flickity-prev-next-button').css('height', '50px');
+            $('#fav_radios .flickity-prev-next-button').css('top', '40%');
+            $('#fav_radios .flickity-button.flickity-prev-next-button.previous').css('left', '114px');
+            $('#fav_radios .flickity-button.flickity-prev-next-button.next').css('right', '34px');
+            $('#fav_radios .flickity-viewport').css('height', '205px')
           };
           resizeCells();
           $imagesCarousel.on('scroll.flickity', function () {
             resizeCells();
           });
-          $("#fav_radio_channel .carouselImage img").click(function () {
+          $("#fav_radios .carouselImage img").click(function () {
             var $this = $(this);
             var imageID = $this.attr('data-tab');
             var imageSrc = $this.attr('src');
@@ -62,7 +84,7 @@ export class FavoriteRadioChannelComponent implements OnInit {
             $('.' + imageID).removeClass('hide');
             $('.' + imageID + ' .product-detail-image img').attr('src', imageSrc);
           });
-          $('#fav_radio_channel .product-detail-close,#fav_radio_channel .product-detail').on('click', function () {
+          $('#fav_radios .product-detail-close,#fav_radios .product-detail').on('click', function () {
             $('.product-detail').addClass('hide');
           });
           $('.modal-video').on('hidden.bs.modal', function (e) {

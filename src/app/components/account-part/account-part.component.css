@@ -1,120 +1,205 @@
 .content{
-    color: #A8A8A8;
-    margin-top: 40px;
+  width: 1799px;
+  height: 611px;
+  border-radius: 20px;
+  background-color: #2f3136;
+  margin-left: 100px;
+  padding: 71.5px 79px;
+  display: inline-flex;
+  position: relative;
+  margin-bottom: 20px;
+}
+.profile{
+  width: 50%;
+  display: inline-flex;
+  padding-top: 40.5px;
+  padding-bottom: 40.5px;
+}
+.avatar{
+  position: relative;
+  width: 235px;
+  height: 235px;
+  border: 1px solid #f5f5f5;
+  border-radius: 100%;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
-.content>.row{
-    margin-bottom: 10px;
-    border-radius: 20px;
-    background: #2F3136;
-    padding-top: 20px;
-    padding-bottom: 20px;
+.avatar img{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
-.content>.row>.col-md-6:first-child{
-    border-right: 1px solid rgba(245,245,245,0.2);
-}
-.content .row{
-    margin-left: 15px;
-    margin-right: 15px;
+.info{
+  margin-left: 85px;
+  width: 60%;
 }
 
-.profile_img{
-    text-align: center;
-    vertical-align: middle;
-    display: table;
-    margin-top: auto;
-    margin-bottom: auto;
+.info .title{
+  margin-bottom: 46px;
+  font-size: 20px;
+  color: #f5f5f5;
+  letter-spacing: 5px;
+  font-weight: 700;
 }
 
-.user_profile_img{
-    border-radius: 100%;
-    border: 1px solid #EB761C;
-    vertical-align: middle;
-    display: table-cell;
-    width: 70%;
-    margin-left: auto;
-    margin-right: auto;
-}
-.account-info-pane{
-    padding-top:30px;
-    padding-bottom: 30px;
+.info label{
+  width: 100%;
+  display: inline-flex;
+  font-size: 20px;
+  color: #a8a8a8;
+  letter-spacing: 3px;
+  font-weight: 200;
 }
 
-.account-info-pane p{
-    margin-bottom: 5px;
-}
-.account-info-pane p:first-child{
-    color: white;
-    margin-bottom: 40px;
-}
-
-.payment_pane{
-    width: 50%;
-    padding-top:30px;
-    padding-bottom: 30px;
-    padding-left: 45px;
-    padding-right: 45px;
-}
-
-.payment_pane p:first-child{
-    color: white;
-    margin-bottom: 40px;
-}
-
-.payment_check{
-    display: flex;
-}
-
-.payment_check>.check_icon{
-    height: fit-content;
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-right: 15px;
-}
-.payment_check.active>.check_icon{
-    content: url(../../../assets/img/tick.png);
-}
-
-.payment_check.active>.icon.paypal{
-    content:url(../../../assets/img/paypal.png);
-}
-
-.payment_check>.icon.paypal{
-    content:url(../../../assets/img/paypal_uncheck.png);
+.info label>p{
+  color: #f5f5f5;
 }
 
 
-.payment_check>.check_icon{
-    content: url(../../../assets/img/unchecked.png);
+.seperator{
+  border:1px solid rgba(245,245,245, 0.2)
 }
 
-.payment_check>.icon.credit{
-    content:url(../../../assets/img/credit-card_checked.png);
+.payment{
+  width: 50%;
+  padding-top: 40.5px;
+  padding-bottom: 40.5px;
+  padding-left: 43px;
+  padding-right: 43px;
 }
 
-.payment_check.active>.icon.credit{
-    content:url(../../../assets/img/credit-card.png);
+.payment .title{
+  font-size: 20px;
+  color: #f5f5f5;
+  letter-spacing: 5px;
+  font-weight: 700;
+  margin-bottom: 23px;
 }
 
-.pay_btn{
-    margin-top: 20px;
-    width: 100%;
+.payment .description{
+  font-size: 20px;
+  color: #a8a8a8;
+  letter-spacing: 3px;
+  font-weight: 200;
+  margin-bottom: 52px;
 }
 
-.pay_btn button{
-    width: 100%;
-    background: #1B1C1D;
-    border: 1px solid #EB761C;
-    border-radius: 8px;
-    margin-top: 80px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    color: white;
+.payment_form{
+  margin-bottom: 64px;
 }
-.pay_btn p{
-    font-size: 10px;
-    text-align: center;
-    margin-top: 5px;
+
+form label{
+  font-size: 20px;
+  color: #a8a8a8;
+  font-weight: 200;
+  letter-spacing: 3px;
+  width: 32%;
+  text-align: end;
+  padding-top: 10px;
+  padding-right: 20px;
+  margin-bottom: 0px !important;
+}
+
+form input{
+  background: #26282B;
+  border: 1px solid #f5f5f5;
+  color: #a8a8a8;
+  text-align: center;
+  letter-spacing: 3px;
+}
+
+.cardNumber{
+  display: inline-flex;
+  width: 100%;
+}
+
+.cardnumber_form{
+  width: 62%;
+}
+
+.expiration {
+  display: inline-flex;
+  width: 100%;
+}
+
+.expiration_form{
+  width: 62%;
+  display: inline-flex;
+}
+
+.expiration_form .month{
+  width: 46%;
+}
+.expiration_form .seperator_line{
+  width: 8%;
+  text-align: center;
+}
+
+.expiration_form .seperator_line img{
+  height: 70%;
+}
+
+.expiration_form .year{
+  width: 46%;
+}
+.csc {
+  display: inline-flex;
+  width: 100%;
+}
+
+.csc_form{
+  width: 62%;
+}
+
+.unlockBtn{
+  text-align: center;
+}
+
+.unlock{
+  width: 543px;
+  height: 59px;
+  background: #1B1C1D;
+  border: 1px solid #EB761C;
+  border-radius: 8px;
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-flex;
+  position: relative;
+}
+
+.unlock:hover{
+  background: #f5f5f5;
+  border: 1px solid #f5f5f5;
+}
+
+.unlock:hover p{
+  color: #1B1C1D;
+}
+
+.unlock p{
+  font-size: 20px;
+  letter-spacing: 3px;
+  color: #f5f5f5;
+  position: absolute;
+}
+
+.unlock p.title{
+  left: 23px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.unlock p.amount{
+  right: 23px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.unlockBtn .method{
+  font-size: 10px;
+  color: #a8a8a8;
 }
 
 

@@ -1,15 +1,23 @@
-<div class="sliders" id="fav_radio_channel">
+<div class="sliders" id="fav_radios">
   <div class="slider_title">
-    <p [ngStyle]="setSliderTitlePosX()">{{slider_title}}</p>
+    <p>FAVORITE RADIO STATIONS</p>
   </div>
   <div class="slider_content">
     <section class="items">
-      <div class="carouselOfImages">
-        <div class="carouselImage" style="background-size:cover" *ngFor="let card of cards">
-          <img data-tab="bright" src="{{card.imgPath}}" />
-          <p>{{card.title}}</p>
+      <div *ngIf="cards.length > 0; then showCards else showNothing"> </div>
+      <ng-template #showCards>
+        <div class="carouselOfImages">
+          <div class="carouselImage" style="background-size: cover;" *ngFor="let card of cards">
+            <img data-tab="bright" src="{{ card.img }}" />
+            <p>{{ card.name }}</p>
+          </div>
         </div>
-      </div>
+      </ng-template>
+      <ng-template #showNothing>
+        <div class="nothingItems">
+          <p>NO FAVORITE RADIO STATIONS ADDED YET</p>
+        </div>
+      </ng-template>
     </section>
     <div id="dark"></div>
     <div id="lightbox"></div>

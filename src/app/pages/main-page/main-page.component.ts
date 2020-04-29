@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services';
+
 import { User } from '../../models';
-import { ShareService } from '../../services/share.service';
+import { AuthService } from '../../services';
 
 @Component({
     selector: 'app-main-page',
@@ -12,7 +12,7 @@ import { ShareService } from '../../services/share.service';
 export class MainPageComponent implements OnInit {
     currentUser: User;
 
-    
+
     submitted = false;
     returnUrl: string;
     error = '';

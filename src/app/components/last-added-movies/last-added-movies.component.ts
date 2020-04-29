@@ -1,8 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { MovieCard } from '../../models';
+import Flickity from 'flickity';
 import jQuery from 'jquery';
 import jQueryBridget from 'jquery-bridget';
-import Flickity from 'flickity';
+
+import { Component, Input, OnInit } from '@angular/core';
+
+import { MovieCard } from '../../models';
 import { ShareService } from '../../services/share.service';
 
 declare var $: any;
@@ -56,7 +58,7 @@ export class LastAddedMoviesComponent implements OnInit {
             $('#last_movies .flickity-button.flickity-prev-next-button.next').css('right', '34px');
             $('#last_movies .flickity-prev-next-button').css('width', '50px');
             $('#last_movies .flickity-prev-next-button').css('height', '50px');
-            $('.flickity-viewport').css('height', '400px')
+            $('#last_movies .flickity-viewport').css('height', '400px')
           };
           resizeCells();
           $imagesCarousel.on('scroll.flickity', function () {

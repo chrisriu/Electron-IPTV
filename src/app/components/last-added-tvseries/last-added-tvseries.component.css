@@ -2,13 +2,16 @@
   margin-top: 44px;
 }
 
+.sliders#last_tvseries {
+  margin-bottom: 55px;
+}
+
 #last_tvseries .sliders_title {
   display: inline-flex;
   width: 100%;
   position: relative;
-  margin-bottom: 32px;
+  margin-bottom: 8px;
 }
-
 
 #last_tvseries .sliders_title p {
   color: white;
@@ -17,7 +20,7 @@
   margin-bottom: 0px;
   margin-left: 114px;
   letter-spacing: 5px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 #last_tvseries .carousel-cell {
@@ -56,7 +59,7 @@
   -webkit-box-shadow: 3px 3px 20px 3px rgba(0, 0, 0, 0.7);
   -moz-box-shadow: 3px 3px 20px 3px rgba(0, 0, 0, 0.7);
   box-shadow: 3px 3px 20px 3px rgba(0, 0, 0, 0.7);
-  border: 1px solid #EB761C;
+  border: 1px solid #eb761c;
 }
 
 #last_tvseries .carouselImage p {
@@ -71,7 +74,7 @@
   margin-top: 12px;
   margin-bottom: 0px !important;
   display: block;
-  color: #F5F5F5;
+  color: #f5f5f5;
   width: 100%;
   font-size: 20px;
   letter-spacing: 3px;
@@ -82,7 +85,7 @@
   z-index: 5;
 } */
 
-#last_tvseries .carouselImage.nextToSelected img{
+#last_tvseries .carouselImage.nextToSelected img {
   opacity: 0.15;
   border: 2px solid #707070;
 }
@@ -127,7 +130,9 @@ https://flickity.metafizzy.co
   cursor: grab;
 }
 
-#last_tvseries .flickity-enabled.is-draggable .flickity-viewport.is-pointer-down {
+#last_tvseries
+  .flickity-enabled.is-draggable
+  .flickity-viewport.is-pointer-down {
   cursor: -webkit-grabbing;
   cursor: grabbing;
 }
@@ -155,7 +160,7 @@ https://flickity.metafizzy.co
 
 #last_tvseries .flickity-prev-next-button:focus {
   outline: none;
-  box-shadow: 0 0 0 5px #09F;
+  box-shadow: 0 0 0 5px #09f;
 }
 
 #last_tvseries .flickity-prev-next-button:active {
@@ -260,7 +265,7 @@ https://flickity.metafizzy.co
   position: fixed;
   top: 0;
   left: 0;
-  background: rgba(0, 0, 0, .9);
+  background: rgba(0, 0, 0, 0.9);
   width: 100vw;
   height: 100vh;
 }

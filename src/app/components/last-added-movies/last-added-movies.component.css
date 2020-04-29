@@ -1,6 +1,10 @@
 .showcase#last_movies {
   margin-top: 44px;
 }
+.sliders#last_movies{
+  margin-bottom: 55px;
+}
+
 #last_movies .sliders_title {
   display: inline-flex;
   width: 100%;

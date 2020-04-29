@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import jQuery from 'jquery';
 import { ResizedEvent } from 'angular-resize-event';
-import { Router } from '@angular/router'
+import jQuery from 'jquery';
+
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { AuthService, ShareService } from '../../services';
-import { TestService } from '../../services/test.service'
+import { TestService } from '../../services/test.service';
+
 declare var $: any;
 
 @Component({
