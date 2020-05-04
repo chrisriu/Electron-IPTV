@@ -15,6 +15,8 @@ import { FavoriteLiveTVsComponent } from './favorite-live-tvs/favorite-live-tvs.
 import { LastAddedTVSeriesComponent } from './last-added-tvseries/last-added-tvseries.component';
 import { SearchBoxComponent } from './search-box/search-box.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+import { CardRowFragmentComponent } from './card-row-fragment/card-row-fragment.component';
 @NgModule({
   declarations: [
     ResizeDiv,
@@ -24,6 +26,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FavoriteLiveTVsComponent,
     LastAddedTVSeriesComponent,
     SearchBoxComponent,
+
+    CardRowFragmentComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,7 +46,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FavoriteRadioChannelComponent,
     FavoriteLiveTVsComponent,
     LastAddedTVSeriesComponent,
-    SearchBoxComponent
+    SearchBoxComponent,
+    CardRowFragmentComponent
   ],
 })
 export class ComponentsModule {

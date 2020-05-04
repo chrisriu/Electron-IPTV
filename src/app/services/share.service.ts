@@ -105,23 +105,18 @@ export class ShareService {
           var movieCard: MovieCard = {
             num: 0,
             name: "example",
-            streamType: "Movie",
-            streamId: "0",
+            streamId: 0,
             categoryId: "0",
-            rating: "0.0",
-            releaseYear: "00-00-0000",
-            posterImg: "",
-            backdropImg: ""
+            cardImg: ""
           };
           // Movie Card Init
+
           movieCard.num = video.num
           movieCard.name = this.extractName(video.name)
-          movieCard.releaseYear = this.extractYear(video.name)
-          movieCard.streamType = video.stream_type
           movieCard.streamId = video.stream_id
-          movieCard.posterImg = video.stream_icon
-          movieCard.rating = video.rating
           movieCard.categoryId = video.category_id
+          movieCard.cardImg = video.stream_icon
+
           movieCards[index] = movieCard
         });
         return movieCards
@@ -162,37 +157,6 @@ export class ShareService {
     return tmp_Object
   }
 
-  public extractLiveTVCards(videos) {
-    if (videos.length > 0) {
-      if (typeof (videos[0] == LiveTV)) {
-        let liveTVCards: LiveTVCard[] = []
-        videos.forEach((video, index) => {
-          var liveTVCard: LiveTVCard = {
-            num: 0,
-            name: "example",
-            streamType: 'LiveTV',
-            streamId: "0",
-            streamIcon: null,
-            epg_channel_id: null,
-            category_id: "0",
-            tv_archive_duration: 0
-          }
-          liveTVCard.num = video.num;
-          liveTVCard.name = video.name;
-          liveTVCard.streamType = video.stream_type;
-          liveTVCard.streamIcon = video.stream_icon;
-          liveTVCard.streamId = video.stream_id;
-          liveTVCard.epg_channel_id = video.epg_channel_id;
-          liveTVCard.category_id = video.category_id;
-          liveTVCard.tv_archive_duration = video.tv_archive_duration;
-          liveTVCards[index] = liveTVCard
-        });
-        return liveTVCards
-      }
-    }
-    return null
-  }
-
   public getLastSeries(series: Serie[], count: number) {
     var i, j;
     var maxIndex, maxDate
@@ -216,6 +180,36 @@ export class ShareService {
     return resultObjects
   }
 
+  public extractLiveTVCards(videos) {
+    if (videos.length > 0) {
+      if (typeof (videos[0] == LiveTV)) {
+        let liveTVCards: LiveTVCard[] = []
+        videos.forEach((video, index) => {
+          var liveTVCard: LiveTVCard = {
+            num: 0,
+            name: "example",
+            streamId: 0,
+            cardImg: "",
+            epg_channel_id: null,
+            category_id: "0",
+          }
+          liveTVCard.num = video.num;
+          liveTVCard.name = video.name;
+          liveTVCard.cardImg = video.stream_icon;
+          liveTVCard.streamId = video.stream_id;
+          liveTVCard.epg_channel_id = video.epg_channel_id;
+          liveTVCard.category_id = video.category_id;
+
+          liveTVCards[index] = liveTVCard
+        });
+        return liveTVCards
+      }
+    }
+    return null
+  }
+
+
+
   public extractSerieCards(series) {
     if (series.length > 0) {
       if (typeof (series[0] == Serie)) {
@@ -224,24 +218,15 @@ export class ShareService {
           var serieCard: SerieCard = {
             num: 0,
             name: "example",
-            streamType: 'Serie',
-            serieID: 0,
-            releaseDate: null,
-            rating: null,
-            rating_5based: 0,
-            posterImg: "",
-            backdropImg: "",
-            categoryID: ""
+            seriesId: 0,
+            cardImg: "",
+            categoryId: ""
           }
 
           serieCard.num = video.num
           serieCard.name = video.name
-          serieCard.serieID = video.series_id
-          serieCard.releaseDate = video.releaseDate
-          serieCard.rating = video.rating
-          serieCard.rating_5based = video.rating_5based
-          serieCard.posterImg = video.cover
-          serieCard.backdropImg = ""
+          serieCard.seriesId = video.series_id
+          serieCard.cardImg = video.cover
 
           serieCards[index] = serieCard
         });

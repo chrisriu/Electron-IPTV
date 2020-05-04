@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
-import { Movie, MovieCard } from '../../models';
+import { Category, Movie, MovieCard } from '../../models';
 import {ShareService, TestService} from '../../services';
 
 @Component({
@@ -16,12 +16,17 @@ export class MovieLandPageComponent implements OnInit {
     last_movies: Movie[]
     movieCards: MovieCard[];
 
+    categories: Object = {};
+
     constructor(private formBuilder: FormBuilder, private shareService: ShareService, private testService: TestService) {
       this.last_movies = this.shareService.getLastMovies(this.testService.movies, 10)
       this.movieCards = this.shareService.extractMovieCards(this.last_movies)
-     }
+    }
 
     ngOnInit(): void {
       this.searchForm = this.formBuilder.group({});
+      this.categories = this.shareService.categories["vod_categories"];
     }
+
+
 }

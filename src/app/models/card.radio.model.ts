@@ -5,5 +5,5 @@ export class RadioCard{
   streamId: string;
   releaseYear: string;
   rating: string;
-  img: string;
+  cardImg: string;
 }
