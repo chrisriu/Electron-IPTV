@@ -4,4 +4,5 @@ export class SerieCard{
   seriesId: number;
   cardImg: string;
   categoryId: string;
+  tmdbID: number;
 }

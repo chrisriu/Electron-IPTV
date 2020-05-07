@@ -9,7 +9,6 @@ export class EncDecryptService {
         try {
             return CryptoJS.AES.encrypt(JSON.stringify(data), this.encryptSecretKey).toString();
         } catch (e) {
-            console.log(e);
         }
     }
 
@@ -21,7 +20,6 @@ export class EncDecryptService {
             }
             return data;
         } catch (e) {
-            console.log(e);
         }
     }
 }

@@ -5,4 +5,5 @@ export class LiveTVCard{
   cardImg: string;
   epg_channel_id: string;
   category_id: string;
+  tmdbID: number;
 }

@@ -4,4 +4,5 @@ export class MovieCard{
   streamId: number;
   cardImg: string;
   categoryId: string;
+  tmdbID: number;
 }

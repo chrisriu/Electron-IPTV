@@ -35,7 +35,6 @@ function createWindow() {
 
 
 ipcMain.on('closeApp', (event, arg) => {
-  console.log("This is electron close")
   app.quit()
 })
 

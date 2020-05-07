@@ -23,9 +23,8 @@ export class SearchBoxComponent implements OnInit {
     (function ($) {
       $(document).ready(
         function() {
-          console.log("this is function ")
           if ($("#search_input").is(":focus")) {
-            console.log("This is focused")
+            // Search Function....
           }
           $("#search_input").focus(function() {
             $("#search_icon").css("display", "none");

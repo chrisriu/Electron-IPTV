@@ -4,11 +4,11 @@
   </div>
   <div class="slider_content">
     <section class="items">
-      <div *ngIf="cards.length > 0; then showCards else showNothing"> </div>
+      <div *ngIf="cards != null; then showCards else showNothing"> </div>
       <ng-template #showCards>
         <div class="carouselOfImages">
           <div class="carouselImage" style="background-size: cover;" *ngFor="let card of cards">
-            <img data-tab="bright" src="{{ card.img }}" />
+            <img data-tab="bright" src="{{ card.cardImg}}" />
             <p>{{ card.name }}</p>
           </div>
         </div>

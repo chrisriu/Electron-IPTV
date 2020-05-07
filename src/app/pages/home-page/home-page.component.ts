@@ -14,17 +14,10 @@ import { ShareService, TestService } from '../../services';
 export class HomePageComponent implements OnInit {
   searchForm: FormGroup;
 
-  last_movies: Movie[]
-  movieCards: MovieCard[];
-
-  fav_livetvs: LiveTV[]
-  liveTVCards: LiveTVCard[];
-
-  last_series: Serie[];
-  serieCards: SerieCard[];
-
-  fav_radios: Radio[];
-  radioCards: RadioCard[];
+  lastMovieCards: MovieCard[];
+  favLiveTVCards: LiveTVCard[];
+  lastSerieCards: SerieCard[];
+  favRadioCards: RadioCard[];
 
   movie_title = "Latest Added Movies";
   livetv_title = "Favorite TV Channels";
@@ -33,19 +26,14 @@ export class HomePageComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private testService: TestService,
     private shareService: ShareService,
   ) {
-    this.last_movies = this.shareService.getLastMovies(this.testService.movies, 10)
-    this.movieCards = this.shareService.extractMovieCards(this.last_movies)
 
-    this.fav_livetvs = this.shareService.getFavLiveTVs(this.testService.livetvs, 10)
-    this.liveTVCards = this.shareService.extractLiveTVCards(this.fav_livetvs)
+    this.lastMovieCards = this.shareService.lastMovieCards
+    this.favLiveTVCards = this.shareService.favLiveTVCards
+    this.lastSerieCards = this.shareService.lastSerieCards
+    this.favRadioCards = this.shareService.favRadioCards
 
-    this.last_series = this.shareService.getLastSeries(this.testService.series, 10)
-    this.serieCards = this.shareService.extractSerieCards(this.last_series)
-
-    this.radioCards = []
 
   }
 

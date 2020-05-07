@@ -58,7 +58,6 @@ export class SidebarMenuComponent implements OnInit {
 
   onResized(event: ResizedEvent) {
     this.width = event.newWidth;
-    console.log(this.width)
     if (this.width < 250) {
       this.doSlideAnimation(82)
     } else {
