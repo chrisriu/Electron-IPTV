@@ -11,10 +11,9 @@ declare var $: any;
 })
 export class CardRowFragmentComponent implements OnInit {
 
-  movies : Movie[]
   movieCards: MovieCard[]
 
-  constructor(private xcAPIService: XtreamCodeAPIService, private shareService: ShareService) { }
+  constructor(private shareService: ShareService) { }
 
   ngOnInit(): void {
     (function ($){
@@ -49,5 +48,7 @@ export class CardRowFragmentComponent implements OnInit {
         }
       )
     })(jQuery);
+
+    this.shareService.sortMovieCards(this.movieCards)
   }
 }

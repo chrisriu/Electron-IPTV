@@ -18,6 +18,7 @@ import {
   RadioCard,
 } from "../models";
 import { TMDbAPIService } from "./tmdb-api.service";
+import { XtreamCodeAPIService } from './xc-api.service'
 @Injectable()
 export class ShareService {
   public currentUser: any;
@@ -44,9 +45,11 @@ export class ShareService {
   public favLiveTVCards: LiveTVCard[];
   public favRadioCards: RadioCard[];
 
+  public sortedMovieCards: MovieCard[][];
+
   private ipc: IpcRenderer;
 
-  constructor(private tmdbAPIService: TMDbAPIService) {
+  constructor(private tmdbAPIService: TMDbAPIService, private xcAPIService: XtreamCodeAPIService) {
     if ((<any>window).require) {
       try {
         this.ipc = (<any>window).require("electron").ipcRenderer;
@@ -89,6 +92,13 @@ export class ShareService {
       return name.substring(0, name.length - 1);
     }
     return name;
+  }
+
+  public extractNameForAdult (nameForAdult){
+    if(nameForAdult.includes("FHD") || nameForAdult.includes("FHS")){
+      return nameForAdult.substring(4);
+    }
+    return nameForAdult;
   }
 
   public extractYear(name_Year) {
@@ -144,25 +154,24 @@ export class ShareService {
           .searchMovieByTitle(movieCard.name)
           .subscribe((data) => {
             var similarMovies = data["results"];
-            similarMovies.forEach((similarMovie, index) => {
-              movieCard.tmdbID = similarMovie["id"];
-              if (
-                similarMovie["release_date"].includes(
-                  this.extractYear(movie.name)
-                )
-              ) {
-                if (similarMovie["backdrop_path"] != null) {
-                  movieCard.cardImg =
-                    "https://image.tmdb.org/t/p/original/" +
-                    similarMovie["backdrop_path"];
-                } else {
-                  movieCard.cardImg =
-                    "https://image.tmdb.org/t/p/original/" +
-                    similarMovie["poster_path"];
-                }
+            for(var i = 0; i < similarMovies.length; i++){
+              let similarMovie = similarMovies[i]
+              if(similarMovie["release_date"] == ""){
+                break;
               }
-            });
+              if (similarMovie["release_date"].includes(this.extractYear(movie.name))) {
+                movieCard.tmdbID = similarMovie["id"];
+                if (similarMovie["backdrop_path"] != null) {
+                  movieCard.cardImg ="https://image.tmdb.org/t/p/original/" + similarMovie["backdrop_path"];
+                } else {
+                  movieCard.cardImg ="https://image.tmdb.org/t/p/original/" + similarMovie["poster_path"];
+                }
+                break;
+              }
+            }
           });
+        }else {
+          movieCard.name = this.extractNameForAdult(movie.name);
         }
         movieCards[index] = movieCard;
       });
@@ -235,5 +244,20 @@ export class ShareService {
   public extractRadioCards(radios: Radio[]) {
     // Return the cards of the radio
     return null;
+  }
+
+  public sortMovieCards(movieCards: MovieCard[]){
+    var resultMovieCards: MovieCard[][];
+    resultMovieCards = [];
+    console.log(this.categories)
+    console.log(this.categories["vod_categories"])
+    let movieCategories = this.categories["vod_categories"]
+    console.log(movieCategories);
+    movieCategories.forEach((category, index) => {
+      this.xcAPIService.sendVodStreamByCategoryIDRequest(this.currentUser["username"], this.currentUser["password"], category["category_id"])
+        .subscribe((data)=>{
+          console.log(`Category ${category["category_id"]} movies => `, data)
+      })
+    })
   }
 }

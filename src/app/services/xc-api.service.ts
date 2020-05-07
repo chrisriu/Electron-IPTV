@@ -31,4 +31,9 @@ export class XtreamCodeAPIService {
     const url = `${xcConfig.url}:${xcConfig.port}/player_api.php?username=${username}&password=${password}&action=get_series`
     return this.httpClient.get<Serie[]>(url)
   }
+
+  sendVodStreamByCategoryIDRequest(username: string, password: string, category_id: number){
+    const url = `${xcConfig.url}:${xcConfig.port}/player_api.php?username=${username}&password=${password}&action=get_vod_streams&category_id=${category_id}`
+    return this.httpClient.get<Movie[]>(url)
+  }
 }

@@ -16,7 +16,6 @@ declare var $: any;
 export class LastAddedMoviesComponent implements OnInit {
 
   @Input() cards: MovieCard[];
-  @Input() slider_title: string;
   sliderTitlePosX: number;
   subscription: any;
   constructor(private shareService: ShareService) { }
