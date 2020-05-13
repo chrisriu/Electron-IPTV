@@ -46,64 +46,35 @@ export class AccountInfoLoadingPageComponent implements OnInit {
         "serie_categories",
       ];
       categories.forEach((category, index) => {
-        this.xcService
-          .sendCategoryRequest(
-            this.selectedUser.username,
-            this.selectedUser.password,
-            category
-          )
-          .subscribe((data) => {
-            this.categoryData[category_params[index]] = data;
-          });
+        this.xcService.sendCategoryRequest(this.selectedUser.username, this.selectedUser.password, category).subscribe((data) => {
+          this.categoryData[category_params[index]] = data;
+        });
       });
 
-      this.xcService
-        .sendLiveTVStreamRequest(
-          this.selectedUser.username,
-          this.selectedUser.password
-        )
-        .subscribe((data) => {
-          var radioIndex = 0;
-          var livetvIndex = 0;
-          data.forEach((liveInfo, index) => {
-            if (liveInfo["stream_type"] == "radio_streams") {
-              this.radioStream[radioIndex] = liveInfo;
-              radioIndex = radioIndex + 1;
-            } else {
-              this.livetvStream[livetvIndex] = liveInfo;
-              livetvIndex = livetvIndex + 1;
-            }
-          });
+      this.xcService.sendLiveTVStreamRequest(this.selectedUser.username, this.selectedUser.password).subscribe((data) => {
+        var radioIndex = 0;
+        var livetvIndex = 0;
+        data.forEach((liveInfo, index) => {
+          if (liveInfo["stream_type"] == "radio_streams") {
+            this.radioStream[radioIndex] = liveInfo;
+            radioIndex = radioIndex + 1;
+          } else {
+            this.livetvStream[livetvIndex] = liveInfo;
+            livetvIndex = livetvIndex + 1;
+          }
         });
+      });
 
-      this.xcService
-        .sendVodStreamRequest(
-          this.selectedUser.username,
-          this.selectedUser.password
-        )
-        .subscribe((data) => {
-          this.vodStream = data;
-        });
-
-      this.xcService
-        .sendSerieStreamRequest(
-          this.selectedUser.username,
-          this.selectedUser.password
-        )
-        .subscribe((data) => {
-          this.serieStream = data;
-        });
-
+      this.xcService.sendVodStreamRequest(this.selectedUser.username, this.selectedUser.password).subscribe((data) => {
+        this.vodStream = data;
+      });
+      this.xcService.sendSerieStreamRequest(this.selectedUser.username, this.selectedUser.password).subscribe((data) => {
+        this.serieStream = data;
+      });
       setTimeout(() => {
         var success = false;
-        if (
-          this.categoryData &&
-          this.livetvStream &&
-          this.vodStream &&
-          this.serieStream
-        ) {
+        if (this.categoryData && this.livetvStream && this.vodStream && this.serieStream) {
           success = true;
-
           this.shareService.categories = this.categoryData;
 
           /** Download of the videos and extract cards of the videos */
@@ -127,12 +98,11 @@ export class AccountInfoLoadingPageComponent implements OnInit {
           this.shareService.favLiveTVCards = this.shareService.extractLiveTVCards(this.shareService.favLiveTVs);
           this.shareService.lastSerieCards = this.shareService.extractSerieCards(this.shareService.lastSeries);
           this.shareService.favRadioCards = this.shareService.extractRadioCards(this.shareService.favRadios);
+          this.shareService.sortMovies()
         }
         resolve(success);
       }, 7000);
     });
-    promise_data.then((values) => {});
-
     /** Animation of the progress bar of the loading account info - Downloading and Extracting Cards */
 
     (function ($) {

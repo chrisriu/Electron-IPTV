@@ -17,6 +17,7 @@ import { SearchBoxComponent } from './search-box/search-box.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { CardRowFragmentComponent } from './card-row-fragment/card-row-fragment.component';
+import { MovieCardBlockComponent } from './movie-card-block/movie-card-block.component';
 @NgModule({
   declarations: [
     ResizeDiv,
@@ -28,6 +29,8 @@ import { CardRowFragmentComponent } from './card-row-fragment/card-row-fragment.
     SearchBoxComponent,
 
     CardRowFragmentComponent,
+
+    MovieCardBlockComponent,
   ],
   imports: [
     BrowserModule,

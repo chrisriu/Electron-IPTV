@@ -4,7 +4,6 @@ import {
   EventEmitter,
   Injectable,
   Output,
-  ɵSWITCH_COMPILE_INJECTABLE__POST_R3__,
 } from "@angular/core";
 
 import {
@@ -45,7 +44,8 @@ export class ShareService {
   public favLiveTVCards: LiveTVCard[];
   public favRadioCards: RadioCard[];
 
-  public sortedMovieCards: MovieCard[][];
+  public sortedMovies: Object = {};
+  public sortedMovieCards: Object = {};
 
   private ipc: IpcRenderer;
 
@@ -107,6 +107,9 @@ export class ShareService {
     year = name_Year_Array[name_Year_Array.length - 1];
     return year;
   }
+  public exchangeSpaceByDash(str: string){
+    return str.replace(/\s+/g, '-').toLowerCase();
+  }
 
   public getLastMovies(movies: Movie[], count: number) {
     var i, j;
@@ -162,9 +165,9 @@ export class ShareService {
               if (similarMovie["release_date"].includes(this.extractYear(movie.name))) {
                 movieCard.tmdbID = similarMovie["id"];
                 if (similarMovie["backdrop_path"] != null) {
-                  movieCard.cardImg ="https://image.tmdb.org/t/p/original/" + similarMovie["backdrop_path"];
+                  movieCard.cardImg ="https://image.tmdb.org/t/p/w300/" + similarMovie["backdrop_path"];
                 } else {
-                  movieCard.cardImg ="https://image.tmdb.org/t/p/original/" + similarMovie["poster_path"];
+                  movieCard.cardImg ="https://image.tmdb.org/t/p/w300/" + similarMovie["poster_path"];
                 }
                 break;
               }
@@ -246,18 +249,16 @@ export class ShareService {
     return null;
   }
 
-  public sortMovieCards(movieCards: MovieCard[]){
-    var resultMovieCards: MovieCard[][];
-    resultMovieCards = [];
-    console.log(this.categories)
-    console.log(this.categories["vod_categories"])
+  public sortMovies(){
     let movieCategories = this.categories["vod_categories"]
-    console.log(movieCategories);
+    console.log("Movie Categories =>", movieCategories)
     movieCategories.forEach((category, index) => {
       this.xcAPIService.sendVodStreamByCategoryIDRequest(this.currentUser["username"], this.currentUser["password"], category["category_id"])
-        .subscribe((data)=>{
-          console.log(`Category ${category["category_id"]} movies => `, data)
-      })
+          .subscribe((data)=>{
+            this.sortedMovies[category["category_name"]] = data
+            this.sortedMovieCards[category["category_name"]] = this.extractMovieCards(data)
+        })
+
     })
   }
 }
