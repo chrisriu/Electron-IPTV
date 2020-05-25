@@ -1,23 +1,23 @@
-import Flickity from 'flickity';
+import { Component, OnInit, Input } from '@angular/core';
 import jQuery from 'jquery';
 import jQueryBridget from 'jquery-bridget';
-
-import { Component, Input, OnInit } from '@angular/core';
-
+import Flickity from 'flickity';
 import { MovieCard } from '../../models';
 import { ShareService } from '../../services/share.service';
-
-declare var $: any;
+import { faPlay } from '@fortawesome/free-solid-svg-icons';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 @Component({
-  selector: 'app-last-added-movies',
-  templateUrl: './last-added-movies.component.html',
-  styleUrls: ['./last-added-movies.component.css']
+  selector: 'app-movie-card-slider',
+  templateUrl: './movie-card-slider.component.html',
+  styleUrls: ['./movie-card-slider.component.css']
 })
-export class LastAddedMoviesComponent implements OnInit {
+export class MovieCardSliderComponent implements OnInit {
 
   @Input() cards: MovieCard[];
   sliderTitlePosX: number;
   subscription: any;
+  playIcon = faPlay
+  starIcon = faStar
   constructor(private shareService: ShareService) { }
 
   ngOnInit(): void {
@@ -28,7 +28,7 @@ export class LastAddedMoviesComponent implements OnInit {
           Flickity.setJQuery($);
           jQueryBridget('flickity', Flickity, $);
 
-          var $imagesCarousel = $('#last_movies .carouselOfImages').flickity({
+          var $imagesCarousel = $('#large_moviecard_slider .carouselOfImages').flickity({
             contain: true,
             autoplay: false,
             wrapAround: true,
@@ -42,29 +42,29 @@ export class LastAddedMoviesComponent implements OnInit {
             if ($length <= '3') {
               $imagesCarousel.flickity('destroy');
             }
-            $('#last_movies .carouselOfImages .carouselImage').css('margin-left', '0px');
-            $('#last_movies .carouselOfImages .carouselImage').removeClass("nextToSelected");
-            $('#last_movies .carouselOfImages .carouselImage').eq($current - 1).addClass("nextToSelected");
-            $('#last_movies .carouselOfImages .carouselImage').eq($current - 1).css('margin-left', '-35px');
+            $('#large_moviecard_slider .carouselOfImages .carouselImage').css('margin-left', '0px');
+            $('#large_moviecard_slider .carouselOfImages .carouselImage').removeClass("nextToSelected");
+            $('#large_moviecard_slider .carouselOfImages .carouselImage').eq($current - 1).addClass("nextToSelected");
+            $('#large_moviecard_slider .carouselOfImages .carouselImage').eq($current - 1).css('margin-left', '-35px');
             if ($current + 1 == $length) {
               var $endCell = "0"
             } else {
               var $endCell_num = $current + 1;
               var $endCell: string = $endCell_num.toString();
             }
-            $('#last_movies .carouselOfImages .carouselImage').eq($endCell).addClass("nextToSelected");
-            $('#last_movies .carouselOfImages .carouselImage').eq($endCell).css('margin-left', '35px');
-            $('#last_movies .flickity-button.flickity-prev-next-button.previous').css('left', '114px');
-            $('#last_movies .flickity-button.flickity-prev-next-button.next').css('right', '34px');
-            $('#last_movies .flickity-prev-next-button').css('width', '50px');
-            $('#last_movies .flickity-prev-next-button').css('height', '50px');
-            $('#last_movies .flickity-viewport').css('height', '400px')
+            $('#large_moviecard_slider .carouselOfImages .carouselImage').eq($endCell).addClass("nextToSelected");
+            $('#large_moviecard_slider .carouselOfImages .carouselImage').eq($endCell).css('margin-left', '35px');
+            $('#large_moviecard_slider .flickity-button.flickity-prev-next-button.previous').css('left', '114px');
+            $('#large_moviecard_slider .flickity-button.flickity-prev-next-button.next').css('right', '84px');
+            $('#large_moviecard_slider .flickity-prev-next-button').css('width', '50px');
+            $('#large_moviecard_slider .flickity-prev-next-button').css('height', '50px');
+            $('#large_moviecard_slider .flickity-viewport').css('height', '631px')
           };
           resizeCells();
           $imagesCarousel.on('scroll.flickity', function () {
             resizeCells();
           });
-          $("#last_movies .carouselImage img").click(function () {
+          $("#large_moviecard_slider .carouselImage img").click(function () {
             var $this = $(this);
             var imageID = $this.attr('data-tab');
             var imageSrc = $this.attr('src');

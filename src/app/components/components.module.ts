@@ -16,8 +16,13 @@ import { LastAddedTVSeriesComponent } from './last-added-tvseries/last-added-tvs
 import { SearchBoxComponent } from './search-box/search-box.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-import { CardRowFragmentComponent } from './card-row-fragment/card-row-fragment.component';
+
 import { MovieCardBlockComponent } from './movie-card-block/movie-card-block.component';
+import { MovieBlockScrollDirective } from './movie-block-scroll.directive';
+import { MovieCardSliderComponent } from './movie-card-slider/movie-card-slider.component';
+import { RelatedMovieBlocksComponent } from './related-movie-blocks/related-movie-blocks.component';
+
+import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [
     ResizeDiv,
@@ -27,10 +32,10 @@ import { MovieCardBlockComponent } from './movie-card-block/movie-card-block.com
     FavoriteLiveTVsComponent,
     LastAddedTVSeriesComponent,
     SearchBoxComponent,
-
-    CardRowFragmentComponent,
-
     MovieCardBlockComponent,
+    MovieBlockScrollDirective,
+    MovieCardSliderComponent,
+    RelatedMovieBlocksComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,7 +45,8 @@ import { MovieCardBlockComponent } from './movie-card-block/movie-card-block.com
     AngularResizedEventModule,
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    RouterModule
   ],
   exports: [
     ResizeDiv,
@@ -50,7 +56,9 @@ import { MovieCardBlockComponent } from './movie-card-block/movie-card-block.com
     FavoriteLiveTVsComponent,
     LastAddedTVSeriesComponent,
     SearchBoxComponent,
-    CardRowFragmentComponent
+    MovieCardBlockComponent,
+    MovieCardSliderComponent,
+    RelatedMovieBlocksComponent
   ],
 })
 export class ComponentsModule {

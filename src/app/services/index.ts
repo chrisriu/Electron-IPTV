@@ -6,5 +6,3 @@ export * from './tmdb-api.service';
 export * from './user.service';
 export * from './util.service';
 export * from './xc-api.service';
-
-

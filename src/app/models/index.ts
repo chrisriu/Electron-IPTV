@@ -9,3 +9,5 @@ export * from './livetv.model';
 export * from './movie.model';
 export * from './radio.model';
 export * from './serie.model';
+export * from './categorymoviecards.model';
+export * from './info.movie.model';

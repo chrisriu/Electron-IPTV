@@ -13,11 +13,39 @@ export class TMDbAPIService {
 
   public searchMovieByTitle(query: String){
     const url = `${tmdbConfig.url}/${tmdbConfig.v_api}/search/movie?api_key=${tmdbConfig.api_key}&query=${query}`
-    return this.httpClient.get(url)
+    return new Promise((resolve, reject) => {
+      this.httpClient.get(url).toPromise().then(res=>{
+        resolve(res)
+      }, err => {
+        reject(err);
+      })
+    })
   }
 
   public searchTVByTitle(query: string){
     const url = `${tmdbConfig.url}/${tmdbConfig.v_api}/search/tv?api_key=${tmdbConfig.api_key}&query=${query}`
     return this.httpClient.get(url)
+  }
+
+  public getMovieDetailById(id: string){
+    const url = `${tmdbConfig.url}/${tmdbConfig.v_api}/movie/${id}?api_key=${tmdbConfig.api_key}`
+    return new Promise((resolve, reject) => {
+      this.httpClient.get(url).toPromise().then(res=>{
+        resolve(res)
+      }, err => {
+        reject(err);
+      })
+    })
+  }
+
+  public getMovieCastsById(id: string){
+    const url = `${tmdbConfig.url}/${tmdbConfig.v_api}/movie/${id}/credits?api_key=${tmdbConfig.api_key}`
+    return new Promise((resolve, reject) => {
+      this.httpClient.get(url).toPromise().then(res=>{
+        resolve(res)
+      }, err => {
+        reject(err);
+      })
+    })
   }
 }

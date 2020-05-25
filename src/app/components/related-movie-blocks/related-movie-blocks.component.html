@@ -1,0 +1,13 @@
+<h4>Related</h4>
+<table >
+  <tr *ngFor="let rowMovieCard of rowMovieCards">
+    <td *ngFor="let movieCard of rowMovieCard">
+      <div class="card">
+        <a [routerLink] = "['/main/vods', movieCard.num]">
+          <img src="https://image.tmdb.org/t/p/original/{{movieCard.cardImg}}" alt="">
+          <p>{{movieCard.name}}</p>
+        </a>
+      </div>
+    </td>
+  </tr>
+</table>

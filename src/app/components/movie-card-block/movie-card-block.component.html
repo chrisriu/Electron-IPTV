@@ -1,1 +1,29 @@
-
+<div class="movieBlocks">
+  <div appMovieBlockScroll (mouseWheelUp)=onMouseWheelUp($event) (mouseWheelDown) = onMouseWheelDown($event) class="cardBlocks" *ngFor="let categoryMovieData of sortedCategoryMovieCards">
+    <div class="sliders" id="first_row">
+      <div class="slider_title">
+        <p>{{categoryMovieData.categoryTitle}}</p>
+      </div>
+      <div class="slider_content">
+        <section class="items">
+          <div *ngIf="categoryMovieData != null; then showFirstRowCards else showFirstRowNothing"> </div>
+          <ng-template #showFirstRowCards>
+            <div class="carouselOfImages">
+              <div class="carouselImage" style="background-size:cover; position:absolute;" *ngFor="let card of categoryMovieData.categoryMovieCards">
+                <img data-tab="bright" src="https://image.tmdb.org/t/p/w1280{{card.cardImg}}" />
+                <p>{{card.name}}</p>
+              </div>
+            </div>
+          </ng-template>
+          <ng-template #showFirstRowNothing>
+            <div class="nothingItems">
+              <p>NO VIDEOS LOADED YET</p>
+            </div>
+          </ng-template>
+        </section>
+        <div id="dark"></div>
+        <div id="lightbox"></div>
+      </div>
+    </div>
+  </div>
+</div>>

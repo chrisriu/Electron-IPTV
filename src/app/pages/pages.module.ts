@@ -36,6 +36,8 @@ import { RecordingLandPageComponent } from './recording-land-page/recording-land
 import { SidebarMenuComponent } from './sidebar-menu/sidebar-menu.component';
 import { TvchannelLandPageComponent } from './tvchannel-land-page/tvchannel-land-page.component';
 import { TvseriesLandPageComponent } from './tvseries-land-page/tvseries-land-page.component';
+import { VodCategoryPageComponent } from './vod-category-page/vod-category-page.component';
+import { VODPageComponent } from './vodpage/vodpage.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,8 @@ import { TvseriesLandPageComponent } from './tvseries-land-page/tvseries-land-pa
     AccountConfirmPageComponent,
     AccountInfoLoadingPageComponent,
     ConfirmLogoutPageComponent,
+    VodCategoryPageComponent,
+    VODPageComponent,
   ],
 
   imports: [

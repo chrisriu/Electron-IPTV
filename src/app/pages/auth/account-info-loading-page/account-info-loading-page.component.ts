@@ -13,117 +13,98 @@ declare var $: any;
   styleUrls: ["./account-info-loading-page.component.css"],
 })
 export class AccountInfoLoadingPageComponent implements OnInit {
-  @Input() progress_value: number = 0;
+  progress_value: number = 0;
   selectedUser: User = null;
   categoryData: Object = {};
   livetvStream: LiveTV[] = [];
   vodStream: Movie[] = [];
   serieStream: Serie[] = [];
   radioStream: Radio[] = [];
-
+  public size;
   constructor(
     private router: Router,
     private xcService: XtreamCodeAPIService,
     private shareService: ShareService
-  ) {}
-  ngOnInit(): void {
-    // Get Selected User info...
-    this.selectedUser = this.shareService.currentUser;
+  ) {
 
-    // Create this variable for using typescript methods in jQuery...
-    var self = this;
-
-    // Fetching Data from XC API...
-    const promise_data = new Promise((resolve) => {
-      let categories = [
-        "get_live_categories",
-        "get_vod_categories",
-        "get_series_categories",
-      ];
-      let category_params = [
-        "live_categories",
-        "vod_categories",
-        "serie_categories",
-      ];
-      categories.forEach((category, index) => {
-        this.xcService.sendCategoryRequest(this.selectedUser.username, this.selectedUser.password, category).subscribe((data) => {
-          this.categoryData[category_params[index]] = data;
-        });
-      });
-
-      this.xcService.sendLiveTVStreamRequest(this.selectedUser.username, this.selectedUser.password).subscribe((data) => {
-        var radioIndex = 0;
-        var livetvIndex = 0;
-        data.forEach((liveInfo, index) => {
-          if (liveInfo["stream_type"] == "radio_streams") {
-            this.radioStream[radioIndex] = liveInfo;
-            radioIndex = radioIndex + 1;
-          } else {
-            this.livetvStream[livetvIndex] = liveInfo;
-            livetvIndex = livetvIndex + 1;
-          }
-        });
-      });
-
-      this.xcService.sendVodStreamRequest(this.selectedUser.username, this.selectedUser.password).subscribe((data) => {
-        this.vodStream = data;
-      });
-      this.xcService.sendSerieStreamRequest(this.selectedUser.username, this.selectedUser.password).subscribe((data) => {
-        this.serieStream = data;
-      });
-      setTimeout(() => {
-        var success = false;
-        if (this.categoryData && this.livetvStream && this.vodStream && this.serieStream) {
-          success = true;
-          this.shareService.categories = this.categoryData;
-
-          /** Download of the videos and extract cards of the videos */
-          this.shareService.livetvs = this.livetvStream;
-          this.shareService.movies = this.vodStream;
-          this.shareService.series = this.serieStream;
-          this.shareService.radios = this.radioStream;
-
-          this.shareService.movieCards = this.shareService.extractMovieCards(this.shareService.movies);
-          this.shareService.livetvCards = this.shareService.extractLiveTVCards(this.shareService.livetvs);
-          this.shareService.serieCards = this.shareService.extractSerieCards(this.shareService.series);
-          this.shareService.radioCards = this.shareService.extractRadioCards(this.shareService.radios);
-
-          /** Download of the favorite and latest videos and extract cards of the favorite and latest videos */
-          this.shareService.lastMovies = this.shareService.getLastMovies(this.shareService.movies, 10);
-          this.shareService.favLiveTVs = this.shareService.getFavLiveTVs(this.shareService.livetvs, 10);
-          this.shareService.lastSeries = this.shareService.getLastSeries(this.shareService.series, 10);
-          this.shareService.favRadios = this.shareService.getFavRadios(this.shareService.radios, 10);
-
-          this.shareService.lastMovieCards = this.shareService.extractMovieCards(this.shareService.lastMovies);
-          this.shareService.favLiveTVCards = this.shareService.extractLiveTVCards(this.shareService.favLiveTVs);
-          this.shareService.lastSerieCards = this.shareService.extractSerieCards(this.shareService.lastSeries);
-          this.shareService.favRadioCards = this.shareService.extractRadioCards(this.shareService.favRadios);
-          this.shareService.sortMovies()
-        }
-        resolve(success);
-      }, 7000);
-    });
-    /** Animation of the progress bar of the loading account info - Downloading and Extracting Cards */
-
-    (function ($) {
-      $(document).ready(function () {
-        var size = 0;
-        var interval = setInterval(function () {
-          if (size > 91) {
-            size = 100;
-          } else {
-            size += Math.random() * 9;
-          }
-          $(".inner_bar").css("width", size + "%");
-          if (size >= 100) {
-            self.directToMain();
-            clearInterval(interval);
-          }
-        }, 700);
-      });
-    })(jQuery);
   }
-  directToMain() {
+  async ngOnInit(){
+    this.size = 0;
+    let interval = setInterval(()=>{
+      if(this.size<87){
+        this.size += Math.random()*20
+      } else {
+        this.size = 99.9  
+      }
+      
+    }, 400)
+
+    const currentUser = this.shareService.currentUser;
+    const currentUsername = currentUser["username"];
+    const currentPassword = currentUser["password"];
+
+    let categoriesData = await this.getCategories(currentUsername, currentPassword)
+    this.shareService.categories = categoriesData
+
+
+    const streams = await this.getStreams(currentUsername, currentPassword)
+    this.shareService.livetvs = streams[0]["livetv"]
+    this.shareService.radios = streams[0]["radio"]
+    this.shareService.movies = streams[1]
+    this.shareService.series = streams[2]
+    this.shareService.lastMovies = this.shareService.getLastVods(streams[1], 10)
+    this.shareService.lastSeries = this.shareService.getLastSeries(streams[2], 10)
+
+    /* Get the favorite LiveTVs and Radios*/
+
+
+    /* Extract the cards of Videos */
+    this.shareService.movieCards = await this.shareService.extractMovieCards(this.shareService.movies)
+    this.shareService.lastMovieCards = await this.shareService.extractMovieCards(this.shareService.lastMovies)
+
+    this.shareService.serieCards = this.shareService.extractSerieCards(this.shareService.series)
+    this.shareService.lastSerieCards = this.shareService.extractSerieCards(this.shareService.lastSeries)
+
+    this.size = 100;
+    clearInterval(interval)
+
     this.router.navigate(["/main/home"]);
+
+  }
+
+  async getCategories(username, password){
+    let categories_type = [ "get_live_categories", "get_vod_categories", "get_series_categories" ];
+    let categories = []
+    categories_type.map((category_type, index) => {
+      categories.push(this.xcService.sendCategoryRequestUsingPromise(username, password, category_type))
+    } )
+    await Promise.all(categories)
+    categories = categories.map(m=>m.__zone_symbol__value)
+    return categories
+  }
+
+  async getLiveStreams(username, password){
+    return await this.xcService.sendLiveTVStreamRequestUsingPromise(username, password)
+  }
+
+  async getVodStreams(username, password){
+    return await this.xcService.sendVodStreamRequestUsingPromise(username, password)
+  }
+
+  async getSerieStreams(username, password){
+    return await this.xcService.sendSerieStreamRequestUsingPromise(username, password)
+  }
+
+  async getStreams(username, password){
+    let streams = []
+
+    let stream_promises = [];
+    stream_promises.push(this.xcService.sendLiveTVStreamRequestUsingPromise(username, password));
+    stream_promises.push(this.xcService.sendVodStreamRequestUsingPromise(username, password));
+    stream_promises.push(this.xcService.sendSerieStreamRequestUsingPromise(username, password));
+
+    await Promise.all(stream_promises)
+    streams = stream_promises.map(m=>m.__zone_symbol__value)
+    return streams
   }
 }

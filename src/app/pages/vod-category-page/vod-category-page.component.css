@@ -1,0 +1,9 @@
+.vod_category_detail_page{
+  width: 100%;
+  overflow-x: hidden;
+  height: 100vh;
+  overflow-y: auto;
+}
+.vod_category_last_movies{
+  width: 100%;
+}

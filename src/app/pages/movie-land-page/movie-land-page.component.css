@@ -35,7 +35,7 @@
 }
 
 .main_content {
-  margin-top: 40px;
+  margin-top: 25px;
   width: 100%;
 }
 
@@ -48,6 +48,10 @@
   height: 26px !important;
   width: auto !important;
   color: #808182 !important;
+}
+
+.sliders#last_movies{
+  margin-bottom: 5px;
 }
 
 

@@ -36,4 +36,70 @@ export class XtreamCodeAPIService {
     const url = `${xcConfig.url}:${xcConfig.port}/player_api.php?username=${username}&password=${password}&action=get_vod_streams&category_id=${category_id}`
     return this.httpClient.get<Movie[]>(url)
   }
+
+  sendCategoryRequestUsingPromise(username: string, password: string, category_name: string){
+    const url = `${xcConfig.url}:${xcConfig.port}/player_api.php?username=${username}&password=${password}&action=${category_name}`
+    return new Promise((resolve, reject) => {
+      this.httpClient.get<Category[]>(url).toPromise().then(res => {
+        resolve(res)
+      }, err=>{
+        reject(err)
+      })
+    })
+  }
+
+  sendLiveTVStreamRequestUsingPromise(username: string, password: string){
+    const url = `${xcConfig.url}:${xcConfig.port}/player_api.php?username=${username}&password=${password}&action=get_live_streams`
+    return new Promise((resolve, reject) => {
+      this.httpClient.get<LiveTV[]>(url).toPromise().then(res=>{
+        let livetvs = [];
+        let radios = [];
+        res.forEach((stream, index) => {
+          if(stream.stream_type == "live"){
+            livetvs.push(stream)
+          } else {
+            radios.push(stream)
+          }
+        })
+        let live_data = {"livetv": livetvs, "radio": radios};
+        resolve(live_data)
+      }, err=>{
+        reject(err)
+      })
+    })
+  }
+
+  sendVodStreamRequestUsingPromise(username: string, password: string){
+    const url = `${xcConfig.url}:${xcConfig.port}/player_api.php?username=${username}&password=${password}&action=get_vod_streams`
+    return new Promise((resolve, reject) => {
+      this.httpClient.get<Movie[]>(url).toPromise().then(res => {
+        resolve(res)
+      }, err=>{
+        reject(err)
+      })
+    })
+  }
+
+  sendSerieStreamRequestUsingPromise(username: string, password: string){
+    const url = `${xcConfig.url}:${xcConfig.port}/player_api.php?username=${username}&password=${password}&action=get_series`
+    return new Promise((resolve, reject) => {
+      this.httpClient.get<Serie[]>(url).toPromise().then(res=>{
+        resolve(res)
+      }, err => {
+        reject(err)
+      })
+    })
+  }
+
+  sendVodStreamRequestCategoryIDUsingPromise(username: string, password: string, category_id: String){
+    const url = `${xcConfig.url}:${xcConfig.port}/player_api.php?username=${username}&password=${password}&action=get_vod_streams&category_id=${category_id}`
+    return new Promise((resolve, reject) => {
+      this.httpClient.get<Movie[]>(url).toPromise().then(res=>{
+        resolve(res)
+      }, err => {
+        reject(err)
+      })
+    })
+  }
+
 }

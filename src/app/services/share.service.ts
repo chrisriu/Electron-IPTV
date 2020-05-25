@@ -6,16 +6,7 @@ import {
   Output,
 } from "@angular/core";
 
-import {
-  LiveTV,
-  LiveTVCard,
-  Movie,
-  MovieCard,
-  Serie,
-  SerieCard,
-  Radio,
-  RadioCard,
-} from "../models";
+import { LiveTV, LiveTVCard, Movie, MovieCard, MovieInfo, Serie, SerieCard, Radio, RadioCard} from "../models";
 import { TMDbAPIService } from "./tmdb-api.service";
 import { XtreamCodeAPIService } from './xc-api.service'
 @Injectable()
@@ -23,16 +14,20 @@ export class ShareService {
   public currentUser: any;
   public currentServer: any;
 
-  public categories: Object = {};
-  public livetvs: LiveTV[];
-  public movies: Movie[];
-  public series: Serie[];
-  public radios: Radio[];
+  public currentMovieBlockRowIndex: number = 0;
+
+  public categories: any;
+  public livetvs: any;
+  public movies: any;
+  public series: any;
+  public radios: any;
 
   public livetvCards: LiveTVCard[];
   public movieCards: MovieCard[];
   public serieCards: SerieCard[];
   public radioCards: RadioCard[];
+
+  public movieInfos: MovieInfo[];
 
   public lastMovies: Movie[];
   public lastSeries: Serie[];
@@ -80,18 +75,16 @@ export class ShareService {
     this.ipc.send("closeApp");
   }
   public extractName(name_Year) {
-    var name_Year_Array = name_Year.split(" - ");
-    var name = "";
-    name_Year_Array.forEach((element, index) => {
-      if (index != name_Year_Array.length - 1) {
-        name += element + " ";
-      }
-    });
 
-    if (name.substr(name.length - 1) == " ") {
-      return name.substring(0, name.length - 1);
+    let regex = /\(\d{4}\)/;
+    let yearResult = name_Year.match(regex);
+    let movieName = name_Year
+    if (yearResult != null){
+      yearResult = yearResult[0]
+      movieName = name_Year.replace(yearResult, "")
+      movieName = movieName.substring(0, movieName.length-1)
     }
-    return name;
+    return movieName;
   }
 
   public extractNameForAdult (nameForAdult){
@@ -102,88 +95,128 @@ export class ShareService {
   }
 
   public extractYear(name_Year) {
-    var name_Year_Array = name_Year.split(" - ");
-    var year = "";
-    year = name_Year_Array[name_Year_Array.length - 1];
-    return year;
+    let regex = /\(\d{4}\)/;
+    let yearResult = name_Year.match(regex);
+    if (yearResult != null){
+      yearResult = yearResult[0];
+      return yearResult.substring(1, yearResult.length-1)
+    } else {
+      return "xxxx"
+    }
+  }
+
+  public extractGenres(genreIds){
+    let result: string = "";
+    genreIds.forEach((genreId, index) => {
+      result += genreId["name"]+" / ";
+    })
+
+    return result.substring(0,result.length-3);
   }
   public exchangeSpaceByDash(str: string){
     return str.replace(/\s+/g, '-').toLowerCase();
   }
 
-  public getLastMovies(movies: Movie[], count: number) {
-    var i, j;
-    var maxIndex, maxDate;
-    var tmp: Movie;
-    let result_Object: Movie[] = [];
-    for (i = 0; i < count; i++) {
+  public getLastVods(movies, count) {
+    let maxIndex, maxDate, temp;
+    count = movies.length < count?movies.length:count;
+    let result_Object = [];
+    for(var i = 0; i < count; i++){
       maxIndex = i;
       maxDate = movies[i].added;
-      for (j = i + 1; j < movies.length; j++) {
-        if (movies[j].added > maxDate) {
+      for(var j = i+1; j<movies.length; j++){
+        if(movies[j].added > maxDate){
           maxIndex = j;
           maxDate = movies[j].added;
-          tmp = movies[i];
-          movies[i] = movies[maxIndex];
-          movies[maxIndex] = tmp;
+          temp = movies[i];
+          movies[i] = movies[j];
+          movies[maxIndex] = temp
         }
       }
-      result_Object[i] = movies[i];
+      result_Object[i] = movies[i]
     }
-
-    return result_Object;
+    return result_Object
   }
 
-  public extractMovieCards(movies: Movie[]) {
-    if (movies.length > 0) {
-      let movieCards: MovieCard[] = [];
-      movies.forEach((movie, index) => {
-        var movieCard: MovieCard = {
-          num: 0,
-          name: "example",
-          streamId: 0,
-          categoryId: "0",
-          cardImg: "",
-          tmdbID: 0,
-        };
-        // Movie Card Init
-        movieCard.num = movie.num;
-        movieCard.name = this.extractName(movie.name);
-        movieCard.streamId = movie.stream_id;
-        movieCard.categoryId = movie.category_id;
-        movieCard.cardImg = movie.stream_icon;
-        if(movieCard.name != ""){
-          this.tmdbAPIService
-          .searchMovieByTitle(movieCard.name)
-          .subscribe((data) => {
-            var similarMovies = data["results"];
-            for(var i = 0; i < similarMovies.length; i++){
-              let similarMovie = similarMovies[i]
-              if(similarMovie["release_date"] == ""){
-                break;
-              }
-              if (similarMovie["release_date"].includes(this.extractYear(movie.name))) {
-                movieCard.tmdbID = similarMovie["id"];
-                if (similarMovie["backdrop_path"] != null) {
-                  movieCard.cardImg ="https://image.tmdb.org/t/p/w300/" + similarMovie["backdrop_path"];
-                } else {
-                  movieCard.cardImg ="https://image.tmdb.org/t/p/w300/" + similarMovie["poster_path"];
-                }
-                break;
-              }
-            }
-          });
-        }else {
-          movieCard.name = this.extractNameForAdult(movie.name);
+  public getLastSeries(series, count){
+    let maxIndex, maxDate, temp;
+    let result_Object = [];
+    count = series.length<count?series.length:count;
+
+    for(var i = 0; i < count; i++){
+      maxIndex = i;
+      maxDate = series[i].added;
+      for(var j = i+1; j<series.length; j++){
+        if(series[j].releaseDate > maxDate){
+          maxIndex = j;
+          maxDate = series[j].releaseDate;
+          temp = series[i];
+          series[i] = series[j];
+          series[maxIndex] = temp
         }
-        movieCards[index] = movieCard;
-      });
-      return movieCards;
+      }
+      result_Object[i] = series[i]
     }
-    return null;
+    return result_Object
   }
 
-  public getFavLiveTVs(livetvs: LiveTV[], count: number) {
+  public async extractMovieCards(movies){
+    let movieCards = []
+    let tmdbAPIInfos = []
+    try{
+      let moviesPromise = [];
+      movies.forEach((movie, index) => {
+        const extractMovieName = this.extractName(movie.name)
+        if(extractMovieName && extractMovieName.length){
+          moviesPromise.push(this.tmdbAPIService.searchMovieByTitle(extractMovieName))
+        }
+      });
+
+      await Promise.all(moviesPromise);
+
+      moviesPromise.forEach(async (moviePromise, index) => {
+        const extractMovieName = this.extractName(movies[index].name)
+        const extractMovieYear = this.extractYear(movies[index].name)
+        const tmdbResults = moviePromise.__zone_symbol__value["results"];
+        let movieCard = new MovieCard()
+        let tmdbID;
+        let tmdbBackdropUrl;
+        let tmdbReleaseDate;
+        for (var i=0; i<tmdbResults.length; i++){
+
+          if(tmdbResults[i]["release_date"] == "undefined" || tmdbResults[i]["release_date"] == "" || !("release_date" in tmdbResults[i]) ){
+            continue;
+          }
+          if(extractMovieYear === "xxxx"){
+            tmdbID = tmdbResults[0]["id"]
+            tmdbBackdropUrl = tmdbResults[0]["backdrop_path"]
+            tmdbReleaseDate = tmdbResults[0]["release_date"]
+            break;
+          }
+          if(tmdbResults[i]["release_date"].includes(extractMovieYear)){
+            tmdbID = tmdbResults[i]["id"]
+            tmdbBackdropUrl = tmdbResults[i]["backdrop_path"];
+            break;
+          }
+        }
+
+        // Get Movie Detail from TMDB API using tmdbID..
+        movieCard.num = movies[index].num
+        movieCard.name = extractMovieName;
+        movieCard.streamId = movies[index].stream_id
+        movieCard.cardImg = tmdbBackdropUrl;
+        movieCard.categoryId = movies[index].category_id;
+        movieCard.tmdbID = tmdbID;
+        movieCards.push(movieCard)
+      })
+    } catch(e){
+      console.log(e)
+    } finally{
+      return movieCards
+    }
+  }
+
+  public getFavLiveTVs(livetvs) {
     // Return the favorite LiveTVs...
     return null;
   }
@@ -193,41 +226,13 @@ export class ShareService {
     return null;
   }
 
-  public getLastSeries(series: Serie[], count: number) {
-    var i, j;
-    var maxIndex, maxDate;
-    var tmp: Serie;
-    let resultObjects: Serie[] = [];
-    count = series.length < count ? series.length : count;
-    for (i = 0; i < count; i++) {
-      maxIndex = i;
-      maxDate = series[i].releaseDate;
-      for (j = i + 1; j < series.length; j++) {
-        if (series[j].releaseDate > maxDate) {
-          maxIndex = j;
-          maxDate = series[j].releaseDate;
-          tmp = series[i];
-          series[i] = series[maxIndex];
-          series[maxIndex] = tmp;
-        }
-      }
-      resultObjects[i] = series[i];
-    }
-    return resultObjects;
-  }
+
 
   public extractSerieCards(series: Serie[]) {
     if (series.length > 0) {
       let serieCards: SerieCard[] = [];
       series.forEach((serie, index) => {
-        var serieCard: SerieCard = {
-          num: 0,
-          name: "example",
-          seriesId: 0,
-          cardImg: "",
-          categoryId: "",
-          tmdbID: 0,
-        };
+        let serieCard: SerieCard = new SerieCard()
         serieCard.num = serie.num;
         serieCard.name = serie.name;
         serieCard.seriesId = serie.series_id;

@@ -11,6 +11,8 @@ import { MovieGenreDetailPageComponent } from '../pages/movie-genre-detail-page/
 import { AccountConfirmPageComponent } from '../pages/auth/account-confirm-page/account-confirm-page.component';
 import { ConfirmLogoutPageComponent } from '../pages/auth/confirm-logout-page/confirm-logout-page.component';
 import { AccountInfoLoadingPageComponent } from '../pages/auth/account-info-loading-page/account-info-loading-page.component';
+import { VodCategoryPageComponent } from '../pages/vod-category-page/vod-category-page.component';
+import { VODPageComponent } from '../pages/vodpage/vodpage.component';
 
 const baseRoutes: Routes = [
   {
@@ -48,8 +50,12 @@ const baseRoutes: Routes = [
         component: MovieLandPageComponent
       },
       {
-        path: 'movie-genre-detail/:genre_id',
-        component: MovieGenreDetailPageComponent
+        path: 'vod-category/:category_id',
+        component: VodCategoryPageComponent
+      },
+      {
+        path:'vods/:movie_id',
+        component: VODPageComponent
       }
     ]
   },
