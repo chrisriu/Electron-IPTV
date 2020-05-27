@@ -6,7 +6,7 @@ import {
   Output,
 } from "@angular/core";
 
-import { LiveTV, LiveTVCard, Movie, MovieCard, MovieInfo, Serie, SerieCard, Radio, RadioCard} from "../models";
+import { LiveTV, LiveTVCard, Movie, MovieCard, MovieInfo, MovieCast, Serie, SerieCard, Radio, RadioCard} from "../models";
 import { TMDbAPIService } from "./tmdb-api.service";
 import { XtreamCodeAPIService } from './xc-api.service'
 @Injectable()
@@ -28,6 +28,7 @@ export class ShareService {
   public radioCards: RadioCard[];
 
   public movieInfos: MovieInfo[];
+  public movieCasts: MovieCast[];
 
   public lastMovies: Movie[];
   public lastSeries: Serie[];
@@ -107,12 +108,34 @@ export class ShareService {
 
   public extractGenres(genreIds){
     let result: string = "";
-    genreIds.forEach((genreId, index) => {
+    genreIds.forEach((genreId) => {
       result += genreId["name"]+" / ";
     })
-
     return result.substring(0,result.length-3);
   }
+
+  public extractDate(date){
+    var date_array = date.split("-");
+    let year = date_array[0]
+    let month = date_array["1"]
+    let day = date_array["2"]
+
+    let month_enum = {"01":"Jan", "02":"Feb", "03":"Mar", "04":"Apr", "05":"May", "06":"Jun", "07":"Jul", "08":"Aug", "09":"Sep", "10": "Oct", "11":"Nov", "12":"Dec"};
+
+    return day + " " + month_enum[month] + " " + year
+  }
+
+  public extractRunTime(runtime){
+    let date
+    if(runtime>60){
+      date = Math.floor(runtime/60) + "H " + (runtime % 60) + "MIN"
+    } else {
+      date = runtime + "MIN"
+    }
+
+    return date
+  }
+
   public exchangeSpaceByDash(str: string){
     return str.replace(/\s+/g, '-').toLowerCase();
   }
@@ -162,7 +185,6 @@ export class ShareService {
 
   public async extractMovieCards(movies){
     let movieCards = []
-    let tmdbAPIInfos = []
     try{
       let moviesPromise = [];
       movies.forEach((movie, index) => {
@@ -181,16 +203,13 @@ export class ShareService {
         let movieCard = new MovieCard()
         let tmdbID;
         let tmdbBackdropUrl;
-        let tmdbReleaseDate;
         for (var i=0; i<tmdbResults.length; i++){
-
           if(tmdbResults[i]["release_date"] == "undefined" || tmdbResults[i]["release_date"] == "" || !("release_date" in tmdbResults[i]) ){
             continue;
           }
           if(extractMovieYear === "xxxx"){
             tmdbID = tmdbResults[0]["id"]
             tmdbBackdropUrl = tmdbResults[0]["backdrop_path"]
-            tmdbReleaseDate = tmdbResults[0]["release_date"]
             break;
           }
           if(tmdbResults[i]["release_date"].includes(extractMovieYear)){
@@ -214,6 +233,59 @@ export class ShareService {
     } finally{
       return movieCards
     }
+  }
+
+  public async extractMovieInfos(movieCards){
+    let movieInfos: MovieInfo[] = []
+    let movieInfo_promises = []
+    movieCards.forEach((movieCard) => {
+      const tmdbID = movieCard.tmdbID;
+      if(tmdbID != undefined)
+      {
+        movieInfo_promises.push(this.tmdbAPIService.getMovieDetailById(tmdbID))
+      }
+    })
+
+    await Promise.all(movieInfo_promises)
+    movieInfo_promises.forEach((m) => {
+      let movieInfo = m.__zone_symbol__value
+      var tempInfo: MovieInfo = new MovieInfo()
+      tempInfo.genres = this.extractGenres(movieInfo["genres"])
+      tempInfo.plot = movieInfo["overview"]
+      tempInfo.releaseDate = this.extractDate(movieInfo["release_date"])
+      tempInfo.tmdbID = movieInfo["id"]
+      tempInfo.rating = movieInfo["vote_average"]
+      tempInfo.length = this.extractRunTime(movieInfo["runtime"])
+      movieInfos.push(tempInfo)
+    })
+
+    console.log("Movie Infos", movieInfos)
+    return movieInfos
+  }
+
+  public async extractMovieCasts(movieCards){
+    let movieCasts: MovieCast[] = []
+    let movieCast_promises = []
+    movieCards.forEach((movieCard) =>{
+      const tmdbID = movieCard.tmdbID;
+      if(tmdbID != undefined){
+        movieCast_promises.push(this.tmdbAPIService.getMovieCastsById(tmdbID))
+      }
+    })
+
+    await Promise.all(movieCast_promises)
+
+    movieCast_promises.forEach((m) => {
+      let movieCast = m.__zone_symbol__value;
+
+      var tempCast: MovieCast = new MovieCast()
+      tempCast.tmdbID = movieCast["id"]
+      tempCast.casts = movieCast["cast"]
+      tempCast.crews = movieCast["crew"]
+      movieCasts.push(tempCast)
+    })
+    console.log("Movie casts", movieCasts)
+    return movieCasts
   }
 
   public getFavLiveTVs(livetvs) {

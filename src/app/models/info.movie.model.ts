@@ -1,8 +1,8 @@
 export class MovieInfo{
-  num:number;
-  genres: string[];
-  casts: string[];
-  director: string;
+  tmdbID: number;
+  genres: string;
   releaseDate: string;
   plot: string;
+  rating: string;
+  length: string;
 }

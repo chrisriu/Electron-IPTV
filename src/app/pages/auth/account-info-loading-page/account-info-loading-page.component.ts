@@ -1,5 +1,5 @@
-import jQuery from "jquery";
 import { ShareService, XtreamCodeAPIService } from "src/app/services";
+import jQuery from "jquery";
 
 import { Component, Input, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
@@ -34,9 +34,9 @@ export class AccountInfoLoadingPageComponent implements OnInit {
       if(this.size<87){
         this.size += Math.random()*20
       } else {
-        this.size = 99.9  
+        this.size = 99.9
       }
-      
+
     }, 400)
 
     const currentUser = this.shareService.currentUser;
@@ -64,6 +64,9 @@ export class AccountInfoLoadingPageComponent implements OnInit {
 
     this.shareService.serieCards = this.shareService.extractSerieCards(this.shareService.series)
     this.shareService.lastSerieCards = this.shareService.extractSerieCards(this.shareService.lastSeries)
+
+    this.shareService.movieInfos = await this.shareService. extractMovieInfos(this.shareService.movieCards)
+    this.shareService.movieCasts = await this.shareService.extractMovieCasts(this.shareService.movieCards)
 
     this.size = 100;
     clearInterval(interval)
@@ -107,4 +110,6 @@ export class AccountInfoLoadingPageComponent implements OnInit {
     streams = stream_promises.map(m=>m.__zone_symbol__value)
     return streams
   }
+
+
 }

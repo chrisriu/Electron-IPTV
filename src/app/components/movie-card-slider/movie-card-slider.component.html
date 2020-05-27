@@ -8,15 +8,15 @@
   <div class="sliders_content">
     <section class="items">
       <div class="carouselOfImages">
-        <div class="carouselImage" style="background-size:cover" *ngFor="let card of cards">
-          <img class="movie_bg_img" data-tab="dark" src="https://image.tmdb.org/t/p/w1280{{card.cardImg}}" />
+        <div class="carouselImage" style="background-size:cover" *ngFor="let info of infos; let i = index;">
+          <img class="movie_bg_img" data-tab="dark" src="https://image.tmdb.org/t/p/w1280{{cards[i].cardImg}}" />
           <div class="movie_description">
             <div class="description">
-              <h4>{{card.name}}</h4>
-              <p>RELEASE DATE: 28 MAY 2018</p>
-              <p>DIRECTOR: DOUG LIMAN</p>
-              <p>GENRE: SCI-FI / ACTION</p>
-              <p>LENGTH: 1H 25MIN</p>
+              <h4>{{info["card"].name}}</h4>
+              <p>RELEASE DATE: {{info["infos"].releaseDate}}</p>
+              <p>RATING: {{info["infos"].rating}}</p>
+              <p>GENRE: {{info["infos"].genres}}</p>
+              <p>LENGTH: {{info["infos"].length}}</p>
               <div class="btn_group plays">
                 <button class="button play">
                   <fa-icon [icon]="playIcon" transform="left-8" id="play_icon"></fa-icon>Play
@@ -30,10 +30,7 @@
             </div>
             <div class="plot">
               <p class="plot_context">
-                With the help of warrior Rita Vrataski, Major William
-                Cage has to save Earth and the human race
-                from an alien species, after being caught in a
-                time loop.
+                {{info["infos"].plot}}
               </p>
               <div class="movie_types">
 

@@ -1,6 +1,6 @@
 <div class="vod_category_detail_page">
   <div class="vod_category_last_movies">
-    <app-movie-card-slider [cards]="lastMovieCards"></app-movie-card-slider>
+    <app-movie-card-slider [infos] = "allInfos" [cards]="lastMovieCards"></app-movie-card-slider>
   </div>
   <div class="related_movie_blocks">
     <app-related-movie-blocks [categoryID]="category_id"></app-related-movie-blocks>

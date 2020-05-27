@@ -11,3 +11,4 @@ export * from './radio.model';
 export * from './serie.model';
 export * from './categorymoviecards.model';
 export * from './info.movie.model';
+export * from './casts.movie.model';

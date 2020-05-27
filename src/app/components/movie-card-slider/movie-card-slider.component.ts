@@ -14,6 +14,7 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 export class MovieCardSliderComponent implements OnInit {
 
   @Input() cards: MovieCard[];
+  @Input() infos;
   sliderTitlePosX: number;
   subscription: any;
   playIcon = faPlay
@@ -21,7 +22,7 @@ export class MovieCardSliderComponent implements OnInit {
   constructor(private shareService: ShareService) { }
 
   ngOnInit(): void {
-
+    console.log("All infos", this.infos);
     (function ($) {
       $(document).ready(
         function () {
@@ -110,6 +111,8 @@ export class MovieCardSliderComponent implements OnInit {
       this.sliderTitlePosX = sidebarPosX + 10
     })
   }
+
+
   setSliderTitlePosX() {
     const styles = { 'margin-left': this.sliderTitlePosX + 'px' };
     return styles;
