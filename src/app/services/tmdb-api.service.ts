@@ -49,5 +49,25 @@ export class TMDbAPIService {
     })
   }
 
+  public getCastInfoByCreditId(credit_id: string){
+    const url = `${tmdbConfig.url}/${tmdbConfig.v_api}/credit/${credit_id}?api_key=${tmdbConfig.api_key}`
+    return new Promise((resolve, reject) => {
+      this.httpClient.get(url).toPromise().then(res=>{
+        resolve(res)
+      }, err=>{
+        reject(err);
+      })
+    })
+  }
 
+  public getPersonInfoByPersonId(person_id){
+    const url = `${tmdbConfig.url}/${tmdbConfig.v_api}/person/${person_id}?api_key=${tmdbConfig.api_key}`
+    return new Promise((resolve, reject) => {
+      this.httpClient.get(url).toPromise().then(res=>{
+        resolve(res)
+      }, err=>{
+        reject(err);
+      })
+    })
+  }
 }

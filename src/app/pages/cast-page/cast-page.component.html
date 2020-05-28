@@ -1,0 +1,26 @@
+<div class="cast_main">
+  <div class="cast_info">
+    <div class="profile_image">
+      <img src="https://image.tmdb.org/t/p/original/{{cast_info.profile_path}}" alt="">
+      <p>{{cast_info.name}}</p>
+    </div>
+    <div class="profile_context">
+      <p>BORN: {{cast_info.birthday}}</p>
+      <p>DEPARTMENT: {{cast_info.known_for_department}}</p>
+      <p>GENDER: {{gender}}</p>
+      <p>PLACE OF BORN: {{cast_info.place_of_birth}}</p>
+    </div>
+    <div class="profile_plot">
+      <p>{{cast_info.biography}}</p>
+    </div>
+  </div>
+  <div class="known_for">
+    <h4>RELATED FILMS</h4>
+    <div class="known_movie_row">
+      <div class="known_movie" *ngFor="let movie of known_for_movies">
+        <img class="movie_image" src="http://image.tmdb.org/t/p/original/{{movie.poster_path}}" alt="">
+        <p class="movie_title">{{movie.title}}</p>
+      </div>
+    </div>
+  </div>
+</div>

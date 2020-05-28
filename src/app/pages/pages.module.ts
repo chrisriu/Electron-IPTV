@@ -38,6 +38,7 @@ import { TvchannelLandPageComponent } from './tvchannel-land-page/tvchannel-land
 import { TvseriesLandPageComponent } from './tvseries-land-page/tvseries-land-page.component';
 import { VodCategoryPageComponent } from './vod-category-page/vod-category-page.component';
 import { VODPageComponent } from './vodpage/vodpage.component';
+import { CastPageComponent } from './cast-page/cast-page.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { VODPageComponent } from './vodpage/vodpage.component';
     ConfirmLogoutPageComponent,
     VodCategoryPageComponent,
     VODPageComponent,
+    CastPageComponent,
   ],
 
   imports: [

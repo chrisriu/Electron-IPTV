@@ -4,26 +4,57 @@
   </div>
   <div class="content">
     <div class="slider_img">
-      <img src="" alt="">
+      <img src="https://image.tmdb.org/t/p/original/{{movieCard.cardImg}}" alt="">
     </div>
     <div class="description">
       <div class="title">
-
+        <h4>{{movieCard.name}}</h4>
       </div>
       <div class="context">
         <div class="others">
-
+          <p>RELEASE DATE: {{movieInfo.releaseDate}}</p>
+          <p>RATED: {{movieInfo.rating}}</p>
+          <p>GENRES: {{movieInfo.genres}}</p>
+          <p>RUNTIME: {{movieInfo.length}}</p>
         </div>
         <div class="plot">
-
+          <p>{{movieInfo.plot}}</p>
         </div>
       </div>
     </div>
 
     <div class="casts">
-
+      <h4>Cast</h4>
+      <div class="cast_row">
+        <div class="cast_info" *ngFor="let cast of casts">
+          <a [routerLink]  = "['/main/cast', cast.credit_id]">
+            <div *ngIf="cast.profile_path != null; then showImage else showNothing"> </div>
+            <ng-template #showImage>
+              <img src="https://image.tmdb.org/t/p/original/{{cast.profile_path}}" alt="">
+            </ng-template>
+            <ng-template #showNothing>
+              <div class="no_img">
+                <img src="assets/img/user.png"/>
+              </div>
+            </ng-template>
+            <p>{{cast.name}}</p>
+          </a>
+        </div>
+      </div>
     </div>
-    <div class="control btn_group"></div>
+    <div class="btn_group plays">
+      <button class="button play">
+        <fa-icon [icon]="playIcon" transform="left-8" id="play_icon"></fa-icon>Play
+      </button>
+      <button class="button favorite">
+        <div class="circle_icon">
+          <fa-icon [icon]="starIcon" transform="shrink-4 down-2" id="star_icon"></fa-icon>
+        </div>Favorite
+      </button>
+      <button class="button trail">
+        <fa-icon [icon]="videoIcon" transform="left-8" id="trail_icon"></fa-icon>Trailer
+      </button>
+    </div>
   </div>
 
 </div>

@@ -13,6 +13,7 @@ import { ConfirmLogoutPageComponent } from '../pages/auth/confirm-logout-page/co
 import { AccountInfoLoadingPageComponent } from '../pages/auth/account-info-loading-page/account-info-loading-page.component';
 import { VodCategoryPageComponent } from '../pages/vod-category-page/vod-category-page.component';
 import { VODPageComponent } from '../pages/vodpage/vodpage.component';
+import { CastPageComponent } from '../pages/cast-page/cast-page.component';
 
 const baseRoutes: Routes = [
   {
@@ -56,6 +57,10 @@ const baseRoutes: Routes = [
       {
         path:'vods/:movie_id',
         component: VODPageComponent
+      },
+      {
+        path:'cast/:credit_id',
+        component: CastPageComponent
       }
     ]
   },
