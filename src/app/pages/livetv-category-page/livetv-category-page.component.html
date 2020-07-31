@@ -1,0 +1,19 @@
+<div class="livetv_content">
+  <div class="livetv_play">
+    <div class="livetv_player">
+      <app-livevjs-player
+        [options]="{
+          autoplay: true,
+          controls: true,
+          sources: [{ src: streamURL, type: 'application/x-mpegURL' }]
+        }"
+      ></app-livevjs-player>
+    </div>
+    <div class="livetv_stream_description">
+      <p>PRO TV HD</p>
+    </div>
+  </div>
+  <div class="livetv_epg">
+    <app-epgdata [live_category_id] = "livetv_category_id"></app-epgdata>
+  </div>
+</div>

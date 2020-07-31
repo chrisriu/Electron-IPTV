@@ -12,7 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-import { ComponentsModule } from '../components/components.module';
+
 import {
     AccountConfirmPageComponent
 } from './auth/account-confirm-page/account-confirm-page.component';
@@ -39,7 +39,9 @@ import { TvseriesLandPageComponent } from './tvseries-land-page/tvseries-land-pa
 import { VodCategoryPageComponent } from './vod-category-page/vod-category-page.component';
 import { VODPageComponent } from './vodpage/vodpage.component';
 import { CastPageComponent } from './cast-page/cast-page.component';
-
+import { LivetvCategoryPageComponent } from './livetv-category-page/livetv-category-page.component';
+import { ComponentsModule } from '../components/components.module';
+import { PlayerModule } from '../player/player.module';
 @NgModule({
   declarations: [
     LoginPageComponent,
@@ -60,6 +62,7 @@ import { CastPageComponent } from './cast-page/cast-page.component';
     VodCategoryPageComponent,
     VODPageComponent,
     CastPageComponent,
+    LivetvCategoryPageComponent,
   ],
 
   imports: [
@@ -76,6 +79,7 @@ import { CastPageComponent } from './cast-page/cast-page.component';
     MatProgressSpinnerModule,
     NgProgressModule,
     FontAwesomeModule,
+    PlayerModule
   ],
   providers: [
   ],

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router'
+import {ActivatedRoute, Router} from '@angular/router'
 
 import {MovieCard, MovieInfo, MovieCast } from '../../models';
 import {ShareService, TMDbAPIService, UtilService} from '../../services';
@@ -34,7 +34,7 @@ export class VODPageComponent implements OnInit {
   darkVibrantColor: any;
   lightVibrantColor: any;
 
-  constructor(private activeRouter: ActivatedRoute, private shareService: ShareService, private utilService: UtilService) { }
+  constructor(private activeRouter: ActivatedRoute, private shareService: ShareService, private utilService: UtilService, private router:Router) { }
 
   async ngOnInit() {
     this.selected_movie_num = this.activeRouter.snapshot.params.movie_id
@@ -113,5 +113,11 @@ export class VODPageComponent implements OnInit {
         resolve(palette)
       })
     })
+  }
+
+  playMovie(){
+    console.log("Play Movie");
+    console.log(this.movieCard.num)
+    this.router.navigate(['/play'], { queryParams: { movie_id: this.movieCard.num } })
   }
 }

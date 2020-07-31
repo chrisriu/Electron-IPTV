@@ -11,6 +11,7 @@ import { PagesModule } from './pages/pages.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ShareService } from './services';
 
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -21,7 +22,6 @@ import { ShareService } from './services';
         HttpClientModule,
         PagesModule,
         BrowserAnimationsModule,
-
     ],
     providers: [
         ShareService

@@ -1,0 +1,5 @@
+@import '~video.js/dist/video-js.css';
+
+.vjs-big-play-button{
+  display: none !important;
+}

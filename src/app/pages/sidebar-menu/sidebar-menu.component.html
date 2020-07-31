@@ -13,13 +13,13 @@
                     </a>
                 </li>
                 <li>
-                    <a routerLink="/main/livetv">
+                    <a [routerLink] = "['/main/livetv-category/', 20]">
                         <div class="livetv_icon"></div>
                         <p class="header_title">LIVE TV</p>
                     </a>
                     <ul class="sub_Menu">
                         <li *ngFor="let sub_category of categories[0]">
-                            <a href="">
+                            <a [routerLink] = "['/main/livetv-category/', sub_category['category_id']]">
                                 <div class="subcategory_bar"></div>
                                 <p class="sub_title">{{sub_category["category_name"]}}</p>
                             </a>
@@ -69,7 +69,7 @@
                 <li>
                     <a routerLink="/main/favorite">
                         <div class="favorite_icon"></div>
-                        <p class="header_title">FAVOIRTE</p>
+                        <p class="header_title">FAVORITE</p>
                     </a>
                 </li>
             </ul>

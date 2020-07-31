@@ -23,6 +23,7 @@ import { MovieCardSliderComponent } from './movie-card-slider/movie-card-slider.
 import { RelatedMovieBlocksComponent } from './related-movie-blocks/related-movie-blocks.component';
 
 import { RouterModule } from '@angular/router';
+import { EPGDataComponent } from './epgdata/epgdata.component';
 @NgModule({
   declarations: [
     ResizeDiv,
@@ -36,6 +37,7 @@ import { RouterModule } from '@angular/router';
     MovieBlockScrollDirective,
     MovieCardSliderComponent,
     RelatedMovieBlocksComponent,
+    EPGDataComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,7 +60,8 @@ import { RouterModule } from '@angular/router';
     SearchBoxComponent,
     MovieCardBlockComponent,
     MovieCardSliderComponent,
-    RelatedMovieBlocksComponent
+    RelatedMovieBlocksComponent,
+    EPGDataComponent,
   ],
 })
 export class ComponentsModule {

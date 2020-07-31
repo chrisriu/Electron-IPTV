@@ -7,13 +7,14 @@ import { MainPageComponent } from '../pages/main-page/main-page.component';
 import { AuthGuard } from '../guards/auth.guard';
 import { HomePageComponent } from '../pages/home-page';
 import { MovieLandPageComponent } from '../pages/movie-land-page/movie-land-page.component';
-import { MovieGenreDetailPageComponent } from '../pages/movie-genre-detail-page/movie-genre-detail-page.component';
 import { AccountConfirmPageComponent } from '../pages/auth/account-confirm-page/account-confirm-page.component';
 import { ConfirmLogoutPageComponent } from '../pages/auth/confirm-logout-page/confirm-logout-page.component';
 import { AccountInfoLoadingPageComponent } from '../pages/auth/account-info-loading-page/account-info-loading-page.component';
 import { VodCategoryPageComponent } from '../pages/vod-category-page/vod-category-page.component';
 import { VODPageComponent } from '../pages/vodpage/vodpage.component';
 import { CastPageComponent } from '../pages/cast-page/cast-page.component';
+import { PlayerPageComponent } from '../player/player-page/player-page.component';
+import { LivetvCategoryPageComponent } from '../pages/livetv-category-page/livetv-category-page.component';
 
 const baseRoutes: Routes = [
   {
@@ -61,8 +62,16 @@ const baseRoutes: Routes = [
       {
         path:'cast/:credit_id',
         component: CastPageComponent
+      },
+      {
+        path:'livetv-category/:category_id',
+        component: LivetvCategoryPageComponent
       }
     ]
+  },
+  {
+    path: 'play',
+    component: PlayerPageComponent
   },
   {
     path: 'login',

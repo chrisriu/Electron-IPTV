@@ -102,4 +102,15 @@ export class XtreamCodeAPIService {
     })
   }
 
+  sendLiveTVStreamRequestCategoryIDUsingPromise(username: string, password: string, category_id: String){
+    const url = `${xcConfig.url}:${xcConfig.port}/player_api.php?username=${username}&password=${password}&action=get_live_streams&category_id=${category_id}`
+    return new Promise((resolve, reject) => {
+      this.httpClient.get<LiveTV[]>(url).toPromise().then(res=>{
+        resolve(res)
+      }, err => {
+        reject(err)
+      })
+    })
+  }
+
 }
